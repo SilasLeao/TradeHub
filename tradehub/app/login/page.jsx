@@ -30,6 +30,7 @@ export default function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (validarSenha()) {
+      sessionStorage.setItem("nomeUsuario", usuario.nome);
       router.push("../mainPage");
     } else {
       alert(
@@ -91,15 +92,15 @@ export default function Login() {
           </div>
 
           <div className="socialIcons">
-            <a href="https://www.instagram.com" target="_blank">
+            <a href="#">
               <i className="fa-brands fa-google"></i>
             </a>
 
-            <a href="https://linkedin.com" target="_blank">
+            <a href="#">
               <i className="fa-brands fa-linkedin-in"></i>
             </a>
 
-            <a href="https://facebook.com" target="_blank">
+            <a href="#">
               <i className="fa-brands fa-square-facebook"></i>
             </a>
           </div>
