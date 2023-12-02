@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url(./assets/fonts/Poppins-Regular.ttf);
+}
+
+.body {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("./assets/imgs/imgBg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content {
+  margin-left: 10rem;
+  display: flex;
+  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 4rem;
+  border-bottom: 2px solid #5dec85;
+  width: fit-content;
+  color: honeydew;
+}
+
+span {
+  color: #5dec85;
+}
+
+p {
+  max-width: 720px;
+  color: honeydew;
+}
+
+/* configuração do botão p ficar preenchido */
+/* button {
+  background-color: #5dec85;
+  border: none;
+  font-size: 1rem;
+  max-height: 80px;
+  max-width: 320px;
+  padding: 1rem 0;
+  border-radius: 50px;
+  transition: 0.3s;
+  color: #2B2B2B;
+}
+
+button:hover {
+  scale: 1.1;
+  cursor: pointer;
+} */
+
+/* configuração do botão pra ficar só a linha e preencher no hover */
+button {
+  border: 3px solid #5dec85;
+  background-color: transparent;
+  font-size: 1rem;
+  max-height: 80px;
+  max-width: 320px;
+  padding: 1rem 0;
+  border-radius: 50px;
+  transition: 0.3s;
+  color: honeydew;
+}
+
+button:hover {
+  scale: 1.1;
+  cursor: pointer;
+  color: #2b2b2b;
+  background-color: #5dec85;
+  border: none;
+}

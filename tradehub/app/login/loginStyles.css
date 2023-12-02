@@ -1,0 +1,158 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url(../assets/fonts/Poppins-Regular.ttf);
+}
+
+.body {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("../assets/imgs/loginBg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contentBox {
+  background-color: #363636;
+  display: flex;
+  flex-direction: column;
+  height: 70%;
+  width: 30%;
+  border-radius: 50px;
+  align-items: center;
+}
+
+h1 {
+  color: honeydew;
+  margin: 2rem 0;
+}
+
+.inputs {
+  background-color: #2b2b2b;
+  border: 1px solid #5dec85;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  width: 360px;
+  margin-bottom: 1rem;
+  color: honeydew;
+  font-size: 1rem;
+}
+
+.inputs:focus {
+  outline: none;
+}
+
+.loginOptions {
+  display: flex;
+  justify-content: space-between;
+  width: 420px;
+  color: honeydew;
+}
+
+.checkbox {
+  margin-right: 5px;
+}
+
+.checkbox:hover {
+  cursor: pointer;
+}
+
+#esqueceuSenha {
+  color: #5dec85;
+}
+
+#esqueceuSenha:hover {
+  border-bottom: 1px solid #5dec85;
+  cursor: pointer;
+}
+
+button {
+  border: 3px solid #5dec85;
+  background-color: transparent;
+  font-size: 1.5rem;
+  padding: 0.6rem 5rem;
+  border-radius: 50px;
+  transition: 0.3s;
+  color: honeydew;
+  margin: 2rem 0;
+}
+
+button:hover {
+  scale: 1.1;
+  cursor: pointer;
+  color: #2b2b2b;
+  background-color: #5dec85;
+  border: none;
+}
+
+.divider {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  color: #5dec85;
+}
+
+.divider hr {
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+.left {
+  float: left;
+  border: none;
+  height: 1px;
+  background-color: #5dec85;
+}
+
+.right {
+  float: right;
+  border: none;
+  height: 1px;
+  background-color: #5dec85;
+}
+
+.socialIcons {
+  margin: 1rem 0;
+  gap: 1rem;
+  display: flex;
+}
+
+.fa-brands {
+  color: #5dec85;
+  font-size: 1.5rem;
+  border: 2px solid #5dec85;
+  padding: 0.8rem;
+  border-radius: 100%;
+  transition: 0.3s;
+}
+
+.fa-brands:hover {
+  background-color: #5dec85;
+  border: none;
+  color: #24202b;
+  cursor: pointer;
+  scale: 1.2;
+}
+
+#conta {
+  color: honeydew;
+}
+
+#criarConta {
+  color: #5dec85;
+}
+
+#criarConta:hover {
+  border-bottom: 1px solid #5dec85;
+  cursor: pointer;
+}
