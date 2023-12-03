@@ -31,7 +31,7 @@ export default function Navbar() {
             <FontAwesomeIcon className="fa fa-user" icon={faUser} />
             <span>Olá, {nomeUsuario}</span>
           </div>
-          <hr />
+          <hr className="navbarHr" />
           <ul>
             <li>
               <FontAwesomeIcon className="navbarIcon" icon={faCoins} />

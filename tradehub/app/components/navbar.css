@@ -30,7 +30,7 @@ aside {
   font-size: 1.5rem;
 }
 
-hr {
+.navbarHr {
   border: none;
   height: 1px;
   background-color: #5dec85;

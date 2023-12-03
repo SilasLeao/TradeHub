@@ -1,10 +1,9 @@
 "use client";
 
-// 8QE9zJXLMnT7w6wppfyXEs
-
 import "./acoesMain.css";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import AcaoCard from "./AcaoCard";
 import {
   faMagnifyingGlass,
   faCaretDown,
@@ -12,28 +11,44 @@ import {
 
 export default function AcoesMain() {
   const [codigoAcao, setCodigoAcao] = useState("");
+  const [acaoData, setAcaoData] = useState(null);
+  const [acaoCards, setAcaoCards] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const resposta = await fetch(
+        `https://brapi.dev/api/quote/${codigoAcao}?token=8QE9zJXLMnT7w6wppfyXEs`
+      );
+      const resultado = await resposta.json();
+      setAcaoData(resultado);
+
+      // setAcaoCards([
+      //   resultado.results[0].symbol,
+      //   resultado.results[0].regularMarketPrice,
+      //   resultado.results[0].regularMarketChangePercent,
+      // ]);
+
+      setAcaoCards((prevCards) => [
+        ...prevCards,
+        {
+          symbol: resultado.results[0].symbol,
+          regularMarketPrice: resultado.results[0].regularMarketPrice,
+          regularMarketChangePercent:
+            resultado.results[0].regularMarketChangePercent,
+        },
+      ]);
+    } catch (error) {
+      console.error("Erro ao buscar dados:", error);
+    }
+  };
+
   function handleChange(event) {
     setCodigoAcao(event.target.value);
-    console.log(codigoAcao);
   }
+
   function handleSearch() {
-    alert(codigoAcao);
+    fetchData();
   }
-
-  // const [data, setData] = useState(null);
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const resposta = await fetch("https://www.exemplo.com/api/recurso");
-  //       const resultado = await resposta.json();
-  //       setData(resultado);
-  //     } catch (error) {
-  //       console.error("Erro ao buscar dados:", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
 
   return (
     <>
@@ -72,7 +87,11 @@ export default function AcoesMain() {
               <FontAwesomeIcon className="acoesIcon" icon={faCaretDown} />
             </button>
           </div>
-          <div className="cardContainer"></div>
+        </div>
+        <div className="cardContainer">
+          {acaoCards.map((acao, index) => (
+            <AcaoCard key={index} acao={acao} />
+          ))}
         </div>
       </div>
     </>
