@@ -110,10 +110,6 @@ export default function Login() {
           </p>
         </form>
       </div>
-      <script
-        src="https://kit.fontawesome.com/f9e40fd065.js"
-        crossOrigin="anonymous"
-      ></script>
     </>
   );
 }

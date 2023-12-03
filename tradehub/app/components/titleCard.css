@@ -9,6 +9,8 @@
   src: url(../assets/fonts/Poppins-Regular.ttf);
 }
 
-.mainPageComponents {
-  display: flex;
+.titleCard {
+  background-color: #363636;
+  width: 320px;
+  height: 150px;
 }

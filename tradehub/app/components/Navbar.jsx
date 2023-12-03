@@ -1,5 +1,9 @@
+"use client";
 import "./navbar.css";
 import { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoins } from "@fortawesome/free-solid-svg-icons";
+
 export default function Navbar() {
   const [nomeUsuario, setNomeUsuario] = useState("");
   useEffect(() => {
@@ -10,10 +14,11 @@ export default function Navbar() {
     <>
       <aside>
         <section className="content">
-          <span className="perfil">
-            <i className="fa fa-regular fa-user"></i>
+          <div className="perfil">
+            {/* <i className="fa fa-regular fa-user"></i> */}
+            <FontAwesomeIcon icon="fa-regular fa-user" />
             <span>Olá, {nomeUsuario}</span>
-          </span>
+          </div>
           <hr />
           <ul>
             <li>
@@ -55,11 +60,6 @@ export default function Navbar() {
           <i className="fa fa-solid fa-headset"></i>
         </div>
       </aside>
-
-      <script
-        src="https://kit.fontawesome.com/f9e40fd065.js"
-        crossOrigin="anonymous"
-      ></script>
     </>
   );
 }

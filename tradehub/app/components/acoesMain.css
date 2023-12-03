@@ -9,6 +9,8 @@
   src: url(../assets/fonts/Poppins-Regular.ttf);
 }
 
-.mainPageComponents {
-  display: flex;
+.acoesMainContainer {
+  background-color: #363636;
+  width: 1000px;
+  height: 100vh;
 }
