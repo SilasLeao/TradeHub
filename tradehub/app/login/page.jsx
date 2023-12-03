@@ -2,6 +2,12 @@
 import { useRouter } from "next/navigation";
 import "./loginStyles.css";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faGoogle,
+  faLinkedinIn,
+  faSquareFacebook,
+} from "@fortawesome/free-brands-svg-icons";
 /* <button type="button" onClick={() => router.push("../")}>
         Teste nav2
       </button> */
@@ -92,17 +98,9 @@ export default function Login() {
           </div>
 
           <div className="socialIcons">
-            <a href="#">
-              <i className="fa-brands fa-google"></i>
-            </a>
-
-            <a href="#">
-              <i className="fa-brands fa-linkedin-in"></i>
-            </a>
-
-            <a href="#">
-              <i className="fa-brands fa-square-facebook"></i>
-            </a>
+            <FontAwesomeIcon className="icon" icon={faGoogle} />
+            <FontAwesomeIcon className="icon" icon={faLinkedinIn} />
+            <FontAwesomeIcon className="icon" icon={faSquareFacebook} />
           </div>
 
           <p id="conta">

@@ -1,17 +1,17 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 @font-face {
-  font-family: "Poppins";
-  src: url(../assets/fonts/Poppins-Regular.ttf);
+  font-family: "Inter";
+  src: url(../assets/fonts/Inter-Regular.ttf);
 }
 
 aside {
   background-color: #363636;
-  max-width: 320px;
+  width: 360px;
   height: 100vh;
   padding-left: 1rem;
   display: flex;
@@ -65,8 +65,8 @@ ul {
 li {
   color: honeydew;
   font-size: 20px;
-  max-width: 85%;
   margin-bottom: 1rem;
+  max-width: 90%;
 }
 
 li:hover {
@@ -83,14 +83,14 @@ li:hover {
   color: #5dec85;
 }
 
-li i {
+li .navbarIcon {
   margin-right: 0.5rem;
 }
 
 #quit {
   color: #f52a2a;
   font-size: 20px;
-  max-width: 85%;
+  max-width: 90%;
 }
 
 #quit:hover {

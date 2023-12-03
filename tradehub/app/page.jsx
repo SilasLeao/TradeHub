@@ -4,6 +4,8 @@ import teste from "./teste.js";
 import { useRouter } from "next/navigation";
 import "./styles.css";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 export default function Home() {
   const router = useRouter();
   // teste()

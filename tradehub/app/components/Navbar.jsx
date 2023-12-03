@@ -2,7 +2,20 @@
 import "./navbar.css";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoins } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCoins,
+  faChartLine,
+  faSackDollar,
+  faChartSimple,
+  faGear,
+  faHeadset,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faUser,
+  faBuilding,
+  faCircleQuestion,
+} from "@fortawesome/free-regular-svg-icons";
+import { faBitcoin } from "@fortawesome/free-brands-svg-icons";
 
 export default function Navbar() {
   const [nomeUsuario, setNomeUsuario] = useState("");
@@ -15,49 +28,48 @@ export default function Navbar() {
       <aside>
         <section className="content">
           <div className="perfil">
-            {/* <i className="fa fa-regular fa-user"></i> */}
-            <FontAwesomeIcon icon="fa-regular fa-user" />
+            <FontAwesomeIcon className="fa fa-user" icon={faUser} />
             <span>Olá, {nomeUsuario}</span>
           </div>
           <hr />
           <ul>
             <li>
-              <i className="fa-solid fa-coins"></i>
+              <FontAwesomeIcon className="navbarIcon" icon={faCoins} />
               <span>Meus Investimentos</span>
             </li>
             <li className="selected">
-              <i className="fa-solid fa-chart-line"></i>
+              <FontAwesomeIcon className="navbarIcon" icon={faChartLine} />
               <span>Ações da Bolsa</span>
             </li>
             <li>
-              <i className="fa-regular fa-building"></i>
+              <FontAwesomeIcon className="navbarIcon" icon={faBuilding} />
               <span>Fundos Imobiliários</span>
             </li>
             <li>
-              <i className="fa-brands fa-bitcoin"></i>
+              <FontAwesomeIcon className="navbarIcon" icon={faBitcoin} />
               <span>Criptomoedas</span>
             </li>
             <li>
-              <i className="fa-solid fa-sack-dollar"></i>
+              <FontAwesomeIcon className="navbarIcon" icon={faSackDollar} />
               <span>Fundos de Investimento</span>
             </li>
             <li>
-              <i className="fa-solid fa-chart-simple"></i>
+              <FontAwesomeIcon className="navbarIcon" icon={faChartSimple} />
               <span>Estatísticas</span>
             </li>
             <li>
-              <i className="fa-solid fa-gear"></i>
+              <FontAwesomeIcon className="navbarIcon" icon={faGear} />
               <span>Configurações</span>
             </li>
             <li>
-              <i className="fa-regular fa-circle-question"></i>
+              <FontAwesomeIcon className="navbarIcon" icon={faCircleQuestion} />
               <span>FAQ</span>
             </li>
           </ul>
           <p id="quit">Encerrar Sessão</p>
         </section>
         <div className="support">
-          <i className="fa fa-solid fa-headset"></i>
+          <FontAwesomeIcon className="fa fa-headset" icon={faHeadset} />
         </div>
       </aside>
     </>
