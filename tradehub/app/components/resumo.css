@@ -15,3 +15,66 @@
   height: 380px;
   border-radius: 30px 0 0 30px;
 }
+
+.resumoTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 2rem 1rem 2rem;
+  font-size: 1.4rem;
+}
+
+.resumoTitle span {
+  border-bottom: 1px solid #5dec85;
+  width: fit-content;
+}
+
+.resumoIcon {
+  color: #5dec85;
+}
+
+.conta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 2rem 1rem 2rem;
+}
+
+.saldo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 2rem 1rem 2rem;
+}
+
+.totalInvestido {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 2rem 1rem 2rem;
+}
+
+.valorAcumulado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 2rem 1rem 2rem;
+}
+
+.valorAcumuladoPorcento {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 2rem 1rem 2rem;
+}
+
+.dividendos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 2rem 1rem 2rem;
+}
+
+.resumoNumeroVerde {
+  color: #5dec85;
+}
