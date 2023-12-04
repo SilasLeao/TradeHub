@@ -24,10 +24,10 @@ h1 {
 }
 
 .destaque {
-  margin-left: 3rem;
+  margin: 0 3rem;
 }
 
-.destaque p {
+.destaqueTitle {
   color: honeydew;
   border-bottom: 1px solid #5dec85;
   max-width: fit-content;
@@ -36,9 +36,44 @@ h1 {
 
 .acoesDestaque {
   height: 125px;
-  width: 80%;
-  background-color: rgb(46, 145, 145);
   margin-bottom: 6rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.acaoCardDestaque {
+  border: 1px solid white;
+  border-radius: 30px;
+  width: 250px;
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardTitleDestaque {
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+
+.cardDestaqueFirstHr {
+  width: 70%;
+  margin-bottom: 6px;
+}
+
+.cardPriceDestaque {
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+
+.cardDestaqueSecondHr {
+  width: 40%;
+  margin-bottom: 6px;
+}
+
+.cardChangeDestaque {
+  font-size: 1.2rem;
 }
 
 .acoesIcon {
@@ -104,8 +139,10 @@ h1 {
 
 .cardContainer {
   display: flex;
-  height: 54%;
+  height: 50%;
   width: 100%;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 2rem;
+  align-content: center;
 }
