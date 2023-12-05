@@ -3,15 +3,18 @@ import { useRouter } from "next/navigation";
 import "./mainPageStyles.css";
 import Navbar from "../components/Navbar";
 import AcoesMain from "../components/AcoesMain";
-import SideBar from "../components/SideBar";
+import { NavbarProvider } from "../components/navbarContext";
+import AcaoSideBar from "../components/AcaoSideBar";
 
 export default function MainPage() {
   return (
     <>
       <div className="mainPageComponents">
-        <Navbar />
-        <AcoesMain />
-        <SideBar />
+        <NavbarProvider>
+          <Navbar />
+          <AcoesMain />
+          <AcaoSideBar />
+        </NavbarProvider>
       </div>
     </>
   );

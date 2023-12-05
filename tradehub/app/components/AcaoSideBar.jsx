@@ -1,10 +1,10 @@
 "use client";
-import "./sidebar.css";
+import "./acaoSidebar.css";
 import TitleCard from "./TitleCard";
 import Resumo from "./Resumo";
 import Noticias from "./Noticias";
 
-export default function SideBar() {
+export default function AcaoSideBar() {
   return (
     <>
       <div className="sidebar">

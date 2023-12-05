@@ -17,19 +17,21 @@ import {
   faCircleQuestion,
 } from "@fortawesome/free-regular-svg-icons";
 import { faBitcoin } from "@fortawesome/free-brands-svg-icons";
+import { useNavbar } from "./navbarContext";
 
 export default function Navbar() {
-  const router = useRouter();
+  const {
+    acoesActive,
+    investmentActive,
+    handleInvestmentClick,
+    handleAcoesClick,
+  } = useNavbar();
 
   const [nomeUsuario, setNomeUsuario] = useState("");
   useEffect(() => {
     const nomeUsuarioSessionStorage = sessionStorage.getItem("nomeUsuario");
     setNomeUsuario(nomeUsuarioSessionStorage); //
   }, []);
-
-  function handleInvestmentClick() {
-    router.push("../investment");
-  }
 
   return (
     <>
@@ -41,13 +43,13 @@ export default function Navbar() {
           </div>
           <hr className="navbarHr" />
           <ul>
-            <li>
+            <li className={investmentActive ? "selected" : ""}>
               <FontAwesomeIcon className="navbarIcon" icon={faCoins} />
               <span onClick={handleInvestmentClick}>Meus Investimentos</span>
             </li>
-            <li className="selected">
+            <li className={acoesActive ? "selected" : ""}>
               <FontAwesomeIcon className="navbarIcon" icon={faChartLine} />
-              <span>Ações da Bolsa</span>
+              <span onClick={handleAcoesClick}>Ações da Bolsa</span>
             </li>
             <li>
               <FontAwesomeIcon className="navbarIcon" icon={faBuilding} />
