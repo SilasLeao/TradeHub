@@ -1,5 +1,6 @@
 "use client";
 import "./navbar.css";
+import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -18,11 +19,18 @@ import {
 import { faBitcoin } from "@fortawesome/free-brands-svg-icons";
 
 export default function Navbar() {
+  const router = useRouter();
+
   const [nomeUsuario, setNomeUsuario] = useState("");
   useEffect(() => {
     const nomeUsuarioSessionStorage = sessionStorage.getItem("nomeUsuario");
     setNomeUsuario(nomeUsuarioSessionStorage); //
   }, []);
+
+  function handleInvestmentClick() {
+    router.push("../investment");
+  }
+
   return (
     <>
       <aside>
@@ -35,7 +43,7 @@ export default function Navbar() {
           <ul>
             <li>
               <FontAwesomeIcon className="navbarIcon" icon={faCoins} />
-              <span>Meus Investimentos</span>
+              <span onClick={handleInvestmentClick}>Meus Investimentos</span>
             </li>
             <li className="selected">
               <FontAwesomeIcon className="navbarIcon" icon={faChartLine} />
