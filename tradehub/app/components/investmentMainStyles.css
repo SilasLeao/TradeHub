@@ -180,3 +180,13 @@ td {
   opacity: 0.8;
   cursor: pointer;
 }
+
+.cardContainer {
+  margin-top: 2rem;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-content: center;
+}

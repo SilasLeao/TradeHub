@@ -1,12 +1,13 @@
 "use client";
 import "./investmentMainStyles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { useState, useEffect } from "react";
 import {
   faCaretDown,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { createClient } from "@supabase/supabase-js";
+import InvestmentCard from "./investmentCard";
 
 export default function InvestmentMain() {
   const supabaseUrl = "https://njjjjpkgxodlrhrysbev.supabase.co";
@@ -14,26 +15,24 @@ export default function InvestmentMain() {
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5qampqcGtneG9kbHJocnlzYmV2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDE4MTg1MzQsImV4cCI6MjAxNzM5NDUzNH0.BJ8RAHt3jHIAJgq9vD1P8_gaWI-R-zn9AbGN71zyItc";
   const supabase = createClient(supabaseUrl, supabaseKey);
 
-  async function testeSupabase() {
-    try {
-      const response = await fetch(supabaseUrl, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${supabaseKey}`,
-        },
-      });
+  const [investmentData, setInvestmentData] = useState([]);
 
-      if (!response.ok) {
-        throw new Error("Erro ao acessar o Supabase");
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("Investimentos")
+          .select("*");
+        setInvestmentData(data);
+        console.log(data);
+      } catch (error) {
+        console.error("Erro:", error);
       }
+    };
 
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error("Erro:", error.message);
-    }
-  }
+    fetchData();
+  }, []);
+
   return (
     <>
       <div className="investmentMainContainer">
@@ -169,7 +168,10 @@ export default function InvestmentMain() {
           </div>
         </div>
         <div className="cardContainer">
-          <button onClick={testeSupabase}>Teste</button>
+          {investmentData.map((investimento, index) => (
+            <InvestmentCard key={index} investimento={investimento} />
+          ))}
+          {/* <button onClick={testeSupabase}>Teste</button> */}
         </div>
       </div>
     </>
