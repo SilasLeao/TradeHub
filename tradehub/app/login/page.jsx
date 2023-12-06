@@ -8,9 +8,6 @@ import {
   faLinkedinIn,
   faSquareFacebook,
 } from "@fortawesome/free-brands-svg-icons";
-/* <button type="button" onClick={() => router.push("../")}>
-        Teste nav2
-      </button> */
 
 export default function Login() {
   const router = useRouter();
