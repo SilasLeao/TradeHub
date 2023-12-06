@@ -1,10 +1,39 @@
 "use client";
 import "./investmentMainStyles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import AcaoCard from "./AcaoCard";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+
+import {
+  faCaretDown,
+  faMagnifyingGlass,
+} from "@fortawesome/free-solid-svg-icons";
+import { createClient } from "@supabase/supabase-js";
 
 export default function InvestmentMain() {
+  const supabaseUrl = "https://njjjjpkgxodlrhrysbev.supabase.co";
+  const supabaseKey =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5qampqcGtneG9kbHJocnlzYmV2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDE4MTg1MzQsImV4cCI6MjAxNzM5NDUzNH0.BJ8RAHt3jHIAJgq9vD1P8_gaWI-R-zn9AbGN71zyItc";
+  const supabase = createClient(supabaseUrl, supabaseKey);
+
+  async function testeSupabase() {
+    try {
+      const response = await fetch(supabaseUrl, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${supabaseKey}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Erro ao acessar o Supabase");
+      }
+
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error("Erro:", error.message);
+    }
+  }
   return (
     <>
       <div className="investmentMainContainer">
@@ -12,106 +41,135 @@ export default function InvestmentMain() {
         <div className="tablesContainer">
           <div className="watchlist">
             <p className="tablesTitle">Watchlist</p>
-            <table>
+            <table className="watchlistTable">
               <thead>
                 <tr>
-                  <th>Simbolo</th>
+                  <th className="roundLeftTableCorner">Simbolo</th>
                   <th>Cotação</th>
-                  <th>Rendimento</th>
+                  <th className="roundRightTableCorner">Rendimento</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <th>HGRU11</th>
-                  <td>R$ 130.92</td>
-                  <td>0.71%</td>
+                  <th className="whiteTableText">HGRU11</th>
+                  <td className="whiteTableText">R$ 130.92</td>
+                  <td className="greenTableText">0.71%</td>
                 </tr>
                 <tr>
-                  <th>IRDM11</th>
-                  <td>R$ 75.72</td>
-                  <td>2.75%</td>
+                  <th className="whiteTableText">IRDM11</th>
+                  <td className="whiteTableText">R$ 75.72</td>
+                  <td className="greenTableText">2.75%</td>
                 </tr>
                 <tr>
-                  <th>AAPL34</th>
-                  <td>R$ 46.67</td>
-                  <td>0.39%</td>
+                  <th className="whiteTableText">AAPL34</th>
+                  <td className="whiteTableText">R$ 46.67</td>
+                  <td className="greenTableText">0.39%</td>
                 </tr>
                 <tr>
-                  <th>SPTW11</th>
-                  <td>R$ 41.66</td>
-                  <td>0.51%</td>
+                  <th className="whiteTableText">SPTW11</th>
+                  <td className="whiteTableText">R$ 41.66</td>
+                  <td className="greenTableText">0.51%</td>
                 </tr>
                 <tr>
-                  <th>PETR4</th>
-                  <td>R$ 34.91</td>
-                  <td>-2.13%</td>
-                </tr>
-                <tr>
-                  <td className="expandir">
-                    <span>Expandir</span>
-                    <FontAwesomeIcon icon={faCaretDown} />
-                  </td>
+                  <th className="whiteTableText">PETR4</th>
+                  <td className="whiteTableText">R$ 34.91</td>
+                  <td className="redTableText">-2.13%</td>
                 </tr>
               </tbody>
             </table>
+            <div className="expandirContainer">
+              <div className="expandir">
+                <span>Expandir</span>
+                <FontAwesomeIcon className="expandirIcon" icon={faCaretDown} />
+              </div>
+            </div>
           </div>
           <div className="transacoes">
             <p className="tablesTitle">Últimas Transações</p>
-            <table>
+            <table className="transacaoTable">
               <thead>
                 <tr>
-                  <th>Simbolo</th>
+                  <th className="roundLeftTableCorner">Simbolo</th>
                   <th>Tipo</th>
                   <th>Quantidade</th>
                   <th>Preço Uni.</th>
-                  <th>Total</th>
+                  <th className="roundRightTableCorner">Total</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <th>HGRU11</th>
-                  <td>Compra</td>
-                  <td>11</td>
-                  <td>R$ 130.92</td>
-                  <td>- R$ 1.440,12</td>
+                  <th className="whiteTableText">HGRU11</th>
+                  <td className="greenTableText">Compra</td>
+                  <td className="whiteTableText">11</td>
+                  <td className="whiteTableText">R$ 130.92</td>
+                  <td className="redTableText">- R$ 1.440,12</td>
                 </tr>
                 <tr>
-                  <th>IRDM11</th>
-                  <td>Venda</td>
-                  <td>13</td>
-                  <td>R$ 75.72</td>
-                  <td>+ R$ 984.36</td>
+                  <th className="whiteTableText">IRDM11</th>
+                  <td className="redTableText">Venda</td>
+                  <td className="whiteTableText">13</td>
+                  <td className="whiteTableText">R$ 75.72</td>
+                  <td className="greenTableText">+ R$ 984.36</td>
                 </tr>
                 <tr>
-                  <th>AAPL34</th>
-                  <td>Compra</td>
-                  <td>23</td>
-                  <td>R$ 46.67</td>
-                  <td>- R$ 1.073,41</td>
+                  <th className="whiteTableText">AAPL34</th>
+                  <td className="greenTableText">Compra</td>
+                  <td className="whiteTableText">23</td>
+                  <td className="whiteTableText">R$ 46.67</td>
+                  <td className="redTableText">- R$ 1.073,41</td>
                 </tr>
                 <tr>
-                  <th>SPTW11</th>
-                  <td>Compra</td>
-                  <td>17</td>
-                  <td>R$ 41.66</td>
-                  <td>- R$ 708.22</td>
+                  <th className="whiteTableText">SPTW11</th>
+                  <td className="greenTableText">Compra</td>
+                  <td className="whiteTableText">17</td>
+                  <td className="whiteTableText">R$ 41.66</td>
+                  <td className="redTableText">- R$ 708.22</td>
                 </tr>
                 <tr>
-                  <th>TRXF11</th>
-                  <td>Venda</td>
-                  <td>31</td>
-                  <td>R$ 107.97</td>
-                  <td>+ R$ 3.347,07</td>
-                </tr>
-                <tr>
-                  <td className="expandir">
-                    <span>Expandir</span>
-                    <FontAwesomeIcon icon={faCaretDown} />
-                  </td>
+                  <th className="whiteTableText">TRXF11</th>
+                  <td className="redTableText">Venda</td>
+                  <td className="whiteTableText">31</td>
+                  <td className="whiteTableText">R$ 107.97</td>
+                  <td className="greenTableText">+ R$ 3.347,07</td>
                 </tr>
               </tbody>
             </table>
+            <div className="expandirContainer">
+              <div className="expandir">
+                <span>Expandir</span>
+                <FontAwesomeIcon className="expandirIcon" icon={faCaretDown} />
+              </div>
+            </div>
           </div>
+        </div>
+        <div className="searchContainer">
+          <div className="searchHeader">
+            <div className="searchBar">
+              <button>
+                <FontAwesomeIcon
+                  className="acoesIcon"
+                  icon={faMagnifyingGlass}
+                />
+              </button>
+              <input type="text" placeholder="Pesquisar" />
+            </div>
+            <span>Filtrar por:</span>
+            <button className="filterButton">
+              Valor
+              <FontAwesomeIcon className="acoesIcon" icon={faCaretDown} />
+            </button>
+            <button className="filterButton">
+              Dividendos
+              <FontAwesomeIcon className="acoesIcon" icon={faCaretDown} />
+            </button>
+            <button className="filterButton">
+              Crescimento
+              <FontAwesomeIcon className="acoesIcon" icon={faCaretDown} />
+            </button>
+          </div>
+        </div>
+        <div className="cardContainer">
+          <button onClick={testeSupabase}>Teste</button>
         </div>
       </div>
     </>

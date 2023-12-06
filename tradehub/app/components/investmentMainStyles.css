@@ -15,10 +15,20 @@
   height: 100vh;
 }
 
+h1 {
+  color: honeydew;
+  border-bottom: 1px solid #5dec85;
+  max-width: fit-content;
+  margin-top: 5rem;
+  margin-left: 2rem;
+}
+
 .tablesContainer {
   display: flex;
   margin-left: 3rem;
+  margin-right: 3rem;
   margin-top: 2rem;
+  gap: 2rem;
 }
 
 .tablesTitle {
@@ -26,15 +36,147 @@
   border-bottom: 1px solid #5dec85;
   width: fit-content;
   margin-bottom: 1rem;
+  font-size: 1.4rem;
 }
 
 table {
-  border-radius: 30px;
-  border: 1px solid #5dec85;
+  border-radius: 20px 20px 0 0;
   background-color: #2a2a2a;
   border-collapse: collapse;
+  height: 280px;
+}
+
+.watchlistTable {
+  width: 380px;
+}
+
+.transacaoTable {
+  width: 580px;
+}
+
+.roundLeftTableCorner {
+  border-radius: 20px 0 0 0;
+}
+
+.roundRightTableCorner {
+  border-radius: 0 20px 0 0;
 }
 
 thead {
   background-color: #5dec85;
+  border-radius: 30px 30px 0 0;
+}
+
+thead th {
+  color: #2a2a2a;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.5rem 0;
+}
+
+tr {
+  border-bottom: 1px solid #5dec85;
+}
+
+.whiteTableText {
+  font-weight: 400;
+  color: honeydew;
+}
+
+.greenTableText {
+  color: #5dec85;
+}
+
+.redTableText {
+  color: #f52a2a;
+}
+
+.expandirContainer {
+  background-color: #2a2a2a;
+  padding: 0.5rem 0 1rem 0;
+  border-radius: 0 0 30px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.expandir {
+  color: #5dec85;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.expandir:hover {
+  border-bottom: 1px solid #5dec85;
+  cursor: pointer;
+}
+
+.expandir span {
+  color: #5dec85;
+}
+
+.expandirIcon {
+  font-size: 1.5rem;
+}
+
+th,
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.searchHeader {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #5dec85;
+  margin: 2rem 2rem 0 2rem;
+  padding-bottom: 0.5rem;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  margin-right: 5rem;
+  margin-left: 2rem;
+}
+
+.searchBar button {
+  border-radius: 20px 0 0 20px;
+  padding: 0.6rem 1rem;
+  background-color: #5dec85;
+  border: none;
+}
+
+.searchBar button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.searchBar input {
+  color: honeydew;
+  outline: none;
+  border: none;
+  background-color: #2a2a2a;
+  padding: 0.6rem 3rem 0.6rem 1rem;
+  border-radius: 0 20px 20px 0;
+  font-size: 1rem;
+}
+
+.filterButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5dec85;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 30px;
+  gap: 5px;
+  margin-left: 2rem;
+  font-size: 1rem;
+}
+
+.filterButton:hover {
+  opacity: 0.8;
+  cursor: pointer;
 }

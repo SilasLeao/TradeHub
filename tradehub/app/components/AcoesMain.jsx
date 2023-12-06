@@ -22,12 +22,6 @@ export default function AcoesMain() {
       const resultado = await resposta.json();
       setAcaoData(resultado);
 
-      // setAcaoCards([
-      //   resultado.results[0].symbol,
-      //   resultado.results[0].regularMarketPrice,
-      //   resultado.results[0].regularMarketChangePercent,
-      // ]);
-
       setAcaoCards((prevCards) => [
         ...prevCards,
         {
