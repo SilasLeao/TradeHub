@@ -12,23 +12,23 @@ export default function AcaoCard({ acao }) {
   const valor = acao.regularMarketPrice;
   const variacao = acao.regularMarketChangePercent;
   const corTextoClass = classNames({
-    vermelho: variacao < 0,
-    verde: variacao >= 0,
+    acaoVermelho: variacao < 0,
+    acaoVerde: variacao >= 0,
   });
 
   return (
     <>
       <div className="acaoCard">
-        <p className="cardTitle">{nome}</p>
-        <p className="cardPrice">R$ {valor}</p>
-        <hr className="cardHr" />
-        <p className={`cardChange ${corTextoClass}`}>
+        <p className="acaoCardTitle">{nome}</p>
+        <p className="acaoCardPrice">R$ {valor}</p>
+        <hr className="acaoCardHr" />
+        <p className={`acaoCardChange ${corTextoClass}`}>
           {Number(variacao).toFixed(2)}%
         </p>
-        <div className="cardBtns">
-          <FontAwesomeIcon className="cardIcon" icon={faInfoCircle} />
+        <div className="acaoCardBtns">
+          <FontAwesomeIcon className="acaoCardIcon" icon={faInfoCircle} />
           <button>Comprar</button>
-          <FontAwesomeIcon className="cardIcon" icon={faEmptyStar} />
+          <FontAwesomeIcon className="acaoCardIcon" icon={faEmptyStar} />
         </div>
       </div>
     </>

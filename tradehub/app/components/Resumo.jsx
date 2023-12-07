@@ -7,32 +7,32 @@ export default function Resumo() {
     <>
       <div className="resumoCard">
         <div className="resumoTitle">
-          <span>Resumo</span>
+          <span className="resumoWhiteText">Resumo</span>
           <FontAwesomeIcon className="resumoIcon" icon={faArrowRight} />
         </div>
         <div className="conta">
-          <span>Conta</span>
-          <span>5GJV756PUC</span>
+          <span className="resumoWhiteText">Conta</span>
+          <span className="resumoWhiteText">5GJV756PUC</span>
         </div>
         <div className="saldo">
-          <span>Saldo Atual</span>
+          <span className="resumoWhiteText">Saldo Atual</span>
           <span className="resumoNumeroVerde">R$ 1.375,83</span>
         </div>
         <div className="totalInvestido">
-          <span>Total Investido</span>
-          <span>R$ 17.486,21</span>
+          <span className="resumoWhiteText">Total Investido</span>
+          <span className="resumoWhiteText">R$ 17.486,21</span>
         </div>
         <div className="valorAcumulado">
-          <span>Valor Acumulado</span>
+          <span className="resumoWhiteText">Valor Acumulado</span>
           <span className="resumoNumeroVerde">R$ 19.629,93</span>
         </div>
         <div className="valorAcumuladoPorcento">
-          <span>Valor Acumulado(%)</span>
+          <span className="resumoWhiteText">Valor Acumulado(%)</span>
           <span className="resumoNumeroVerde">12,24%</span>
         </div>
         <div className="dividendos">
-          <span>Dividendos a Receber</span>
-          <span>R$ 53,27</span>
+          <span className="resumoWhiteText">Dividendos a Receber</span>
+          <span className="resumoWhiteText">R$ 53,27</span>
         </div>
       </div>
     </>

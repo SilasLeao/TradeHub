@@ -7,7 +7,7 @@ import Noticias from "./Noticias";
 export default function AcaoSideBar() {
   return (
     <>
-      <div className="sidebar">
+      <div className="acaoSidebar">
         <TitleCard />
         <Resumo />
         <Noticias />

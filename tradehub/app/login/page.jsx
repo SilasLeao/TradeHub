@@ -44,13 +44,13 @@ export default function Login() {
 
   return (
     <>
-      <div className="body">
-        <form className="contentBox">
-          <h1>Bem vindo(a)!</h1>
+      <div className="loginBody">
+        <form className="loginContentBox">
+          <h1 className="loginH1">Bem vindo(a)!</h1>
 
           <input
             name="nome"
-            className="inputs"
+            className="loginInputs"
             type="text"
             placeholder="Nome"
             value={usuario.nome}
@@ -59,7 +59,7 @@ export default function Login() {
           />
           <input
             name="email"
-            className="inputs"
+            className="loginInputs"
             type="email"
             placeholder="E-mail"
             value={usuario.email}
@@ -68,7 +68,7 @@ export default function Login() {
           />
           <input
             name="senha"
-            className="inputs"
+            className="loginInputs"
             type="password"
             placeholder="Senha"
             value={usuario.senha}
@@ -78,26 +78,26 @@ export default function Login() {
 
           <section className="loginOptions">
             <span>
-              <input className="checkbox" type="checkbox" />
+              <input className="loginCheckbox" type="checkbox" />
               <span>Lembrar-se de mim</span>
             </span>
             <span id="esqueceuSenha">Esqueceu sua senha?</span>
           </section>
 
-          <button type="button" onClick={handleSubmit}>
+          <button className="loginButton" type="button" onClick={handleSubmit}>
             Log In
           </button>
 
-          <div className="divider">
-            <hr className="left" />
+          <div className="loginDivider">
+            <hr className="loginLeft" />
             ou
-            <hr className="right" />
+            <hr className="loginRight" />
           </div>
 
-          <div className="socialIcons">
-            <FontAwesomeIcon className="icon" icon={faGoogle} />
-            <FontAwesomeIcon className="icon" icon={faLinkedinIn} />
-            <FontAwesomeIcon className="icon" icon={faSquareFacebook} />
+          <div className="loginSocialIcons">
+            <FontAwesomeIcon className="loginIcon" icon={faGoogle} />
+            <FontAwesomeIcon className="loginIcon" icon={faLinkedinIn} />
+            <FontAwesomeIcon className="loginIcon" icon={faSquareFacebook} />
           </div>
 
           <p id="conta">

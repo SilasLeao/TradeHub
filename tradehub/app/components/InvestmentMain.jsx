@@ -141,37 +141,45 @@ export default function InvestmentMain() {
             </div>
           </div>
         </div>
-        <div className="searchContainer">
-          <div className="searchHeader">
-            <div className="searchBar">
+        <div className="investmentSearchContainer">
+          <div className="investmentSearchHeader">
+            <div className="investmentSearchBar">
               <button>
                 <FontAwesomeIcon
-                  className="acoesIcon"
+                  className="investmentSearchIcon"
                   icon={faMagnifyingGlass}
                 />
               </button>
               <input type="text" placeholder="Pesquisar" />
             </div>
-            <span>Filtrar por:</span>
-            <button className="filterButton">
+            <span id="investmentMainWhiteText">Filtrar por:</span>
+            <button className="investmentFilterButton">
               Valor
-              <FontAwesomeIcon className="acoesIcon" icon={faCaretDown} />
+              <FontAwesomeIcon
+                className="investmentSearchIcon"
+                icon={faCaretDown}
+              />
             </button>
-            <button className="filterButton">
+            <button className="investmentFilterButton">
               Dividendos
-              <FontAwesomeIcon className="acoesIcon" icon={faCaretDown} />
+              <FontAwesomeIcon
+                className="investmentSearchIcon"
+                icon={faCaretDown}
+              />
             </button>
-            <button className="filterButton">
+            <button className="investmentFilterButton">
               Crescimento
-              <FontAwesomeIcon className="acoesIcon" icon={faCaretDown} />
+              <FontAwesomeIcon
+                className="investmentSearchIcon"
+                icon={faCaretDown}
+              />
             </button>
           </div>
         </div>
-        <div className="cardContainer">
+        <div className="investmentCardContainer">
           {investmentData.map((investimento, index) => (
             <InvestmentCard key={index} investimento={investimento} />
           ))}
-          {/* <button onClick={testeSupabase}>Teste</button> */}
         </div>
       </div>
     </>

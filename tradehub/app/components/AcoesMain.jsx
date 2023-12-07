@@ -47,9 +47,9 @@ export default function AcoesMain() {
   return (
     <>
       <div className="acoesMainContainer">
-        <h1>Ações da Bolsa</h1>
-        <div className="destaque">
-          <p className="destaqueTitle">Ações em Destaque</p>
+        <h1 className="acaoH1">Ações da Bolsa</h1>
+        <div className="acaoDestaque">
+          <p className="acaoDestaqueTitle">Ações em Destaque</p>
           <div className="acoesDestaque">
             <div
               className="acaoCardDestaque"
@@ -58,29 +58,32 @@ export default function AcoesMain() {
                 backgroundColor: "rgba(93, 236, 133, 0.1)",
               }}
             >
-              <p className="cardTitleDestaque" style={{ color: "#5dec85" }}>
+              <p className="acaoCardTitleDestaque" style={{ color: "#5dec85" }}>
                 CIEL3
               </p>
               <hr
-                className="cardDestaqueFirstHr"
+                className="acaoCardDestaqueFirstHr"
                 style={{
                   backgroundColor: "#5dec85",
                   height: "1px",
                   border: "none",
                 }}
               />
-              <p className="cardPriceDestaque" style={{ color: "#5dec85" }}>
+              <p className="acaoCardPriceDestaque" style={{ color: "#5dec85" }}>
                 R$ 4.34
               </p>
               <hr
-                className="cardDestaqueSecondHr"
+                className="acaoCardDestaqueSecondHr"
                 style={{
                   backgroundColor: "#5dec85",
                   height: "1px",
                   border: "none",
                 }}
               />
-              <p className="cardChangeDestaque" style={{ color: "#5dec85" }}>
+              <p
+                className="acaoCardChangeDestaque"
+                style={{ color: "#5dec85" }}
+              >
                 7.96%
               </p>
             </div>
@@ -92,29 +95,38 @@ export default function AcoesMain() {
                 backgroundColor: "rgba(255, 255, 255, 0.1)",
               }}
             >
-              <p className="cardTitleDestaque" style={{ color: "honeydew" }}>
+              <p
+                className="acaoCardTitleDestaque"
+                style={{ color: "honeydew" }}
+              >
                 ITSA4
               </p>
               <hr
-                className="cardDestaqueFirstHr"
+                className="acaoCardDestaqueFirstHr"
                 style={{
                   backgroundColor: "honeydew",
                   height: "1px",
                   border: "none",
                 }}
               />
-              <p className="cardPriceDestaque" style={{ color: "honeydew" }}>
+              <p
+                className="acaoCardPriceDestaque"
+                style={{ color: "honeydew" }}
+              >
                 R$ 9.75
               </p>
               <hr
-                className="cardDestaqueSecondHr"
+                className="acaoCardDestaqueSecondHr"
                 style={{
                   backgroundColor: "honeydew",
                   height: "1px",
                   border: "none",
                 }}
               />
-              <p className="cardChangeDestaque" style={{ color: "honeydew" }}>
+              <p
+                className="acaoCardChangeDestaque"
+                style={{ color: "honeydew" }}
+              >
                 0.21%
               </p>
             </div>
@@ -126,37 +138,40 @@ export default function AcoesMain() {
                 backgroundColor: "rgba(245, 42, 42, 0.1)",
               }}
             >
-              <p className="cardTitleDestaque" style={{ color: "#F52A2A" }}>
+              <p className="acaoCardTitleDestaque" style={{ color: "#F52A2A" }}>
                 KLBN4
               </p>
               <hr
-                className="cardDestaqueFirstHr"
+                className="acaoCardDestaqueFirstHr"
                 style={{
                   backgroundColor: "#F52A2A",
                   height: "1px",
                   border: "none",
                 }}
               />
-              <p className="cardPriceDestaque" style={{ color: "#F52A2A" }}>
+              <p className="acaoCardPriceDestaque" style={{ color: "#F52A2A" }}>
                 R$ 4.25
               </p>
               <hr
-                className="cardDestaqueSecondHr"
+                className="acaoCardDestaqueSecondHr"
                 style={{
                   backgroundColor: "#F52A2A",
                   height: "1px",
                   border: "none",
                 }}
               />
-              <p className="cardChangeDestaque" style={{ color: "#F52A2A" }}>
+              <p
+                className="acaoCardChangeDestaque"
+                style={{ color: "#F52A2A" }}
+              >
                 -5.97%
               </p>
             </div>
           </div>
         </div>
-        <div className="searchContainer">
-          <div className="searchHeader">
-            <div className="searchBar">
+        <div className="acaoSearchContainer">
+          <div className="acaoSearchHeader">
+            <div className="acaoSearchBar">
               <button onClick={handleSearch}>
                 <FontAwesomeIcon
                   className="acoesIcon"
@@ -169,22 +184,22 @@ export default function AcoesMain() {
                 placeholder="Pesquisar"
               />
             </div>
-            <span>Filtrar por:</span>
-            <button className="filterButton">
+            <span id="acoesMainWhiteText">Filtrar por:</span>
+            <button className="acaoFilterButton">
               Valor
               <FontAwesomeIcon className="acoesIcon" icon={faCaretDown} />
             </button>
-            <button className="filterButton">
+            <button className="acaoFilterButton">
               Dividendos
               <FontAwesomeIcon className="acoesIcon" icon={faCaretDown} />
             </button>
-            <button className="filterButton">
+            <button className="acaoFilterButton">
               Crescimento
               <FontAwesomeIcon className="acoesIcon" icon={faCaretDown} />
             </button>
           </div>
         </div>
-        <div className="cardContainer">
+        <div className="acaoCardContainer">
           {acaoCards.map((acao, index) => (
             <AcaoCard key={index} acao={acao} />
           ))}

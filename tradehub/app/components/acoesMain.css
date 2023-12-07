@@ -15,7 +15,7 @@
   height: 100vh;
 }
 
-h1 {
+.acaoH1 {
   color: honeydew;
   border-bottom: 1px solid #5dec85;
   max-width: fit-content;
@@ -23,11 +23,11 @@ h1 {
   margin-left: 2rem;
 }
 
-.destaque {
+.acaoDestaque {
   margin: 0 3rem;
 }
 
-.destaqueTitle {
+.acaoDestaqueTitle {
   color: honeydew;
   border-bottom: 1px solid #5dec85;
   max-width: fit-content;
@@ -52,27 +52,27 @@ h1 {
   justify-content: center;
 }
 
-.cardTitleDestaque {
+.acaoCardTitleDestaque {
   font-size: 1.2rem;
   margin-bottom: 6px;
 }
 
-.cardDestaqueFirstHr {
+.acaoCardDestaqueFirstHr {
   width: 70%;
   margin-bottom: 6px;
 }
 
-.cardPriceDestaque {
+.acaoCardPriceDestaque {
   font-size: 1.2rem;
   margin-bottom: 6px;
 }
 
-.cardDestaqueSecondHr {
+.acaoCardDestaqueSecondHr {
   width: 40%;
   margin-bottom: 6px;
 }
 
-.cardChangeDestaque {
+.acaoCardChangeDestaque {
   font-size: 1.2rem;
 }
 
@@ -81,7 +81,7 @@ h1 {
   font-size: 1.2rem;
 }
 
-.searchHeader {
+.acaoSearchHeader {
   display: flex;
   align-items: center;
   border-bottom: 1px solid #5dec85;
@@ -90,26 +90,26 @@ h1 {
   padding-bottom: 0.5rem;
 }
 
-.searchBar {
+.acaoSearchBar {
   display: flex;
   align-items: center;
   margin-right: 5rem;
   margin-left: 2rem;
 }
 
-.searchBar button {
+.acaoSearchBar button {
   border-radius: 20px 0 0 20px;
   padding: 0.6rem 1rem;
   background-color: #5dec85;
   border: none;
 }
 
-.searchBar button:hover {
+.acaoSearchBar button:hover {
   opacity: 0.8;
   cursor: pointer;
 }
 
-.searchBar input {
+.acaoSearchBar input {
   color: honeydew;
   outline: none;
   border: none;
@@ -119,7 +119,11 @@ h1 {
   font-size: 1rem;
 }
 
-.filterButton {
+#acoesMainWhiteText {
+  color: honeydew;
+}
+
+.acaoFilterButton {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -132,12 +136,12 @@ h1 {
   font-size: 1rem;
 }
 
-.filterButton:hover {
+.acaoFilterButton:hover {
   opacity: 0.8;
   cursor: pointer;
 }
 
-.cardContainer {
+.acaoCardContainer {
   display: flex;
   height: 50%;
   width: 100%;

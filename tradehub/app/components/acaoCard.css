@@ -20,7 +20,7 @@
   align-items: center;
 }
 
-.cardTitle {
+.acaoCardTitle {
   color: #2a2a2a;
   background-color: #5dec85;
   width: 100%;
@@ -33,36 +33,36 @@
   margin-bottom: 6px;
 }
 
-.cardPrice {
+.acaoCardPrice {
   color: honeydew;
   font-size: 1.2rem;
 }
 
-.cardHr {
+.acaoCardHr {
   width: 70%;
   margin: 6px 0;
 }
 
-.cardChange {
+.acaoCardChange {
   margin-bottom: 6px;
 }
 
-.vermelho {
+.acaoVermelho {
   color: #f52a2a;
 }
 
-.verde {
+.acaoVerde {
   color: #5dec85;
 }
 
-.cardBtns {
+.acaoCardBtns {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
 }
 
-.cardBtns button {
+.acaoCardBtns button {
   border: none;
   color: #2a2a2a;
   background-color: #5dec85;
@@ -72,19 +72,19 @@
   transition: 0.3s;
 }
 
-.cardBtns button:hover {
+.acaoCardBtns button:hover {
   scale: 1.1;
   cursor: pointer;
   opacity: 0.8;
 }
 
-.cardIcon {
+.acaoCardIcon {
   color: #5dec85;
   font-size: 2rem;
   transition: 0.3s;
 }
 
-.cardIcon:hover {
+.acaoCardIcon:hover {
   scale: 1.1;
   cursor: pointer;
 }

@@ -7,7 +7,7 @@ import Noticias from "./Noticias";
 export default function InvestmentSideBar() {
   return (
     <>
-      <div className="sidebar">
+      <div className="investmentSidebar">
         <TitleCard />
         <Destaque />
         <Noticias />

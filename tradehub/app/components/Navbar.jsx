@@ -1,6 +1,6 @@
 "use client";
 import "./navbar.css";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -17,15 +17,39 @@ import {
   faCircleQuestion,
 } from "@fortawesome/free-regular-svg-icons";
 import { faBitcoin } from "@fortawesome/free-brands-svg-icons";
-import { useNavbar } from "./navbarContext";
+// import { useNavbar } from "./navbarContext";
 
 export default function Navbar() {
-  const {
-    acoesActive,
-    investmentActive,
-    handleInvestmentClick,
-    handleAcoesClick,
-  } = useNavbar();
+  const router = useRouter();
+  const pathname = usePathname();
+  // const {
+  //   acoesActive,
+  //   investmentActive,
+  //   handleInvestmentClick,
+  //   handleAcoesClick,
+  // } = useNavbar();
+  const [acoesActive, setAcoesActive] = useState(false);
+  const [investmentActive, setInvestmentActive] = useState(false);
+
+  useEffect(() => {
+    if (pathname && pathname.includes("mainPage")) {
+      setAcoesActive(true);
+      setInvestmentActive(false);
+      console.log(`teste1 ${(acoesActive, investmentActive)}`);
+    } else {
+      setInvestmentActive(true);
+      setAcoesActive(false);
+      console.log(`teste2 ${acoesActive}, ${investmentActive}`);
+    }
+  }, []);
+
+  function handleInvestmentClick() {
+    router.push("../investment");
+  }
+
+  function handleAcoesClick() {
+    router.push("../mainPage");
+  }
 
   const [nomeUsuario, setNomeUsuario] = useState("");
   useEffect(() => {
@@ -35,45 +59,49 @@ export default function Navbar() {
 
   return (
     <>
-      <aside>
+      <aside className="navbarAside">
         <section className="content">
           <div className="perfil">
             <FontAwesomeIcon className="fa fa-user" icon={faUser} />
-            <span>Olá, {nomeUsuario}</span>
+            <span className="navbarWhiteText">Olá, {nomeUsuario}</span>
           </div>
           <hr className="navbarHr" />
-          <ul>
-            <li className={investmentActive ? "selected" : ""}>
+          <ul className="navbarUl">
+            <li className={`navbarLi ${investmentActive ? "selected" : ""}`}>
               <FontAwesomeIcon className="navbarIcon" icon={faCoins} />
-              <span onClick={handleInvestmentClick}>Meus Investimentos</span>
+              <span className="navbarWhiteText" onClick={handleInvestmentClick}>
+                Meus Investimentos
+              </span>
             </li>
-            <li className={acoesActive ? "selected" : ""}>
+            <li className={`navbarLi ${acoesActive ? "selected" : ""}`}>
               <FontAwesomeIcon className="navbarIcon" icon={faChartLine} />
-              <span onClick={handleAcoesClick}>Ações da Bolsa</span>
+              <span className="navbarWhiteText" onClick={handleAcoesClick}>
+                Ações da Bolsa
+              </span>
             </li>
-            <li>
+            <li className="navbarLi">
               <FontAwesomeIcon className="navbarIcon" icon={faBuilding} />
-              <span>Fundos Imobiliários</span>
+              <span className="navbarWhiteText">Fundos Imobiliários</span>
             </li>
-            <li>
+            <li className="navbarLi">
               <FontAwesomeIcon className="navbarIcon" icon={faBitcoin} />
-              <span>Criptomoedas</span>
+              <span className="navbarWhiteText">Criptomoedas</span>
             </li>
-            <li>
+            <li className="navbarLi">
               <FontAwesomeIcon className="navbarIcon" icon={faSackDollar} />
-              <span>Fundos de Investimento</span>
+              <span className="navbarWhiteText">Fundos de Investimento</span>
             </li>
-            <li>
+            <li className="navbarLi">
               <FontAwesomeIcon className="navbarIcon" icon={faChartSimple} />
-              <span>Estatísticas</span>
+              <span className="navbarWhiteText">Estatísticas</span>
             </li>
-            <li>
+            <li className="navbarLi">
               <FontAwesomeIcon className="navbarIcon" icon={faGear} />
-              <span>Configurações</span>
+              <span className="navbarWhiteText">Configurações</span>
             </li>
-            <li>
+            <li className="navbarLi">
               <FontAwesomeIcon className="navbarIcon" icon={faCircleQuestion} />
-              <span>FAQ</span>
+              <span className="navbarWhiteText">FAQ</span>
             </li>
           </ul>
           <p id="quit">Encerrar Sessão</p>

@@ -9,7 +9,7 @@
   src: url(../assets/fonts/Inter-Regular.ttf);
 }
 
-aside {
+.navbarAside {
   background-color: #363636;
   width: 360px;
   height: 100vh;
@@ -38,7 +38,7 @@ aside {
   margin-bottom: 2rem;
 }
 
-span {
+.navbarWhiteText {
   color: honeydew;
 }
 
@@ -58,11 +58,11 @@ span {
   transition: 0.3s;
 }
 
-ul {
+.navbarUl {
   list-style-type: none;
 }
 
-li {
+.navbarLi {
   color: honeydew;
   font-size: 20px;
   margin-bottom: 1rem;
@@ -70,7 +70,7 @@ li {
   padding-bottom: 10px;
 }
 
-li:hover {
+.navbarLi:hover {
   border-bottom: 1px solid #5dec85;
   cursor: pointer;
 }
@@ -84,7 +84,7 @@ li:hover {
   color: #5dec85;
 }
 
-li .navbarIcon {
+.navbarLi .navbarIcon {
   margin-right: 0.5rem;
 }
 
@@ -100,7 +100,7 @@ li .navbarIcon {
   cursor: pointer;
 }
 
-li,
+.navbarLi,
 #quit {
   margin-left: 1rem;
 }

@@ -9,7 +9,7 @@
   src: url(../assets/fonts/Inter-Regular.ttf);
 }
 
-.body {
+.loginBody {
   height: 100vh;
   width: 100vw;
   background-image: url("../assets/imgs/loginBg.jpg");
@@ -21,7 +21,7 @@
   align-items: center;
 }
 
-.contentBox {
+.loginContentBox {
   background-color: #363636;
   display: flex;
   flex-direction: column;
@@ -31,12 +31,12 @@
   align-items: center;
 }
 
-h1 {
+.loginH1 {
   color: honeydew;
   margin: 2rem 0;
 }
 
-.inputs {
+.loginInputs {
   background-color: #2b2b2b;
   border: 1px solid #5dec85;
   padding: 1rem 2rem;
@@ -47,7 +47,7 @@ h1 {
   font-size: 1rem;
 }
 
-.inputs:focus {
+.loginInputs:focus {
   outline: none;
 }
 
@@ -58,11 +58,11 @@ h1 {
   color: honeydew;
 }
 
-.checkbox {
+.loginCheckbox {
   margin-right: 5px;
 }
 
-.checkbox:hover {
+.loginCheckbox:hover {
   cursor: pointer;
 }
 
@@ -75,7 +75,7 @@ h1 {
   cursor: pointer;
 }
 
-button {
+.loginButton {
   border: 3px solid #5dec85;
   background-color: transparent;
   font-size: 1.5rem;
@@ -86,7 +86,7 @@ button {
   margin: 2rem 0;
 }
 
-button:hover {
+.loginButton:hover {
   scale: 1.1;
   cursor: pointer;
   color: #2b2b2b;
@@ -94,40 +94,40 @@ button:hover {
   border: none;
 }
 
-.divider {
+.loginDivider {
   width: 60%;
   display: flex;
   align-items: center;
   color: #5dec85;
 }
 
-.divider hr {
+.loginDivider hr {
   margin-left: auto;
   margin-right: auto;
   width: 40%;
 }
 
-.left {
+.loginLeft {
   float: left;
   border: none;
   height: 1px;
   background-color: #5dec85;
 }
 
-.right {
+.loginRight {
   float: right;
   border: none;
   height: 1px;
   background-color: #5dec85;
 }
 
-.socialIcons {
+.loginSocialIcons {
   margin: 1rem 0;
   gap: 1rem;
   display: flex;
 }
 
-.icon {
+.loginIcon {
   color: #5dec85;
   font-size: 1.5rem;
   border: 2px solid #5dec85;
@@ -136,7 +136,7 @@ button:hover {
   transition: 0.3s;
 }
 
-.icon:hover {
+.loginIcon:hover {
   background-color: #5dec85;
   border: none;
   color: #24202b;

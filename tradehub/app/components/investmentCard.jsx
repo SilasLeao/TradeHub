@@ -19,14 +19,16 @@ export default function InvestmentCard({ investimento }) {
   return (
     <>
       <div className="investmentCard">
-        <p className="cardTitle">{nome}</p>
-        <p className="cardPrice">R$ {Number(valor * quantidade).toFixed(2)}</p>
-        <hr className="cardHr" />
-        <p className={`cardChange ${corTextoClass}`}>
+        <p className="investmentCardTitle">{nome}</p>
+        <p className="investmentCardPrice">
+          R$ {Number(valor * quantidade).toFixed(2)}
+        </p>
+        <hr className="investmentCardHr" />
+        <p className={`investmentCardChange ${corTextoClass}`}>
           {Number(variacao).toFixed(2)}%
         </p>
-        <div className="cardBtns">
-          <FontAwesomeIcon className="cardIcon" icon={faInfoCircle} />
+        <div className="investmentCardBtns">
+          <FontAwesomeIcon className="investmentCardIcon" icon={faInfoCircle} />
           <button>Vender</button>
           <p id="quantidade">{quantidade}</p>
         </div>

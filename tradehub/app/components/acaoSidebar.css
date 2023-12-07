@@ -9,7 +9,7 @@
   src: url(../assets/fonts/Inter-Regular.ttf);
 }
 
-.sidebar {
+.acaoSidebar {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

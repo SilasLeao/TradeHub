@@ -12,7 +12,7 @@
 .titleCard {
   background-color: #363636;
   width: 350px;
-  height: 140px;
+  height: 120px;
   border-radius: 0 0 0 30px;
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@
   width: fit-content;
   font-size: 2rem;
   margin-top: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 #title span {

@@ -126,7 +126,7 @@ td {
   vertical-align: middle;
 }
 
-.searchHeader {
+.investmentSearchHeader {
   display: flex;
   align-items: center;
   border-bottom: 1px solid #5dec85;
@@ -134,26 +134,30 @@ td {
   padding-bottom: 0.5rem;
 }
 
-.searchBar {
+.investmentSearchBar {
   display: flex;
   align-items: center;
   margin-right: 5rem;
   margin-left: 2rem;
 }
 
-.searchBar button {
+#investmentMainWhiteText {
+  color: honeydew;
+}
+
+.investmentSearchBar button {
   border-radius: 20px 0 0 20px;
   padding: 0.6rem 1rem;
   background-color: #5dec85;
   border: none;
 }
 
-.searchBar button:hover {
+.investmentSearchBar button:hover {
   opacity: 0.8;
   cursor: pointer;
 }
 
-.searchBar input {
+.investmentSearchBar input {
   color: honeydew;
   outline: none;
   border: none;
@@ -163,7 +167,7 @@ td {
   font-size: 1rem;
 }
 
-.filterButton {
+.investmentFilterButton {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -176,12 +180,12 @@ td {
   font-size: 1rem;
 }
 
-.filterButton:hover {
+.investmentFilterButton:hover {
   opacity: 0.8;
   cursor: pointer;
 }
 
-.cardContainer {
+.investmentCardContainer {
   margin-top: 2rem;
   display: flex;
   width: 100%;

@@ -9,7 +9,7 @@
   src: url(../assets/fonts/Inter-Regular.ttf);
 }
 
-.sidebar {
+.investmentSidebar {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
