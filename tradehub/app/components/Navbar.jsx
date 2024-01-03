@@ -19,7 +19,6 @@ export default function Navbar() {
   const pathname = usePathname();
   const [acoesActive, setAcoesActive] = useState(false);
   const [investmentActive, setInvestmentActive] = useState(false);
-  const [criptoActive, setCriptoActive] = useState(false);
 
   useEffect(() => {
     if (pathname.includes("mainPage")) {
