@@ -16,7 +16,7 @@ export default function Resumo() {
         </div>
         <div className="saldo">
           <span className="resumoWhiteText">Saldo Atual</span>
-          <span className="resumoNumeroVerde">R$ 1.375,83</span>
+          <span className="resumoWhiteText">R$ 1.375,83</span>
         </div>
         <div className="totalInvestido">
           <span className="resumoWhiteText">Total Investido</span>

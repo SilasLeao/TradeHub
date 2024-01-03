@@ -186,11 +186,24 @@ td {
 }
 
 .investmentCardContainer {
-  margin-top: 2rem;
+  margin-top: 1rem;
   display: flex;
+  height: 35%;
   width: 100%;
   justify-content: center;
   flex-wrap: wrap;
   gap: 2rem;
-  align-content: center;
+  align-content: flex-start;
+  overflow-y: scroll;
+}
+
+.investmentCardContainer::-webkit-scrollbar {
+  background-color: #5dec85;
+  border-radius: 20px;
+  width: 8px;
+}
+
+.investmentCardContainer::-webkit-scrollbar-thumb {
+  background-color: #363636;
+  border-radius: 6px;
 }

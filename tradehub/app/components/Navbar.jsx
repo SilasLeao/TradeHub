@@ -11,44 +11,34 @@ import {
   faGear,
   faHeadset,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  faUser,
-  faBuilding,
-  faCircleQuestion,
-} from "@fortawesome/free-regular-svg-icons";
+import { faUser, faCircleQuestion } from "@fortawesome/free-regular-svg-icons";
 import { faBitcoin } from "@fortawesome/free-brands-svg-icons";
-// import { useNavbar } from "./navbarContext";
 
 export default function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
-  // const {
-  //   acoesActive,
-  //   investmentActive,
-  //   handleInvestmentClick,
-  //   handleAcoesClick,
-  // } = useNavbar();
   const [acoesActive, setAcoesActive] = useState(false);
   const [investmentActive, setInvestmentActive] = useState(false);
+  const [criptoActive, setCriptoActive] = useState(false);
 
   useEffect(() => {
-    if (pathname && pathname.includes("mainPage")) {
+    if (pathname.includes("mainPage")) {
       setAcoesActive(true);
-      setInvestmentActive(false);
-      console.log(`teste1 ${(acoesActive, investmentActive)}`);
-    } else {
+    } else if (pathname.includes("investment")) {
       setInvestmentActive(true);
-      setAcoesActive(false);
-      console.log(`teste2 ${acoesActive}, ${investmentActive}`);
     }
   }, []);
 
-  function handleInvestmentClick() {
+  function handleInvestmentButton() {
     router.push("../investment");
   }
 
-  function handleAcoesClick() {
+  function handleAcoesButton() {
     router.push("../mainPage");
+  }
+
+  function handleExitButton() {
+    router.push("../login");
   }
 
   const [nomeUsuario, setNomeUsuario] = useState("");
@@ -67,25 +57,19 @@ export default function Navbar() {
           </div>
           <hr className="navbarHr" />
           <ul className="navbarUl">
-            <li className={`navbarLi ${investmentActive ? "selected" : ""}`}>
+            <li
+              className={`navbarLi ${investmentActive ? "selected" : ""}`}
+              onClick={handleInvestmentButton}
+            >
               <FontAwesomeIcon className="navbarIcon" icon={faCoins} />
-              <span className="navbarWhiteText" onClick={handleInvestmentClick}>
-                Meus Investimentos
-              </span>
+              <span className="navbarWhiteText">Meus Investimentos</span>
             </li>
-            <li className={`navbarLi ${acoesActive ? "selected" : ""}`}>
+            <li
+              className={`navbarLi ${acoesActive ? "selected" : ""}`}
+              onClick={handleAcoesButton}
+            >
               <FontAwesomeIcon className="navbarIcon" icon={faChartLine} />
-              <span className="navbarWhiteText" onClick={handleAcoesClick}>
-                Ações da Bolsa
-              </span>
-            </li>
-            <li className="navbarLi">
-              <FontAwesomeIcon className="navbarIcon" icon={faBuilding} />
-              <span className="navbarWhiteText">Fundos Imobiliários</span>
-            </li>
-            <li className="navbarLi">
-              <FontAwesomeIcon className="navbarIcon" icon={faBitcoin} />
-              <span className="navbarWhiteText">Criptomoedas</span>
+              <span className="navbarWhiteText">Ações da Bolsa</span>
             </li>
             <li className="navbarLi">
               <FontAwesomeIcon className="navbarIcon" icon={faSackDollar} />
@@ -104,7 +88,9 @@ export default function Navbar() {
               <span className="navbarWhiteText">FAQ</span>
             </li>
           </ul>
-          <p id="quit">Encerrar Sessão</p>
+          <p id="quit" onClick={handleExitButton}>
+            Encerrar Sessão
+          </p>
         </section>
         <div className="support">
           <FontAwesomeIcon className="fa fa-headset" icon={faHeadset} />
