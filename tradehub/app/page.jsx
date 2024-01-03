@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import "./styles.css";
-//teste123
+
 export default function Home() {
   const router = useRouter();
   return (
