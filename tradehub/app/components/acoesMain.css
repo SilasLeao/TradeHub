@@ -148,5 +148,7 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 2rem;
-  align-content: center;
+  padding-top: 1rem;
+  align-content: normal;
+  overflow-y: scroll;
 }
