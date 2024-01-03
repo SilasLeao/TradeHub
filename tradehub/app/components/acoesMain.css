@@ -149,6 +149,17 @@
   flex-wrap: wrap;
   gap: 2rem;
   padding-top: 1rem;
-  align-content: normal;
+  align-content: flex-start;
   overflow-y: scroll;
+}
+
+.acaoCardContainer::-webkit-scrollbar {
+  background-color: #5dec85;
+  border-radius: 20px;
+  width: 8px;
+}
+
+.acaoCardContainer::-webkit-scrollbar-thumb {
+  background-color: #363636;
+  border-radius: 6px;
 }
