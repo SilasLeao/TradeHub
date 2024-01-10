@@ -12,9 +12,6 @@ import {
 export default function Login() {
   const router = useRouter();
 
-  const [nome, setNome] = useState("");
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
   const [usuario, setUsuario] = useState({
     nome: "",
     email: "",
@@ -23,18 +20,25 @@ export default function Login() {
 
   const handleChange = (event) => {
     setUsuario({ ...usuario, [event.target.name]: event.target.value });
+    console.log(usuario);
   };
 
   function validarSenha() {
-    const regex = /^(?=.*[A-Z])(?=.*\d).+$/;
-    return regex.test(usuario.senha);
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d).+$/;
+    return passwordRegex.test(usuario.senha);
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (validarSenha()) {
+  function validarEmail() {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(usuario.email);
+  }
+
+  const handleSubmit = () => {
+    if (validarSenha() && validarEmail()) {
       sessionStorage.setItem("nomeUsuario", usuario.nome);
       router.push("../mainPage");
+    } else if (validarEmail() == false) {
+      alert("Por favor, insira um email válido.");
     } else {
       alert(
         "Por favor, insira uma senha com ao menos uma letra maiúscula e um número."

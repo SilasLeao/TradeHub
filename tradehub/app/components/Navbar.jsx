@@ -10,9 +10,10 @@ import {
   faChartSimple,
   faGear,
   faHeadset,
+  faUser as filledUser,
 } from "@fortawesome/free-solid-svg-icons";
+
 import { faUser, faCircleQuestion } from "@fortawesome/free-regular-svg-icons";
-import { faBitcoin } from "@fortawesome/free-brands-svg-icons";
 
 export default function Navbar() {
   const router = useRouter();
@@ -51,11 +52,15 @@ export default function Navbar() {
       <aside className="navbarAside">
         <section className="content">
           <div className="perfil">
-            <FontAwesomeIcon className="fa fa-user" icon={faUser} />
+            <FontAwesomeIcon className="fa perfilIcon" icon={faUser} />
             <span className="navbarWhiteText">Olá, {nomeUsuario}</span>
           </div>
           <hr className="navbarHr" />
           <ul className="navbarUl">
+            <li className="navbarLi">
+              <FontAwesomeIcon className="navbarIcon" icon={filledUser} />
+              <span className="navbarWhiteText">Minha Conta</span>
+            </li>
             <li
               className={`navbarLi ${investmentActive ? "selected" : ""}`}
               onClick={handleInvestmentButton}

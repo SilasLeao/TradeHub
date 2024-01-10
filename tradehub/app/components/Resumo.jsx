@@ -28,11 +28,7 @@ export default function Resumo() {
         </div>
         <div className="valorAcumuladoPorcento">
           <span className="resumoWhiteText">Valor Acumulado(%)</span>
-          <span className="resumoNumeroVerde">12,24%</span>
-        </div>
-        <div className="dividendos">
-          <span className="resumoWhiteText">Dividendos a Receber</span>
-          <span className="resumoWhiteText">R$ 53,27</span>
+          <span className="resumoNumeroVerde">+12,24%</span>
         </div>
       </div>
     </>

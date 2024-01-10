@@ -79,13 +79,6 @@
   margin: 0 2rem 1rem 2rem;
 }
 
-.dividendos {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 2rem 1rem 2rem;
-}
-
 .resumoNumeroVerde {
   color: #5dec85;
 }
