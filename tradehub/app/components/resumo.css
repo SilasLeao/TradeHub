@@ -65,14 +65,21 @@
   margin: 0 2rem 1rem 2rem;
 }
 
-.valorAcumulado {
+.rendimentoBruto {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0 2rem 1rem 2rem;
 }
 
-.valorAcumuladoPorcento {
+.rendimentoParcial {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 2rem 1rem 2rem;
+}
+
+.rendimentoPorcento {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -81,4 +88,8 @@
 
 .resumoNumeroVerde {
   color: #5dec85;
+}
+
+.resumoNumeroVermelho {
+  color: #f52a2a;
 }

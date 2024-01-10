@@ -24,7 +24,6 @@ export default function InvestmentMain() {
           .from("Investimentos")
           .select("*");
         setInvestmentData(data);
-        console.log(data);
       } catch (error) {
         console.error("Erro:", error);
       }

@@ -14,7 +14,7 @@ export default function AcoesMain() {
   const [acaoData, setAcaoData] = useState(null);
   const [acaoCards, setAcaoCards] = useState([]);
 
-  const fetchData = async () => {
+  const fetchInvestmentData = async () => {
     try {
       const resposta = await fetch(
         `https://brapi.dev/api/quote/${codigoAcao}?token=8QE9zJXLMnT7w6wppfyXEs`
@@ -41,7 +41,7 @@ export default function AcoesMain() {
   }
 
   function handleSearch() {
-    fetchData();
+    fetchInvestmentData();
   }
 
   return (
