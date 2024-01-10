@@ -30,7 +30,7 @@ export default function Resumo() {
   }
 
   const conta = usuarioData[0].conta_id;
-  const saldo = `R$ ${usuarioData[0].saldo}`;
+  let saldo = `R$ ${usuarioData[0].saldo}`;
   const totalInvestido = `R$ ${usuarioData[0].total_investido}`;
   const rendimentoBruto = `R$ ${usuarioData[0].rendimento_bruto}`;
   const rendimentoParcial = `R$ ${usuarioData[0].rendimento_parcial}`;
@@ -38,6 +38,8 @@ export default function Resumo() {
     usuarioData[0].rendimento_porcentagem > 0
       ? `+${usuarioData[0].rendimento_porcentagem}%`
       : `${usuarioData[0].rendimento_porcentagem}%`;
+
+  saldo = saldo.replace(".", ",");
 
   return (
     <>
@@ -60,11 +62,27 @@ export default function Resumo() {
         </div>
         <div className="rendimentoBruto">
           <span className="resumoWhiteText">Rendimento Total</span>
-          <span className="resumoNumeroVerde">{rendimentoBruto}</span>
+          <span
+            className={`${
+              usuarioData[0].rendimento_bruto > usuarioData[0].total_investido
+                ? "resumoNumeroVerde"
+                : "resumoNumeroVermelho"
+            }`}
+          >
+            {rendimentoBruto}
+          </span>
         </div>
         <div className="rendimentoParcial">
           <span className="resumoWhiteText">Rendimento Parcial</span>
-          <span className="resumoNumeroVerde">{rendimentoParcial}</span>
+          <span
+            className={`${
+              usuarioData[0].rendimento_parcial > 0
+                ? "resumoNumeroVerde"
+                : "resumoNumeroVermelho"
+            }`}
+          >
+            {rendimentoParcial}
+          </span>
         </div>
         <div className="rendimentoPorcento">
           <span className="resumoWhiteText">Rendimento(%)</span>
