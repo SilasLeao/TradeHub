@@ -1,5 +1,5 @@
 import "./acaoCard.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faInfo,
@@ -9,6 +9,7 @@ import {
 import { faStar as faEmptyStar } from "@fortawesome/free-regular-svg-icons";
 import classNames from "classnames";
 import CardInfo from "./cardInfo";
+import { InfoContainerContext } from "../mainPage/page";
 export default function AcaoCard({ acao }) {
   const nome = acao.symbol;
   const valor = acao.regularMarketPrice;
@@ -18,15 +19,14 @@ export default function AcaoCard({ acao }) {
     acaoVerde: variacao >= 0,
   });
 
-  const [infoContainer, setInfoContainer] = useState(false);
+  const infoContainerContext = useContext(InfoContainerContext);
 
   function handleInfoButton() {
-    setInfoContainer(true);
+    infoContainerContext.toggleInfoContainerStatus();
   }
 
   return (
     <>
-      {infoContainer && <CardInfo />}
       <div className="acaoCard">
         <p className="acaoCardTitle">{nome}</p>
         <p className="acaoCardPrice">R$ {valor}</p>
