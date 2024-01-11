@@ -29,17 +29,35 @@ export default function Resumo() {
     return <h1>Loading...</h1>;
   }
 
-  const conta = usuarioData[0].conta_id;
+  let conta = usuarioData[0].conta_id;
   let saldo = `R$ ${usuarioData[0].saldo}`;
-  const totalInvestido = `R$ ${usuarioData[0].total_investido}`;
-  const rendimentoBruto = `R$ ${usuarioData[0].rendimento_bruto}`;
-  const rendimentoParcial = `R$ ${usuarioData[0].rendimento_parcial}`;
-  const rendimentoPorcentagem =
+  let totalInvestido = `R$ ${usuarioData[0].total_investido}`;
+  let rendimentoBruto = `R$ ${usuarioData[0].rendimento_bruto}`;
+  let rendimentoParcial = `R$ ${usuarioData[0].rendimento_parcial}`;
+  let rendimentoPorcentagem =
     usuarioData[0].rendimento_porcentagem > 0
       ? `+${usuarioData[0].rendimento_porcentagem}%`
       : `${usuarioData[0].rendimento_porcentagem}%`;
 
   saldo = saldo.replace(".", ",");
+  saldo = saldo.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+  totalInvestido = totalInvestido.replace(".", ",");
+  totalInvestido = totalInvestido
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+  rendimentoBruto = rendimentoBruto.replace(".", ",");
+  rendimentoBruto = rendimentoBruto
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+  rendimentoParcial = rendimentoParcial.replace(".", ",");
+  rendimentoParcial = rendimentoParcial
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+  rendimentoPorcentagem = rendimentoPorcentagem.replace(".", ",");
 
   return (
     <>

@@ -16,6 +16,8 @@ export default function AcaoCard({ acao }) {
     acaoVerde: variacao >= 0,
   });
 
+  function handleInfoButton() {}
+
   return (
     <>
       <div className="acaoCard">
@@ -26,7 +28,11 @@ export default function AcaoCard({ acao }) {
           {Number(variacao).toFixed(2)}%
         </p>
         <div className="acaoCardBtns">
-          <FontAwesomeIcon className="acaoCardIcon" icon={faInfoCircle} />
+          <FontAwesomeIcon
+            className="acaoCardIcon"
+            icon={faInfoCircle}
+            onClick={handleInfoButton}
+          />
           <button>Comprar</button>
           <FontAwesomeIcon className="acaoCardIcon" icon={faEmptyStar} />
         </div>
