@@ -15,6 +15,15 @@
   height: 100vh;
 }
 
+.backgroundContainer {
+  position: absolute;
+  width: 1100px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .acaoH1 {
   color: honeydew;
   border-bottom: 1px solid #5dec85;

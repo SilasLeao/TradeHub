@@ -52,7 +52,9 @@ export default function AcoesMain() {
     <>
       {infoContainerContext.infoContainerStatus ? (
         <div className="acoesMainContainer">
-          <CardInfo />
+          <div className="backgroundContainer">
+            <CardInfo />
+          </div>
           <h1 className="acaoH1">Ações da Bolsa</h1>
           <div className="acaoDestaque">
             <p className="acaoDestaqueTitle">Ações em Destaque</p>
