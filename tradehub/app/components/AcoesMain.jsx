@@ -14,7 +14,6 @@ import CardInfo from "./cardInfo";
 
 export default function AcoesMain() {
   const [codigoAcao, setCodigoAcao] = useState("");
-  const [acaoData, setAcaoData] = useState(null);
   const [acaoCards, setAcaoCards] = useState([]);
 
   const infoContainerContext = useContext(InfoContainerContext);
@@ -25,7 +24,7 @@ export default function AcoesMain() {
         `https://brapi.dev/api/quote/${codigoAcao}?token=8QE9zJXLMnT7w6wppfyXEs`
       );
       const resultado = await resposta.json();
-      setAcaoData(resultado);
+      // console.log(resultado);
       setAcaoCards((prevCards) => [
         ...prevCards,
         {
