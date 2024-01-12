@@ -20,7 +20,6 @@ export default function Login() {
 
   const handleChange = (event) => {
     setUsuario({ ...usuario, [event.target.name]: event.target.value });
-    console.log(usuario);
   };
 
   function validarSenha() {

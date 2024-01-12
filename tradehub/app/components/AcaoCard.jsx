@@ -22,6 +22,7 @@ export default function AcaoCard({ acao }) {
   const infoContainerContext = useContext(InfoContainerContext);
 
   function handleInfoButton() {
+    sessionStorage.setItem("acaoPesquisada", nome);
     infoContainerContext.toggleInfoContainerStatus();
   }
 
