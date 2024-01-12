@@ -52,7 +52,7 @@ export default function CardInfo() {
               }`}
               onClick={() => handleChartTimelineButtons(true)}
             >
-              Day
+              Dia
             </button>
             <button
               className={`yearButton ${
@@ -62,7 +62,7 @@ export default function CardInfo() {
               }`}
               onClick={() => handleChartTimelineButtons(false)}
             >
-              Year
+              Ano
             </button>
           </div>
           <LineChart />

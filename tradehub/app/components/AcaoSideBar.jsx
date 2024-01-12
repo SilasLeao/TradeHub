@@ -3,11 +3,18 @@ import "./acaoSidebar.css";
 import TitleCard from "./TitleCard";
 import Resumo from "./Resumo";
 import Noticias from "./Noticias";
+import { useContext } from "react";
+import { InfoContainerContext } from "../mainPage/page";
 
 export default function AcaoSideBar() {
+  const infoContainerContext = useContext(InfoContainerContext);
   return (
     <>
-      <div className="acaoSidebar">
+      <div
+        className={`${
+          infoContainerContext.infoContainerStatus ? "blurEffect" : ""
+        } acaoSidebar`}
+      >
         <TitleCard />
         <Resumo />
         <Noticias />

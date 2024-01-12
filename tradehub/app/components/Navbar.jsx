@@ -1,7 +1,7 @@
 "use client";
 import "./navbar.css";
 import { useRouter, usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCoins,
@@ -14,8 +14,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { faUser, faCircleQuestion } from "@fortawesome/free-regular-svg-icons";
+import { InfoContainerContext } from "../mainPage/page";
 
 export default function Navbar() {
+  const infoContainerContext = useContext(InfoContainerContext);
   const router = useRouter();
   const pathname = usePathname();
   const [acoesActive, setAcoesActive] = useState(false);
@@ -48,7 +50,11 @@ export default function Navbar() {
   }, []);
 
   return (
-    <>
+    <div
+      className={`${
+        infoContainerContext.infoContainerStatus ? "blurEffect" : ""
+      }`}
+    >
       <aside className="navbarAside">
         <section className="content">
           <div className="perfil">
@@ -100,6 +106,6 @@ export default function Navbar() {
           <FontAwesomeIcon className="fa fa-headset" icon={faHeadset} />
         </div>
       </aside>
-    </>
+    </div>
   );
 }

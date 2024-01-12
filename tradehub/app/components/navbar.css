@@ -9,6 +9,10 @@
   src: url(../assets/fonts/Inter-Regular.ttf);
 }
 
+.blurEffect {
+  filter: blur(5px);
+}
+
 .navbarAside {
   background-color: #363636;
   width: 360px;
