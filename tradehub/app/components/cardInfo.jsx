@@ -65,7 +65,7 @@ export default function CardInfo() {
               Year
             </button>
           </div>
-          <LineChart /*parameter={chartTimeline}*/ />
+          <LineChart />
         </div>
         <div className="infoBtns">
           <button className="exitButton" onClick={handleExit}>
