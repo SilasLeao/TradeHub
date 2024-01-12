@@ -24,11 +24,12 @@ export default function CardInfo() {
           <h1>{codigoAcao}</h1>
           <p>{nomeAcao}</p>
         </div>
-        <hr />
+        <hr id="firstInfoHr" />
         <div className="infoMarketCap">
           <p>Capitalização de mercado</p>
           <p>{marketCap}</p>
         </div>
+        <hr id="secondInfoHr" />
         <div className="chart">
           <div className="chartBtns">
             <button>Day</button>

@@ -24,6 +24,7 @@ export default function AcoesMain() {
         `https://brapi.dev/api/quote/${codigoAcao}?token=8QE9zJXLMnT7w6wppfyXEs`
       );
       const resultado = await resposta.json();
+      // console.log(resultado);
       setAcaoCards((prevCards) => [
         ...prevCards,
         {

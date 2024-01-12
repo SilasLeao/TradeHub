@@ -19,7 +19,7 @@ ChartJS.register(
 
 export default function LineChart() {
   useEffect(() => {
-    const codigoAcao = sessionStorage.getItem("acaoPesquisada");
+    const codigoAcao = sessionStorage.getItem("codigoAcaoPesquisada");
     const fetchInvestmentData = async () => {
       try {
         const resposta = await fetch(
@@ -27,8 +27,6 @@ export default function LineChart() {
         );
         const resultado = await resposta.json();
         // console.log(resultado);
-        const symbol = resultado.results[0].symbol;
-        const fullName = resultado.results[0].longName;
         let regularMarketPrice = resultado.results[0].regularMarketPrice;
         let regularMarketDayLow = resultado.results[0].regularMarketDayLow;
         let regularMarketDayHigh = resultado.results[0].regularMarketDayHigh;
