@@ -1,7 +1,7 @@
 "use client";
 
 import "./acoesMain.css";
-import { useContext } from "react";
+import { useContext, createContext } from "react";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AcaoCard from "./AcaoCard";
@@ -11,6 +11,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { InfoContainerContext } from "../mainPage/page";
 import CardInfo from "./cardInfo";
+
+export const ChartTimelineContext = createContext();
 
 export default function AcoesMain() {
   const [codigoAcao, setCodigoAcao] = useState("");
@@ -43,6 +45,12 @@ export default function AcoesMain() {
     }
   };
 
+  let [chartTimeline, setChartTimeline] = useState(true);
+
+  const toggleChartTimeline = () => {
+    setChartTimeline(!chartTimeline);
+  };
+
   function handleChange(event) {
     setCodigoAcao(event.target.value);
   }
@@ -56,7 +64,11 @@ export default function AcoesMain() {
       {infoContainerContext.infoContainerStatus ? (
         <div className="acoesMainContainer">
           <div className="backgroundContainer">
-            <CardInfo />
+            <ChartTimelineContext.Provider
+              value={{ chartTimeline, toggleChartTimeline }}
+            >
+              <CardInfo />
+            </ChartTimelineContext.Provider>
           </div>
           <h1 className="acaoH1">Ações da Bolsa</h1>
           <div className="acaoDestaque">

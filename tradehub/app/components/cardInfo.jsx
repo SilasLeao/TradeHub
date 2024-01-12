@@ -2,11 +2,11 @@ import "./cardInfo.css";
 import LineChart from "./LineChart";
 import { InfoContainerContext } from "../mainPage/page";
 import { useContext, useState } from "react";
+import { ChartTimelineContext } from "./AcoesMain";
 
 export default function CardInfo() {
   const infoContainerContext = useContext(InfoContainerContext);
-  const [dayChart, setDayChart] = useState(false);
-  const [yearChart, setYearChart] = useState(false);
+  const chartTimelineContext = useContext(ChartTimelineContext);
 
   const codigoAcao = sessionStorage.getItem("codigoAcaoPesquisada");
   const nomeAcao = sessionStorage.getItem("nomeAcaoPesquisada");
@@ -16,6 +16,12 @@ export default function CardInfo() {
   function handleExit() {
     infoContainerContext.toggleInfoContainerStatus();
   }
+
+  function handleChartTimelineButtons() {
+    chartTimelineContext.toggleChartTimeline();
+  }
+
+  console.log(chartTimelineContext.chartTimeline);
 
   return (
     <>
@@ -32,8 +38,26 @@ export default function CardInfo() {
         <hr id="secondInfoHr" />
         <div className="chart">
           <div className="chartBtns">
-            <button className="dayButton selectedButton">Day</button>
-            <button className="yearButton">Year</button>
+            <button
+              className={`dayButton ${
+                chartTimelineContext.chartTimeline === true
+                  ? "selectedTimeButton"
+                  : ""
+              }`}
+              onClick={handleChartTimelineButtons}
+            >
+              Day
+            </button>
+            <button
+              className={`yearButton ${
+                chartTimelineContext.chartTimeline === false
+                  ? "selectedTimeButton"
+                  : ""
+              }`}
+              onClick={handleChartTimelineButtons}
+            >
+              Year
+            </button>
           </div>
           <LineChart /*parameter={chartTimeline}*/ />
         </div>

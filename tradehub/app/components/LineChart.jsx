@@ -47,7 +47,7 @@ export default function LineChart() {
           datasets: [
             {
               data: [10, 100, 150, 200],
-              backgroundColor: "purple",
+              backgroundColor: "#5dec85",
             },
           ],
         }}
