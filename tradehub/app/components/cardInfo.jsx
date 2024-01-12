@@ -32,14 +32,16 @@ export default function CardInfo() {
         <hr id="secondInfoHr" />
         <div className="chart">
           <div className="chartBtns">
-            <button>Day</button>
-            <button>Year</button>
+            <button className="dayButton selectedButton">Day</button>
+            <button className="yearButton">Year</button>
           </div>
           <LineChart /*parameter={chartTimeline}*/ />
         </div>
         <div className="infoBtns">
-          <button onClick={handleExit}>Voltar</button>
-          <button>Comprar</button>
+          <button className="exitButton" onClick={handleExit}>
+            Voltar
+          </button>
+          <button className="buyButton">Comprar</button>
         </div>
       </div>
     </>
