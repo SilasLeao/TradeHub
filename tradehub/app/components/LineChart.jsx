@@ -8,7 +8,8 @@ import {
   LineElement,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { useEffect } from "react";
+import { useEffect, useContext, useState } from "react";
+import { ChartTimelineContext } from "./AcoesMain";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -18,6 +19,14 @@ ChartJS.register(
 );
 
 export default function LineChart() {
+  const chartTimelineContext = useContext(ChartTimelineContext);
+
+  const [regularMarketPrice, setRegularMarketPrice] = useState(null);
+  const [regularMarketDayLow, setRegularMarketDayLow] = useState(null);
+  const [regularMarketDayHigh, setRegularMarketDayHigh] = useState(null);
+  const [fiftyTwoWeekLow, setFiftyTwoWeekLow] = useState(null);
+  const [fiftyTwoWeekHigh, setFiftyTwoWeekHigh] = useState(null);
+
   useEffect(() => {
     const codigoAcao = sessionStorage.getItem("codigoAcaoPesquisada");
     const fetchInvestmentData = async () => {
@@ -27,11 +36,11 @@ export default function LineChart() {
         );
         const resultado = await resposta.json();
         // console.log(resultado);
-        let regularMarketPrice = resultado.results[0].regularMarketPrice;
-        let regularMarketDayLow = resultado.results[0].regularMarketDayLow;
-        let regularMarketDayHigh = resultado.results[0].regularMarketDayHigh;
-        let fiftyTwoWeekLow = resultado.results[0].fiftyTwoWeekLow;
-        let fiftyTwoWeekHigh = resultado.results[0].fiftyTwoWeekHigh;
+        setRegularMarketPrice(resultado.results[0].regularMarketPrice);
+        setRegularMarketDayLow(resultado.results[0].regularMarketDayLow);
+        setRegularMarketDayHigh(resultado.results[0].regularMarketDayHigh);
+        setFiftyTwoWeekLow(resultado.results[0].fiftyTwoWeekLow);
+        setFiftyTwoWeekHigh(resultado.results[0].fiftyTwoWeekHigh);
       } catch (error) {
         console.error("Erro ao buscar dados:", error);
       }
@@ -41,17 +50,45 @@ export default function LineChart() {
 
   return (
     <div>
-      <Line
-        data={{
-          labels: ["2023-01", "Valor Atual", "2023-03"],
-          datasets: [
-            {
-              data: [10, 100, 150, 200],
-              backgroundColor: "#5dec85",
-            },
-          ],
-        }}
-      />
+      {chartTimelineContext.chartTimeline ? (
+        <Line
+          data={{
+            labels: [
+              "Valor Mínimo no Dia(R$)",
+              "Valor Atual(R$)",
+              "Valor Máximo no Dia(R$)",
+            ],
+            datasets: [
+              {
+                data: [
+                  regularMarketDayLow,
+                  regularMarketPrice,
+                  regularMarketDayHigh,
+                ],
+                backgroundColor: "black",
+                borderColor: "#5dec85",
+              },
+            ],
+          }}
+        />
+      ) : (
+        <Line
+          data={{
+            labels: [
+              "Valor Mínimo no Ano(R$)",
+              "Valor Atual(R$)",
+              "Valor Máximo no Ano(R$)",
+            ],
+            datasets: [
+              {
+                data: [fiftyTwoWeekLow, regularMarketPrice, fiftyTwoWeekHigh],
+                backgroundColor: "black",
+                borderColor: "#5dec85",
+              },
+            ],
+          }}
+        />
+      )}
     </div>
   );
 }
