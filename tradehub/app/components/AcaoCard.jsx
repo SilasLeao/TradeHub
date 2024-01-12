@@ -12,6 +12,8 @@ import CardInfo from "./cardInfo";
 import { InfoContainerContext } from "../mainPage/page";
 export default function AcaoCard({ acao }) {
   const nome = acao.symbol;
+  const marketCap = acao.marketCap;
+  const fullName = acao.fullName;
   const valor = acao.regularMarketPrice;
   const variacao = acao.regularMarketChangePercent;
   const corTextoClass = classNames({
@@ -22,7 +24,9 @@ export default function AcaoCard({ acao }) {
   const infoContainerContext = useContext(InfoContainerContext);
 
   function handleInfoButton() {
-    sessionStorage.setItem("acaoPesquisada", nome);
+    sessionStorage.setItem("codigoAcaoPesquisada", nome);
+    sessionStorage.setItem("nomeAcaoPesquisada", fullName);
+    sessionStorage.setItem("marketCap", marketCap);
     infoContainerContext.toggleInfoContainerStatus();
   }
 

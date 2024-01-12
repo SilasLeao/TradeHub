@@ -24,11 +24,14 @@ export default function AcoesMain() {
         `https://brapi.dev/api/quote/${codigoAcao}?token=8QE9zJXLMnT7w6wppfyXEs`
       );
       const resultado = await resposta.json();
-      // console.log(resultado);
       setAcaoCards((prevCards) => [
         ...prevCards,
         {
+          marketCap: resultado.results[0].marketCap
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, "."),
           symbol: resultado.results[0].symbol,
+          fullName: resultado.results[0].longName,
           regularMarketPrice: resultado.results[0].regularMarketPrice,
           regularMarketChangePercent:
             resultado.results[0].regularMarketChangePercent,

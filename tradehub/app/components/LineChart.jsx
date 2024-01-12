@@ -29,11 +29,6 @@ export default function LineChart() {
         // console.log(resultado);
         const symbol = resultado.results[0].symbol;
         const fullName = resultado.results[0].longName;
-        let marketCap = resultado.results[0].marketCap
-          .toString()
-          .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        marketCap = `R$ ${marketCap},00`;
-        console.log(marketCap);
         let regularMarketPrice = resultado.results[0].regularMarketPrice;
         let regularMarketDayLow = resultado.results[0].regularMarketDayLow;
         let regularMarketDayHigh = resultado.results[0].regularMarketDayHigh;
@@ -50,18 +45,10 @@ export default function LineChart() {
     <div>
       <Line
         data={{
-          labels: [
-            "2023-01",
-            "2023-02",
-            "2023-03",
-            "2023-04",
-            "2023-05",
-            "2023-06",
-            "2023-07",
-          ],
+          labels: ["2023-01", "Valor Atual", "2023-03"],
           datasets: [
             {
-              data: [100, 120, 115, 134, 168, 132, 200],
+              data: [10, 100, 150, 200],
               backgroundColor: "purple",
             },
           ],
