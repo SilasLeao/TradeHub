@@ -17,7 +17,13 @@ export default function CardInfo() {
     infoContainerContext.toggleInfoContainerStatus();
   }
 
-  function handleChartTimelineButtons() {
+  function handleChartTimelineButtons(isDayButton) {
+    if (
+      (chartTimelineContext.chartTimeline === true && isDayButton) ||
+      (chartTimelineContext.chartTimeline === false && !isDayButton)
+    ) {
+      return;
+    }
     chartTimelineContext.toggleChartTimeline();
   }
 
@@ -44,7 +50,7 @@ export default function CardInfo() {
                   ? "selectedTimeButton"
                   : ""
               }`}
-              onClick={handleChartTimelineButtons}
+              onClick={() => handleChartTimelineButtons(true)}
             >
               Day
             </button>
@@ -54,7 +60,7 @@ export default function CardInfo() {
                   ? "selectedTimeButton"
                   : ""
               }`}
-              onClick={handleChartTimelineButtons}
+              onClick={() => handleChartTimelineButtons(false)}
             >
               Year
             </button>
