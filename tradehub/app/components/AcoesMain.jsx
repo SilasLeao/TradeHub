@@ -18,8 +18,12 @@ export const ChartTimelineContext = createContext();
 export default function AcoesMain() {
   const [codigoAcao, setCodigoAcao] = useState("");
   const [acaoCards, setAcaoCards] = useState([]);
-  const [acaoDestaqueNegativa, setAcaoDestaqueNegativa] = useState([]);
-  const [acaoDestaquePositiva, setAcaoDestaquePositiva] = useState([]);
+  const [acaoDestaque, setAcaoDestaque] = useState([]);
+  // const [acaoDestaquePositiva, setAcaoDestaquePositiva] = useState([]);
+
+  function handleTeste() {
+    console.log(acaoDestaque);
+  }
 
   const infoContainerContext = useContext(InfoContainerContext);
 
@@ -68,7 +72,12 @@ export default function AcoesMain() {
           "https://brapi.dev/api/quote/list?sortBy=change&sortOrder=asc&limit=4&token=8QE9zJXLMnT7w6wppfyXEs"
         );
         const lista = await acaoDestaqueListaNegativa.json();
-        setAcaoDestaqueNegativa(lista);
+        console.log("negativa", lista.stocks);
+        return lista.stocks.map((stock) => ({
+          nome: stock.stock,
+          cotacao: stock.close,
+          variacao: stock.change,
+        }));
       } catch (error) {
         console.error("Erro ao buscar ações, ", error);
       }
@@ -79,13 +88,28 @@ export default function AcoesMain() {
           "https://brapi.dev/api/quote/list?sortBy=change&sortOrder=desc&limit=4&token=8QE9zJXLMnT7w6wppfyXEs"
         );
         const lista = await acaoDestaqueListaPositiva.json();
-        setAcaoDestaquePositiva(lista);
+        console.log("positiva", lista.stocks);
+        return lista.stocks.map((stock) => ({
+          nome: stock.stock,
+          cotacao: stock.close,
+          variacao: stock.change,
+        }));
       } catch (error) {
         console.error("Erro ao buscar ações, ", error);
       }
     };
-    fetchAcaoDestaqueNegativa();
-    fetchAcaoDestaquePositiva();
+
+    Promise.all([fetchAcaoDestaqueNegativa(), fetchAcaoDestaquePositiva()])
+      .then(([negativas, positivas]) => {
+        setAcaoDestaque((prevCards) => [
+          ...prevCards,
+          ...(negativas ? [negativas] : []),
+          ...(positivas ? [positivas] : []),
+        ]);
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar dados, ", error);
+      });
   }, []);
 
   let [chartTimeline, setChartTimeline] = useState(true);
@@ -460,6 +484,7 @@ export default function AcoesMain() {
               <AcaoCard key={index} acao={acao} />
             ))}
           </div>
+          <button onClick={handleTeste}>asd</button>
         </div>
       )}
     </>
