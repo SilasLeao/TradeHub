@@ -22,6 +22,14 @@ export default function Login() {
     setUsuario({ ...usuario, [event.target.name]: event.target.value });
   };
 
+  function validarNome() {
+    if (usuario.nome.length > 16 || usuario.nome.length < 3) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   function validarSenha() {
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d).+$/;
     return passwordRegex.test(usuario.senha);
@@ -33,14 +41,18 @@ export default function Login() {
   }
 
   const handleSubmit = () => {
-    if (validarSenha() && validarEmail()) {
+    if (validarSenha() && validarEmail() && validarNome()) {
       sessionStorage.setItem("nomeUsuario", usuario.nome);
       router.push("../mainPage");
-    } else if (validarEmail() == false) {
+    } else if (validarEmail() === false) {
       alert("Por favor, insira um email válido.");
-    } else {
+    } else if (validarSenha() === false) {
       alert(
         "Por favor, insira uma senha com ao menos uma letra maiúscula e um número."
+      );
+    } else if (validarNome() === false) {
+      alert(
+        "Por favor, insira um nome que contenha pelo menos 3 letras e no máximo 16 letras."
       );
     }
   };
