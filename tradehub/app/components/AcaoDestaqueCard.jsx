@@ -7,12 +7,54 @@ export default function AcaoDestaqueCard({ acao }) {
   const variacao = acao.variacao;
   return (
     <>
-      <div className="acaoCardDestaque">
-        <p className="acaoCardTitleDestaque">{nome}</p>
-        <hr className="acaoCardDestaqueFirstHr" />
-        <p className="acaoCardPriceDestaque">R$ {cotacao.toFixed(2)}</p>
-        <hr className="acaoCardDestaqueSecondHr" />
-        <p className="acaoCardChangeDestaque">{variacao.toFixed(2)}%</p>
+      <div
+        className={
+          variacao < 0
+            ? "destaqueCardVermelho acaoCardDestaque"
+            : "destaqueCardVerde acaoCardDestaque"
+        }
+      >
+        <p
+          className={
+            variacao < 0
+              ? "titleVermelho acaoCardTitleDestaque"
+              : "titleVerde acaoCardTitleDestaque"
+          }
+        >
+          {nome}
+        </p>
+        <hr
+          className={
+            variacao < 0
+              ? "destaqueHrVermelho acaoCardDestaqueFirstHr"
+              : "destaqueHrVerde acaoCardDestaqueFirstHr"
+          }
+        />
+        <p
+          className={
+            variacao < 0
+              ? "destaqueCotacaoVermelho acaoCardPriceDestaque"
+              : "destaqueCotacaoVerde acaoCardPriceDestaque"
+          }
+        >
+          R$ {cotacao.toFixed(2)}
+        </p>
+        <hr
+          className={
+            variacao < 0
+              ? "destaqueHrVermelho acaoCardDestaqueSecondHr"
+              : "destaqueHrVerde acaoCardDestaqueSecondHr"
+          }
+        />
+        <p
+          className={
+            variacao < 0
+              ? "variacaoDestaqueVermelho acaoCardChangeDestaque"
+              : "variacaoDestaqueVerde acaoCardChangeDestaque"
+          }
+        >
+          {variacao.toFixed(2)}%
+        </p>
       </div>
     </>
   );

@@ -17,16 +17,22 @@
 }
 
 .acaoCardDestaque {
-  border: 1px solid white;
   border-radius: 30px;
   width: 250px;
-  background-color: grey;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* backgroundColor: "rgba(93, 236, 133, 0.1)" */
-  /* backgroundColor: "rgba(245, 42, 42, 0.1)" */
+}
+
+.destaqueCardVermelho {
+  background-color: rgba(245, 42, 42, 0.1);
+  border: 1px solid #f52a2a;
+}
+
+.destaqueCardVerde {
+  background-color: rgba(93, 236, 133, 0.1);
+  border: 1px solid #5dec85;
 }
 
 .acaoCardTitleDestaque {
@@ -34,9 +40,27 @@
   margin-bottom: 6px;
 }
 
+.titleVermelho {
+  color: #f52a2a;
+}
+
+.titleVerde {
+  color: #5dec85;
+}
+
 .acaoCardDestaqueFirstHr {
   width: 70%;
   margin-bottom: 6px;
+  border: none;
+  height: 1px;
+}
+
+.destaqueHrVermelho {
+  background-color: #f52a2a;
+}
+
+.destaqueHrVerde {
+  background-color: #5dec85;
 }
 
 .acaoCardPriceDestaque {
@@ -44,11 +68,29 @@
   margin-bottom: 6px;
 }
 
+.destaqueCotacaoVermelho {
+  color: #f52a2a;
+}
+
+.destaqueCotacaoVerde {
+  color: #5dec85;
+}
+
 .acaoCardDestaqueSecondHr {
   width: 40%;
   margin-bottom: 6px;
+  border: none;
+  height: 1px;
 }
 
 .acaoCardChangeDestaque {
   font-size: 1.2rem;
+}
+
+.variacaoDestaqueVermelho {
+  color: #f52a2a;
+}
+
+.variacaoDestaqueVerde {
+  color: #5dec85;
 }
