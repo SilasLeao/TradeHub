@@ -48,7 +48,7 @@ export default function Navbar() {
     const nomeUsuarioSessionStorage = sessionStorage.getItem("nomeUsuario");
     setNomeUsuario(nomeUsuarioSessionStorage); //
   }, []);
-
+  console.log(infoContainerContext.infoContainerStatus);
   return (
     <div
       className={`${
