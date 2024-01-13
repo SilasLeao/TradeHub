@@ -19,11 +19,6 @@ export default function AcoesMain() {
   const [codigoAcao, setCodigoAcao] = useState("");
   const [acaoCards, setAcaoCards] = useState([]);
   const [acaoDestaque, setAcaoDestaque] = useState([]);
-  // const [acaoDestaquePositiva, setAcaoDestaquePositiva] = useState([]);
-
-  function handleTeste() {
-    console.log(acaoDestaque);
-  }
 
   const infoContainerContext = useContext(InfoContainerContext);
 
@@ -149,137 +144,12 @@ export default function AcoesMain() {
             } acoesMainContainerContent`}
           >
             <h1 className="acaoH1">Ações da Bolsa</h1>
-            <div className="acaoDestaque">
+            <div className="acaoDestaqueSection">
               <p className="acaoDestaqueTitle">Ações em Destaque</p>
               <div className="acoesDestaque">
-                <div
-                  className="acaoCardDestaque"
-                  style={{
-                    borderColor: " #5dec85",
-                    backgroundColor: "rgba(93, 236, 133, 0.1)",
-                  }}
-                >
-                  <p
-                    className="acaoCardTitleDestaque"
-                    style={{ color: "#5dec85" }}
-                  >
-                    CIEL3
-                  </p>
-                  <hr
-                    className="acaoCardDestaqueFirstHr"
-                    style={{
-                      backgroundColor: "#5dec85",
-                      height: "1px",
-                      border: "none",
-                    }}
-                  />
-                  <p
-                    className="acaoCardPriceDestaque"
-                    style={{ color: "#5dec85" }}
-                  >
-                    R$ 4.34
-                  </p>
-                  <hr
-                    className="acaoCardDestaqueSecondHr"
-                    style={{
-                      backgroundColor: "#5dec85",
-                      height: "1px",
-                      border: "none",
-                    }}
-                  />
-                  <p
-                    className="acaoCardChangeDestaque"
-                    style={{ color: "#5dec85" }}
-                  >
-                    7.96%
-                  </p>
-                </div>
-
-                <div
-                  className="acaoCardDestaque"
-                  style={{
-                    borderColor: "honeydew",
-                    backgroundColor: "rgba(255, 255, 255, 0.1)",
-                  }}
-                >
-                  <p
-                    className="acaoCardTitleDestaque"
-                    style={{ color: "honeydew" }}
-                  >
-                    ITSA4
-                  </p>
-                  <hr
-                    className="acaoCardDestaqueFirstHr"
-                    style={{
-                      backgroundColor: "honeydew",
-                      height: "1px",
-                      border: "none",
-                    }}
-                  />
-                  <p
-                    className="acaoCardPriceDestaque"
-                    style={{ color: "honeydew" }}
-                  >
-                    R$ 9.75
-                  </p>
-                  <hr
-                    className="acaoCardDestaqueSecondHr"
-                    style={{
-                      backgroundColor: "honeydew",
-                      height: "1px",
-                      border: "none",
-                    }}
-                  />
-                  <p
-                    className="acaoCardChangeDestaque"
-                    style={{ color: "honeydew" }}
-                  >
-                    0.21%
-                  </p>
-                </div>
-
-                <div
-                  className="acaoCardDestaque"
-                  style={{
-                    borderColor: "#F52A2A",
-                    backgroundColor: "rgba(245, 42, 42, 0.1)",
-                  }}
-                >
-                  <p
-                    className="acaoCardTitleDestaque"
-                    style={{ color: "#F52A2A" }}
-                  >
-                    KLBN4
-                  </p>
-                  <hr
-                    className="acaoCardDestaqueFirstHr"
-                    style={{
-                      backgroundColor: "#F52A2A",
-                      height: "1px",
-                      border: "none",
-                    }}
-                  />
-                  <p
-                    className="acaoCardPriceDestaque"
-                    style={{ color: "#F52A2A" }}
-                  >
-                    R$ 4.25
-                  </p>
-                  <hr
-                    className="acaoCardDestaqueSecondHr"
-                    style={{
-                      backgroundColor: "#F52A2A",
-                      height: "1px",
-                      border: "none",
-                    }}
-                  />
-                  <p
-                    className="acaoCardChangeDestaque"
-                    style={{ color: "#F52A2A" }}
-                  >
-                    -5.97%
-                  </p>
-                </div>
+                {acaoDestaque.map((acao, index) => (
+                  <AcaoDestaqueCard key={index} acao={acao} />
+                ))}
               </div>
             </div>
             <div className="acaoSearchContainer">
@@ -322,137 +192,12 @@ export default function AcoesMain() {
       ) : (
         <div className="acoesMainContainer">
           <h1 className="acaoH1">Ações da Bolsa</h1>
-          <div className="acaoDestaque">
+          <div className="acaoDestaqueSection">
             <p className="acaoDestaqueTitle">Ações em Destaque</p>
             <div className="acoesDestaque">
-              <div
-                className="acaoCardDestaque"
-                style={{
-                  borderColor: " #5dec85",
-                  backgroundColor: "rgba(93, 236, 133, 0.1)",
-                }}
-              >
-                <p
-                  className="acaoCardTitleDestaque"
-                  style={{ color: "#5dec85" }}
-                >
-                  CIEL3
-                </p>
-                <hr
-                  className="acaoCardDestaqueFirstHr"
-                  style={{
-                    backgroundColor: "#5dec85",
-                    height: "1px",
-                    border: "none",
-                  }}
-                />
-                <p
-                  className="acaoCardPriceDestaque"
-                  style={{ color: "#5dec85" }}
-                >
-                  R$ 4.34
-                </p>
-                <hr
-                  className="acaoCardDestaqueSecondHr"
-                  style={{
-                    backgroundColor: "#5dec85",
-                    height: "1px",
-                    border: "none",
-                  }}
-                />
-                <p
-                  className="acaoCardChangeDestaque"
-                  style={{ color: "#5dec85" }}
-                >
-                  7.96%
-                </p>
-              </div>
-
-              <div
-                className="acaoCardDestaque"
-                style={{
-                  borderColor: "honeydew",
-                  backgroundColor: "rgba(255, 255, 255, 0.1)",
-                }}
-              >
-                <p
-                  className="acaoCardTitleDestaque"
-                  style={{ color: "honeydew" }}
-                >
-                  ITSA4
-                </p>
-                <hr
-                  className="acaoCardDestaqueFirstHr"
-                  style={{
-                    backgroundColor: "honeydew",
-                    height: "1px",
-                    border: "none",
-                  }}
-                />
-                <p
-                  className="acaoCardPriceDestaque"
-                  style={{ color: "honeydew" }}
-                >
-                  R$ 9.75
-                </p>
-                <hr
-                  className="acaoCardDestaqueSecondHr"
-                  style={{
-                    backgroundColor: "honeydew",
-                    height: "1px",
-                    border: "none",
-                  }}
-                />
-                <p
-                  className="acaoCardChangeDestaque"
-                  style={{ color: "honeydew" }}
-                >
-                  0.21%
-                </p>
-              </div>
-
-              <div
-                className="acaoCardDestaque"
-                style={{
-                  borderColor: "#F52A2A",
-                  backgroundColor: "rgba(245, 42, 42, 0.1)",
-                }}
-              >
-                <p
-                  className="acaoCardTitleDestaque"
-                  style={{ color: "#F52A2A" }}
-                >
-                  KLBN4
-                </p>
-                <hr
-                  className="acaoCardDestaqueFirstHr"
-                  style={{
-                    backgroundColor: "#F52A2A",
-                    height: "1px",
-                    border: "none",
-                  }}
-                />
-                <p
-                  className="acaoCardPriceDestaque"
-                  style={{ color: "#F52A2A" }}
-                >
-                  R$ 4.25
-                </p>
-                <hr
-                  className="acaoCardDestaqueSecondHr"
-                  style={{
-                    backgroundColor: "#F52A2A",
-                    height: "1px",
-                    border: "none",
-                  }}
-                />
-                <p
-                  className="acaoCardChangeDestaque"
-                  style={{ color: "#F52A2A" }}
-                >
-                  -5.97%
-                </p>
-              </div>
+              {acaoDestaque.map((acao, index) => (
+                <AcaoDestaqueCard key={index} acao={acao} />
+              ))}
             </div>
           </div>
           <div className="acaoSearchContainer">
@@ -490,7 +235,6 @@ export default function AcoesMain() {
               <AcaoCard key={index} acao={acao} />
             ))}
           </div>
-          <button onClick={handleTeste}>asd</button>
         </div>
       )}
     </>

@@ -9,10 +9,6 @@
   src: url(../assets/fonts/Inter-Regular.ttf);
 }
 
-.acaoDestaque {
-  margin: 0 3rem;
-}
-
 .acaoDestaqueTitle {
   color: honeydew;
   border-bottom: 1px solid #5dec85;

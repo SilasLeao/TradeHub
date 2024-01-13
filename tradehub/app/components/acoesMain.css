@@ -37,22 +37,35 @@
   margin-left: 2rem;
 }
 
-.acaoDestaque {
+.acaoDestaqueSection {
   margin: 0 3rem;
 }
 
 .acaoDestaqueTitle {
   color: honeydew;
   border-bottom: 1px solid #5dec85;
-  max-width: fit-content;
   margin: 2rem 0 1rem 0;
 }
 
 .acoesDestaque {
   height: 125px;
+  width: 100%;
   margin-bottom: 6rem;
-  display: flex;
-  justify-content: space-between;
+  padding-bottom: 10px;
+  display: -webkit-inline-box;
+  overflow-x: scroll;
+  gap: 2rem;
+}
+
+.acoesDestaque::-webkit-scrollbar {
+  background-color: #5dec85;
+  border-radius: 20px;
+  height: 8px;
+}
+
+.acoesDestaque::-webkit-scrollbar-thumb {
+  background-color: #3f3f3f;
+  border-radius: 6px;
 }
 
 .acoesIcon {
