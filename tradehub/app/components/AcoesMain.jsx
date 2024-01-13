@@ -99,7 +99,21 @@ export default function AcoesMain() {
         ]);
 
         if (negativas && positivas) {
-          setAcaoDestaque([...negativas, ...positivas]);
+          const acoesIntercaladas = [];
+          for (
+            let i = 0;
+            i < Math.max(negativas.length, positivas.length);
+            i++
+          ) {
+            if (positivas[i]) {
+              acoesIntercaladas.push(positivas[i]);
+            }
+            if (negativas[i]) {
+              acoesIntercaladas.push(negativas[i]);
+            }
+          }
+
+          setAcaoDestaque(acoesIntercaladas);
         } else if (negativas) {
           setAcaoDestaque([...negativas]);
         } else if (positivas) {
