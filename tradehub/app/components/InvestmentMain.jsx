@@ -35,7 +35,7 @@ export default function InvestmentMain() {
   return (
     <>
       <div className="investmentMainContainer">
-        <h1>Meus Investimentos</h1>
+        <h1 className="investmentMainH1">Meus Investimentos</h1>
         <div className="tablesContainer">
           <div className="watchlist">
             <p className="tablesTitle">Watchlist</p>

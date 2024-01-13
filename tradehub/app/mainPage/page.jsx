@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import AcoesMain from "../components/AcoesMain";
 import AcaoSideBar from "../components/AcaoSideBar";
 import { createContext, useState } from "react";
-
+import NoLogin from "../components/NoLogin";
 export const InfoContainerContext = createContext();
 
 export default function MainPage() {
@@ -16,15 +16,19 @@ export default function MainPage() {
 
   return (
     <>
-      <div className="mainPageComponents">
-        <InfoContainerContext.Provider
-          value={{ infoContainerStatus, toggleInfoContainerStatus }}
-        >
-          <Navbar />
-          <AcoesMain />
-          <AcaoSideBar />
-        </InfoContainerContext.Provider>
-      </div>
+      {sessionStorage.length >= 1 ? (
+        <div className="mainPageComponents">
+          <InfoContainerContext.Provider
+            value={{ infoContainerStatus, toggleInfoContainerStatus }}
+          >
+            <Navbar />
+            <AcoesMain />
+            <AcaoSideBar />
+          </InfoContainerContext.Provider>
+        </div>
+      ) : (
+        <NoLogin />
+      )}
     </>
   );
 }

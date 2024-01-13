@@ -15,7 +15,7 @@
   height: 100vh;
 }
 
-h1 {
+.investmentMainH1 {
   color: honeydew;
   border-bottom: 1px solid #5dec85;
   max-width: fit-content;
@@ -204,6 +204,6 @@ td {
 }
 
 .investmentCardContainer::-webkit-scrollbar-thumb {
-  background-color: #363636;
+  background-color: #3f3f3f;
   border-radius: 6px;
 }

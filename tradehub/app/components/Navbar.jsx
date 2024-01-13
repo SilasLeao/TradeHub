@@ -40,6 +40,7 @@ export default function Navbar() {
   }
 
   function handleExitButton() {
+    sessionStorage.clear();
     router.push("../login");
   }
 
