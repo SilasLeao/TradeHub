@@ -1,7 +1,10 @@
 "use client";
 import "./acaoDestaqueCard.css";
 
-export default function AcaoDestaqueCard(nome, cotacao, variacao) {
+export default function AcaoDestaqueCard({ acao }) {
+  const nome = acao.stock;
+  const cotacao = acao.close;
+  const variacao = acao.change;
   return (
     <>
       <div className="acaoCardDestaque">

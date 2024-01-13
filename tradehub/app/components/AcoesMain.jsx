@@ -18,16 +18,17 @@ export const ChartTimelineContext = createContext();
 export default function AcoesMain() {
   const [codigoAcao, setCodigoAcao] = useState("");
   const [acaoCards, setAcaoCards] = useState([]);
+  const [acaoDestaqueNegativa, setAcaoDestaqueNegativa] = useState([]);
+  const [acaoDestaquePositiva, setAcaoDestaquePositiva] = useState([]);
 
   const infoContainerContext = useContext(InfoContainerContext);
 
   const fetchInvestmentData = async () => {
     try {
       const resposta = await fetch(
-        `https://brapi.dev/api/quote/${codigoAcao}?range=5y&token=8QE9zJXLMnT7w6wppfyXEs`
+        `https://brapi.dev/api/quote/${codigoAcao}?token=8QE9zJXLMnT7w6wppfyXEs`
       );
       const resultado = await resposta.json();
-      console.log(resultado);
       if (resultado.results[0].marketCap) {
         setAcaoCards((prevCards) => [
           ...prevCards,
@@ -61,18 +62,30 @@ export default function AcoesMain() {
   };
 
   useEffect(() => {
-    const fetchAcaoDestaqueData = async () => {
+    const fetchAcaoDestaqueNegativa = async () => {
       try {
-        const acaoDestaqueLista = await fetch(
+        const acaoDestaqueListaNegativa = await fetch(
           "https://brapi.dev/api/quote/list?sortBy=change&sortOrder=asc&limit=4&token=8QE9zJXLMnT7w6wppfyXEs"
         );
-        const lista = await acaoDestaqueLista.json();
-        console.log(lista);
+        const lista = await acaoDestaqueListaNegativa.json();
+        setAcaoDestaqueNegativa(lista);
       } catch (error) {
         console.error("Erro ao buscar ações, ", error);
       }
     };
-    fetchAcaoDestaqueData();
+    const fetchAcaoDestaquePositiva = async () => {
+      try {
+        const acaoDestaqueListaPositiva = await fetch(
+          "https://brapi.dev/api/quote/list?sortBy=change&sortOrder=desc&limit=4&token=8QE9zJXLMnT7w6wppfyXEs"
+        );
+        const lista = await acaoDestaqueListaPositiva.json();
+        setAcaoDestaquePositiva(lista);
+      } catch (error) {
+        console.error("Erro ao buscar ações, ", error);
+      }
+    };
+    fetchAcaoDestaqueNegativa();
+    fetchAcaoDestaquePositiva();
   }, []);
 
   let [chartTimeline, setChartTimeline] = useState(true);
