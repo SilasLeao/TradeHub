@@ -55,41 +55,6 @@
   justify-content: space-between;
 }
 
-.acaoCardDestaque {
-  border: 1px solid white;
-  border-radius: 30px;
-  width: 250px;
-  background-color: grey;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.acaoCardTitleDestaque {
-  font-size: 1.2rem;
-  margin-bottom: 6px;
-}
-
-.acaoCardDestaqueFirstHr {
-  width: 70%;
-  margin-bottom: 6px;
-}
-
-.acaoCardPriceDestaque {
-  font-size: 1.2rem;
-  margin-bottom: 6px;
-}
-
-.acaoCardDestaqueSecondHr {
-  width: 40%;
-  margin-bottom: 6px;
-}
-
-.acaoCardChangeDestaque {
-  font-size: 1.2rem;
-}
-
 .acoesIcon {
   color: #2a2a2a;
   font-size: 1.2rem;

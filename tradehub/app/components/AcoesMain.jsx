@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { InfoContainerContext } from "../mainPage/page";
 import CardInfo from "./cardInfo";
+import AcaoDestaqueCard from "./AcaoDestaqueCard";
 
 export const ChartTimelineContext = createContext();
 
@@ -23,27 +24,56 @@ export default function AcoesMain() {
   const fetchInvestmentData = async () => {
     try {
       const resposta = await fetch(
-        `https://brapi.dev/api/quote/${codigoAcao}?token=8QE9zJXLMnT7w6wppfyXEs`
+        `https://brapi.dev/api/quote/${codigoAcao}?range=5y&token=8QE9zJXLMnT7w6wppfyXEs`
       );
       const resultado = await resposta.json();
-      // console.log(resultado);
-      setAcaoCards((prevCards) => [
-        ...prevCards,
-        {
-          marketCap: resultado.results[0].marketCap
-            .toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, "."),
-          symbol: resultado.results[0].symbol,
-          fullName: resultado.results[0].longName,
-          regularMarketPrice: resultado.results[0].regularMarketPrice,
-          regularMarketChangePercent:
-            resultado.results[0].regularMarketChangePercent,
-        },
-      ]);
+      console.log(resultado);
+      if (resultado.results[0].marketCap) {
+        setAcaoCards((prevCards) => [
+          ...prevCards,
+          {
+            marketCap: resultado.results[0].marketCap
+              .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, "."),
+            symbol: resultado.results[0].symbol,
+            fullName: resultado.results[0].longName,
+            regularMarketPrice: resultado.results[0].regularMarketPrice,
+            regularMarketChangePercent:
+              resultado.results[0].regularMarketChangePercent,
+          },
+        ]);
+      } else {
+        setAcaoCards((prevCards) => [
+          ...prevCards,
+          {
+            marketCap: "Não informado.",
+            symbol: resultado.results[0].symbol,
+            fullName: "Não informado.",
+            regularMarketPrice: resultado.results[0].regularMarketPrice,
+            regularMarketChangePercent:
+              resultado.results[0].regularMarketChangePercent,
+          },
+        ]);
+      }
     } catch (error) {
       console.error("Erro ao buscar dados:", error);
     }
   };
+
+  useEffect(() => {
+    const fetchAcaoDestaqueData = async () => {
+      try {
+        const acaoDestaqueLista = await fetch(
+          "https://brapi.dev/api/quote/list?sortBy=change&sortOrder=asc&limit=4&token=8QE9zJXLMnT7w6wppfyXEs"
+        );
+        const lista = await acaoDestaqueLista.json();
+        console.log(lista);
+      } catch (error) {
+        console.error("Erro ao buscar ações, ", error);
+      }
+    };
+    fetchAcaoDestaqueData();
+  }, []);
 
   let [chartTimeline, setChartTimeline] = useState(true);
 

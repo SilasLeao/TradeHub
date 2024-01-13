@@ -11,7 +11,9 @@ export default function CardInfo() {
   const codigoAcao = sessionStorage.getItem("codigoAcaoPesquisada");
   const nomeAcao = sessionStorage.getItem("nomeAcaoPesquisada");
   let marketCap = sessionStorage.getItem("marketCap");
-  marketCap = `R$ ${marketCap},00`;
+  if (marketCap !== "Não informado.") {
+    marketCap = `R$ ${marketCap},00`;
+  }
 
   function handleExit() {
     infoContainerContext.toggleInfoContainerStatus();
@@ -26,8 +28,6 @@ export default function CardInfo() {
     }
     chartTimelineContext.toggleChartTimeline();
   }
-
-  console.log(chartTimelineContext.chartTimeline);
 
   return (
     <>
