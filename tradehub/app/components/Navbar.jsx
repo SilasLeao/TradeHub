@@ -46,9 +46,8 @@ export default function Navbar() {
   const [nomeUsuario, setNomeUsuario] = useState("");
   useEffect(() => {
     const nomeUsuarioSessionStorage = sessionStorage.getItem("nomeUsuario");
-    setNomeUsuario(nomeUsuarioSessionStorage); //
+    setNomeUsuario(nomeUsuarioSessionStorage);
   }, []);
-  console.log(infoContainerContext.infoContainerStatus);
   return (
     <div
       className={`${
