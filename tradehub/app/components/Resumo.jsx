@@ -6,24 +6,65 @@ import { createClient } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 
 export default function Resumo() {
+  let valorAplicado = 0;
+  let rendimentoTotal = 0;
+  let rendimentoParcial = 0;
+  let rendimentoPorcentagem = 0;
   const supabaseUrl = "https://njjjjpkgxodlrhrysbev.supabase.co";
   const supabaseKey =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5qampqcGtneG9kbHJocnlzYmV2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDE4MTg1MzQsImV4cCI6MjAxNzM5NDUzNH0.BJ8RAHt3jHIAJgq9vD1P8_gaWI-R-zn9AbGN71zyItc";
   const supabase = createClient(supabaseUrl, supabaseKey);
   const [usuarioData, setUsuarioData] = useState([]);
+  const [investimentosUsuario, setInvestimentosUsuario] = useState([]);
 
   useEffect(() => {
-    const fetchUserData = async () => {
+    const fetchData = async () => {
       try {
-        const { data, error } = await supabase.from("Usuario").select("*");
-        setUsuarioData(data);
+        const userDataPromise = supabase.from("Usuario").select("*");
+        const investmentsDataPromise = supabase
+          .from("Investimentos")
+          .select("*");
+
+        const [userData, investmentsData] = await Promise.all([
+          userDataPromise,
+          investmentsDataPromise,
+        ]);
+
+        setUsuarioData(userData.data);
+        setInvestimentosUsuario(investmentsData.data);
       } catch (error) {
         console.error("Erro:", error);
       }
     };
 
-    fetchUserData();
+    fetchData();
   }, []);
+
+  function calculateUserData() {
+    const fetchPromises = investimentosUsuario.map(async (investimento) => {
+      valorAplicado += investimento.valor_aplicado;
+      const codigoAcao = investimento.simbolo;
+      const resposta = await fetch(
+        `https://brapi.dev/api/quote/${codigoAcao}?token=8QE9zJXLMnT7w6wppfyXEs`
+      );
+      const resultado = await resposta.json();
+      rendimentoTotal +=
+        resultado.results[0].regularMarketPrice * investimento.quantidade;
+      rendimentoTotal = parseFloat(rendimentoTotal.toFixed(2));
+      rendimentoParcial = (rendimentoTotal - valorAplicado).toFixed(2);
+      rendimentoPorcentagem = (
+        (rendimentoParcial / valorAplicado) *
+        100
+      ).toFixed(2);
+      console.log(
+        `aplicado: ${valorAplicado}, total: ${rendimentoTotal}, parcial: ${rendimentoParcial}, porcentagem: ${rendimentoPorcentagem}`
+      );
+    });
+
+    return Promise.all(fetchPromises);
+  }
+
+  calculateUserData();
 
   if (!usuarioData || usuarioData.length === 0) {
     return <h1>Loading...</h1>;
@@ -33,8 +74,8 @@ export default function Resumo() {
   let saldo = `R$ ${usuarioData[0].saldo}`;
   let totalInvestido = `R$ ${usuarioData[0].total_investido}`;
   let rendimentoBruto = `R$ ${usuarioData[0].rendimento_bruto}`;
-  let rendimentoParcial = `R$ ${usuarioData[0].rendimento_parcial}`;
-  let rendimentoPorcentagem =
+  rendimentoParcial = `R$ ${usuarioData[0].rendimento_parcial}`;
+  rendimentoPorcentagem =
     usuarioData[0].rendimento_porcentagem > 0
       ? `+${usuarioData[0].rendimento_porcentagem}%`
       : `${usuarioData[0].rendimento_porcentagem}%`;
