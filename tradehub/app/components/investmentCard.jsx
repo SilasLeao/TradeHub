@@ -61,7 +61,7 @@ export default function InvestmentCard({ investimento }) {
         >
           {rentabilidadeTotal !== undefined
             ? rentabilidadeTotal < valorAplicado
-              ? `-${variacao}%`
+              ? `${variacao}%`
               : `${variacao}%`
             : "Loading..."}
         </p>
