@@ -5,42 +5,50 @@ import {
   faInfoCircle,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
-import classNames from "classnames";
+import { useState, useEffect } from "react";
 export default function InvestmentCard({ investimento }) {
+  const [rentabilidade, setRentabilidade] = useState();
   const nome = investimento.simbolo;
   const valorAplicado = investimento.valor_aplicado;
   const quantidade = investimento.quantidade;
-  let rentabilidade = 0;
-  const fetchInvestmentData = async () => {
-    try {
-      const resposta = await fetch(
-        `https://brapi.dev/api/quote/${nome}?token=8QE9zJXLMnT7w6wppfyXEs`
-      );
-      const resultado = await resposta.json();
-      rentabilidade = resultado.results[0].regularMarketPrice * quantidade;
-      console.log(rentabilidade);
-    } catch (error) {
-      console.error("Erro ao buscar dados:", error);
-    }
-  };
-  fetchInvestmentData();
 
-  // const corTextoClass = classNames({
-  //   vermelho: variacao < 0,
-  //   verde: variacao >= 0,
-  // });
-
+  useEffect(() => {
+    const fetchInvestmentData = async () => {
+      try {
+        const resposta = await fetch(
+          `https://brapi.dev/api/quote/${nome}?token=8QE9zJXLMnT7w6wppfyXEs`
+        );
+        const resultado = await resposta.json();
+        setRentabilidade(resultado.results[0].regularMarketPrice * quantidade);
+      } catch (error) {
+        console.error("Erro ao buscar dados:", error);
+      }
+    };
+    fetchInvestmentData();
+  }, []);
   return (
     <>
       <div className="investmentCard">
         <p className="investmentCardTitle">{nome}</p>
-        <p className="investmentCardPrice">
-          {/* R$ {Number(valor * quantidade).toFixed(2)} */}
+        <p
+          className={
+            rentabilidade < valorAplicado
+              ? "investmentCardPrice vermelho"
+              : "investmentCardPrice verde"
+          }
+        >
+          {rentabilidade !== undefined
+            ? `R$ ${rentabilidade.toFixed(2)}`
+            : "Loading..."}
         </p>
         <hr className="investmentCardHr" />
-        <p className={`investmentCardChange`}>
-          {" "}
-          {/* corTextoClass*/}
+        <p
+          className={
+            rentabilidade < valorAplicado
+              ? "investmentCardChange vermelho"
+              : "investmentCardChange verde"
+          }
+        >
           {/* {Number(variacao).toFixed(2)}% */}
         </p>
         <div className="investmentCardBtns">
