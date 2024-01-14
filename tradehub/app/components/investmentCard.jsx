@@ -7,7 +7,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 export default function InvestmentCard({ investimento }) {
-  const [rentabilidade, setRentabilidade] = useState();
+  const [rentabilidadeTotal, setRentabilidadeTotal] = useState();
+  const [rentabilidadeParcial, setRentabilidadeParcial] = useState();
+  const [variacao, setVariacao] = useState();
   const nome = investimento.simbolo;
   const valorAplicado = investimento.valor_aplicado;
   const quantidade = investimento.quantidade;
@@ -19,37 +21,49 @@ export default function InvestmentCard({ investimento }) {
           `https://brapi.dev/api/quote/${nome}?token=8QE9zJXLMnT7w6wppfyXEs`
         );
         const resultado = await resposta.json();
-        setRentabilidade(resultado.results[0].regularMarketPrice * quantidade);
+        const total = resultado.results[0].regularMarketPrice * quantidade;
+        setRentabilidadeTotal(total);
+        setRentabilidadeParcial(total - valorAplicado);
+        const porcentagem = (
+          (rentabilidadeParcial / valorAplicado) *
+          100
+        ).toFixed(2);
+        setVariacao(porcentagem);
       } catch (error) {
         console.error("Erro ao buscar dados:", error);
       }
     };
     fetchInvestmentData();
-  }, []);
+  }, [nome, quantidade, valorAplicado, rentabilidadeParcial]);
+
   return (
     <>
       <div className="investmentCard">
         <p className="investmentCardTitle">{nome}</p>
         <p
           className={
-            rentabilidade < valorAplicado
+            rentabilidadeTotal < valorAplicado
               ? "investmentCardPrice vermelho"
               : "investmentCardPrice verde"
           }
         >
-          {rentabilidade !== undefined
-            ? `R$ ${rentabilidade.toFixed(2)}`
+          {rentabilidadeTotal !== undefined
+            ? `R$ ${rentabilidadeTotal.toFixed(2)}`
             : "Loading..."}
         </p>
         <hr className="investmentCardHr" />
         <p
           className={
-            rentabilidade < valorAplicado
+            rentabilidadeTotal < valorAplicado
               ? "investmentCardChange vermelho"
               : "investmentCardChange verde"
           }
         >
-          {/* {Number(variacao).toFixed(2)}% */}
+          {rentabilidadeTotal !== undefined
+            ? rentabilidadeTotal < valorAplicado
+              ? `-${variacao}%`
+              : `${variacao}%`
+            : "Loading..."}
         </p>
         <div className="investmentCardBtns">
           <FontAwesomeIcon className="investmentCardIcon" icon={faInfoCircle} />
