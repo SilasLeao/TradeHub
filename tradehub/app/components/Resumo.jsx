@@ -94,16 +94,14 @@ export default function Resumo() {
     return <h1>Loading...</h1>;
   }
 
-  // ... rest of your component code
-
   let conta = usuarioData[0].conta_id;
   let saldo = `R$ ${usuarioData[0].saldo}`;
-  let valorAplicado = rendimentoData.valorAplicado + 4000;
+  let valorAplicado = rendimentoData.valorAplicado;
   let valorAplicadoFormatted = `R$ ${valorAplicado}`;
   let rendimentoTotal = rendimentoData.rendimentoTotal;
   let rendimentoTotalFormatted = `R$ ${rendimentoTotal}`;
   let rendimentoParcial = rendimentoData.rendimentoParcial;
-  let rendimentoParcialFormatted = `R$ ${rendimentoParcial}`;
+  let rendimentoParcialFormatted = `${rendimentoParcial}`;
   let rendimentoPorcentagem = "0%";
   if (rendimentoData.rendimentoPorcentagem !== undefined) {
     rendimentoPorcentagem =
@@ -166,12 +164,12 @@ export default function Resumo() {
           <span className="resumoWhiteText">Rendimento Parcial</span>
           <span
             className={`${
-              rendimentoParcial > 0
+              rendimentoTotal > valorAplicado
                 ? "resumoNumeroVerde"
                 : "resumoNumeroVermelho"
             }`}
           >
-            {rendimentoParcialFormatted}
+            {`R$ ${rendimentoParcialFormatted}`}
           </span>
         </div>
         <div className="rendimentoPorcento">
