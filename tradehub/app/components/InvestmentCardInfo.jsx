@@ -16,7 +16,26 @@ export default function InvestmentCardInfo() {
   let rendimentoTotal = sessionStorage.getItem("rendimentoTotal");
   let rendimentoParcial = sessionStorage.getItem("rendimentoParcial");
   let rendimentoPorcentagem = sessionStorage.getItem("rendimentoPorcentagem");
-
+  function handleExit() {
+    infoContainerContext.toggleInfoContainerStatus();
+  }
+  marketCap = parseFloat(marketCap)
+    .toFixed(2)
+    .replace(".", ",")
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  valorAplicado = parseFloat(valorAplicado)
+    .toFixed(2)
+    .replace(".", ",")
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  valorAcao = parseFloat(valorAcao).toFixed(2).replace(".", ",");
+  rendimentoParcial = parseFloat(rendimentoParcial)
+    .toFixed(2)
+    .replace(".", ",")
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  rendimentoPorcentagem = parseFloat(rendimentoPorcentagem)
+    .toFixed(2)
+    .replace(".", ",")
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   return (
     <>
       <div className="investmentInfoContainer">
