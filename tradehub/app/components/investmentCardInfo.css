@@ -63,10 +63,13 @@
 
 .investmentInfo {
   color: honeydew;
+  width: 60%;
 }
 
 .investmentInfo span {
   display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
 }
 
 .investmentVermelho {

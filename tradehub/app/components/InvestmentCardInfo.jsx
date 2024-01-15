@@ -16,6 +16,7 @@ export default function InvestmentCardInfo() {
   let rendimentoTotal = sessionStorage.getItem("rendimentoTotal");
   let rendimentoParcial = sessionStorage.getItem("rendimentoParcial");
   let rendimentoPorcentagem = sessionStorage.getItem("rendimentoPorcentagem");
+  let custoMedio = valorAplicado / quantidade;
   function handleExit() {
     infoContainerContext.toggleInfoContainerStatus();
   }
@@ -40,6 +41,10 @@ export default function InvestmentCardInfo() {
     .toFixed(2)
     .replace(".", ",")
     .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  let custoMedioFormatted = parseFloat(custoMedio)
+    .toFixed(2)
+    .replace(".", ",")
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   return (
     <>
       <div className="investmentInfoContainer">
@@ -50,21 +55,25 @@ export default function InvestmentCardInfo() {
         <hr id="investmentFirstInfoHr" />
         <div className="investmentInfoMarketCap">
           <p>Capitalização de Mercado</p>
-          <p>{marketCapFormatted}</p>
+          <p>R$ {marketCapFormatted}</p>
         </div>
         <hr id="investmentSecondInfoHr" />
         <div className="investmentInfo">
           <span>
             <p>Total Investido</p>
-            <p>{valorAplicadoFormatted}</p>
+            <p>R$ {valorAplicadoFormatted}</p>
           </span>
           <span>
             <p>Quantidade de Ações</p>
             <p>{quantidade}</p>
           </span>
           <span>
-            <p>Valor Atual por Ação</p>
-            <p>{valorAcaoFormatted}</p>
+            <p>Custo Médio</p>
+            <p>R$ {custoMedioFormatted}</p>
+          </span>
+          <span>
+            <p>Preço Atual</p>
+            <p>R$ {valorAcaoFormatted}</p>
           </span>
           <span>
             <p>Rendimento Total</p>
