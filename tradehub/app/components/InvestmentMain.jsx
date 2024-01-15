@@ -43,156 +43,162 @@ export default function InvestmentMain() {
           <div className="backgroundContainer">
             <InvestmentCardInfo />
           </div>
-          <h1 className="investmentMainH1">Meus Investimentos</h1>
-          <div className="tablesContainer">
-            <div className="watchlist">
-              <p className="tablesTitle">Watchlist</p>
-              <table className="watchlistTable">
-                <thead>
-                  <tr>
-                    <th className="roundLeftTableCorner">Simbolo</th>
-                    <th>Cotação</th>
-                    <th className="roundRightTableCorner">Rendimento</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th className="whiteTableText">HGRU11</th>
-                    <td className="whiteTableText">R$ 130.92</td>
-                    <td className="greenTableText">0.71%</td>
-                  </tr>
-                  <tr>
-                    <th className="whiteTableText">IRDM11</th>
-                    <td className="whiteTableText">R$ 75.72</td>
-                    <td className="greenTableText">2.75%</td>
-                  </tr>
-                  <tr>
-                    <th className="whiteTableText">AAPL34</th>
-                    <td className="whiteTableText">R$ 46.67</td>
-                    <td className="greenTableText">0.39%</td>
-                  </tr>
-                  <tr>
-                    <th className="whiteTableText">SPTW11</th>
-                    <td className="whiteTableText">R$ 41.66</td>
-                    <td className="greenTableText">0.51%</td>
-                  </tr>
-                  <tr>
-                    <th className="whiteTableText">PETR4</th>
-                    <td className="whiteTableText">R$ 34.91</td>
-                    <td className="redTableText">-2.13%</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div className="expandirContainer">
-                <div className="expandir">
-                  <span>Expandir</span>
-                  <FontAwesomeIcon
-                    className="expandirIcon"
-                    icon={faCaretDown}
-                  />
+          <div
+            className={`${
+              infoContainerContext.infoContainerStatus ? "blurEffect" : ""
+            } investmentMainContainerContent`}
+          >
+            <h1 className="investmentMainH1">Meus Investimentos</h1>
+            <div className="tablesContainer">
+              <div className="watchlist">
+                <p className="tablesTitle">Watchlist</p>
+                <table className="watchlistTable">
+                  <thead>
+                    <tr>
+                      <th className="roundLeftTableCorner">Simbolo</th>
+                      <th>Cotação</th>
+                      <th className="roundRightTableCorner">Rendimento</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th className="whiteTableText">HGRU11</th>
+                      <td className="whiteTableText">R$ 130.92</td>
+                      <td className="greenTableText">0.71%</td>
+                    </tr>
+                    <tr>
+                      <th className="whiteTableText">IRDM11</th>
+                      <td className="whiteTableText">R$ 75.72</td>
+                      <td className="greenTableText">2.75%</td>
+                    </tr>
+                    <tr>
+                      <th className="whiteTableText">AAPL34</th>
+                      <td className="whiteTableText">R$ 46.67</td>
+                      <td className="greenTableText">0.39%</td>
+                    </tr>
+                    <tr>
+                      <th className="whiteTableText">SPTW11</th>
+                      <td className="whiteTableText">R$ 41.66</td>
+                      <td className="greenTableText">0.51%</td>
+                    </tr>
+                    <tr>
+                      <th className="whiteTableText">PETR4</th>
+                      <td className="whiteTableText">R$ 34.91</td>
+                      <td className="redTableText">-2.13%</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div className="expandirContainer">
+                  <div className="expandir">
+                    <span>Expandir</span>
+                    <FontAwesomeIcon
+                      className="expandirIcon"
+                      icon={faCaretDown}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="transacoes">
+                <p className="tablesTitle">Últimas Transações</p>
+                <table className="transacaoTable">
+                  <thead>
+                    <tr>
+                      <th className="roundLeftTableCorner">Simbolo</th>
+                      <th>Tipo</th>
+                      <th>Quantidade</th>
+                      <th>Preço Uni.</th>
+                      <th className="roundRightTableCorner">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th className="whiteTableText">HGRU11</th>
+                      <td className="greenTableText">Compra</td>
+                      <td className="whiteTableText">11</td>
+                      <td className="whiteTableText">R$ 130.92</td>
+                      <td className="redTableText">- R$ 1.440,12</td>
+                    </tr>
+                    <tr>
+                      <th className="whiteTableText">IRDM11</th>
+                      <td className="redTableText">Venda</td>
+                      <td className="whiteTableText">13</td>
+                      <td className="whiteTableText">R$ 75.72</td>
+                      <td className="greenTableText">+ R$ 984.36</td>
+                    </tr>
+                    <tr>
+                      <th className="whiteTableText">AAPL34</th>
+                      <td className="greenTableText">Compra</td>
+                      <td className="whiteTableText">23</td>
+                      <td className="whiteTableText">R$ 46.67</td>
+                      <td className="redTableText">- R$ 1.073,41</td>
+                    </tr>
+                    <tr>
+                      <th className="whiteTableText">SPTW11</th>
+                      <td className="greenTableText">Compra</td>
+                      <td className="whiteTableText">17</td>
+                      <td className="whiteTableText">R$ 41.66</td>
+                      <td className="redTableText">- R$ 708.22</td>
+                    </tr>
+                    <tr>
+                      <th className="whiteTableText">TRXF11</th>
+                      <td className="redTableText">Venda</td>
+                      <td className="whiteTableText">31</td>
+                      <td className="whiteTableText">R$ 107.97</td>
+                      <td className="greenTableText">+ R$ 3.347,07</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div className="expandirContainer">
+                  <div className="expandir">
+                    <span>Expandir</span>
+                    <FontAwesomeIcon
+                      className="expandirIcon"
+                      icon={faCaretDown}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="transacoes">
-              <p className="tablesTitle">Últimas Transações</p>
-              <table className="transacaoTable">
-                <thead>
-                  <tr>
-                    <th className="roundLeftTableCorner">Simbolo</th>
-                    <th>Tipo</th>
-                    <th>Quantidade</th>
-                    <th>Preço Uni.</th>
-                    <th className="roundRightTableCorner">Total</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th className="whiteTableText">HGRU11</th>
-                    <td className="greenTableText">Compra</td>
-                    <td className="whiteTableText">11</td>
-                    <td className="whiteTableText">R$ 130.92</td>
-                    <td className="redTableText">- R$ 1.440,12</td>
-                  </tr>
-                  <tr>
-                    <th className="whiteTableText">IRDM11</th>
-                    <td className="redTableText">Venda</td>
-                    <td className="whiteTableText">13</td>
-                    <td className="whiteTableText">R$ 75.72</td>
-                    <td className="greenTableText">+ R$ 984.36</td>
-                  </tr>
-                  <tr>
-                    <th className="whiteTableText">AAPL34</th>
-                    <td className="greenTableText">Compra</td>
-                    <td className="whiteTableText">23</td>
-                    <td className="whiteTableText">R$ 46.67</td>
-                    <td className="redTableText">- R$ 1.073,41</td>
-                  </tr>
-                  <tr>
-                    <th className="whiteTableText">SPTW11</th>
-                    <td className="greenTableText">Compra</td>
-                    <td className="whiteTableText">17</td>
-                    <td className="whiteTableText">R$ 41.66</td>
-                    <td className="redTableText">- R$ 708.22</td>
-                  </tr>
-                  <tr>
-                    <th className="whiteTableText">TRXF11</th>
-                    <td className="redTableText">Venda</td>
-                    <td className="whiteTableText">31</td>
-                    <td className="whiteTableText">R$ 107.97</td>
-                    <td className="greenTableText">+ R$ 3.347,07</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div className="expandirContainer">
-                <div className="expandir">
-                  <span>Expandir</span>
-                  <FontAwesomeIcon
-                    className="expandirIcon"
-                    icon={faCaretDown}
-                  />
+            <div className="investmentSearchContainer">
+              <div className="investmentSearchHeader">
+                <div className="investmentSearchBar">
+                  <button>
+                    <FontAwesomeIcon
+                      className="investmentSearchIcon"
+                      icon={faMagnifyingGlass}
+                    />
+                  </button>
+                  <input type="text" placeholder="Pesquisar" />
                 </div>
-              </div>
-            </div>
-          </div>
-          <div className="investmentSearchContainer">
-            <div className="investmentSearchHeader">
-              <div className="investmentSearchBar">
-                <button>
+                <span id="investmentMainWhiteText">Filtrar por:</span>
+                <button className="investmentFilterButton">
+                  Valor
                   <FontAwesomeIcon
                     className="investmentSearchIcon"
-                    icon={faMagnifyingGlass}
+                    icon={faCaretDown}
                   />
                 </button>
-                <input type="text" placeholder="Pesquisar" />
+                <button className="investmentFilterButton">
+                  Dividendos
+                  <FontAwesomeIcon
+                    className="investmentSearchIcon"
+                    icon={faCaretDown}
+                  />
+                </button>
+                <button className="investmentFilterButton">
+                  Crescimento
+                  <FontAwesomeIcon
+                    className="investmentSearchIcon"
+                    icon={faCaretDown}
+                  />
+                </button>
               </div>
-              <span id="investmentMainWhiteText">Filtrar por:</span>
-              <button className="investmentFilterButton">
-                Valor
-                <FontAwesomeIcon
-                  className="investmentSearchIcon"
-                  icon={faCaretDown}
-                />
-              </button>
-              <button className="investmentFilterButton">
-                Dividendos
-                <FontAwesomeIcon
-                  className="investmentSearchIcon"
-                  icon={faCaretDown}
-                />
-              </button>
-              <button className="investmentFilterButton">
-                Crescimento
-                <FontAwesomeIcon
-                  className="investmentSearchIcon"
-                  icon={faCaretDown}
-                />
-              </button>
             </div>
-          </div>
-          <div className="investmentCardContainer">
-            {investmentData.map((investimento, index) => (
-              <InvestmentCard key={index} investimento={investimento} />
-            ))}
+            <div className="investmentCardContainer">
+              {investmentData.map((investimento, index) => (
+                <InvestmentCard key={index} investimento={investimento} />
+              ))}
+            </div>
           </div>
         </div>
       ) : (

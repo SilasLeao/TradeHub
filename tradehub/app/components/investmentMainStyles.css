@@ -15,6 +15,20 @@
   height: 100vh;
 }
 
+.blurEffect {
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+.backgroundContainer {
+  position: absolute;
+  width: 1100px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .investmentMainH1 {
   color: honeydew;
   border-bottom: 1px solid #5dec85;
@@ -188,7 +202,7 @@ td {
 .investmentCardContainer {
   margin-top: 1rem;
   display: flex;
-  height: 35%;
+  height: 36vh;
   width: 100%;
   justify-content: center;
   flex-wrap: wrap;
