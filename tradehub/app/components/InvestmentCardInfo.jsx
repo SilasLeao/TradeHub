@@ -19,20 +19,24 @@ export default function InvestmentCardInfo() {
   function handleExit() {
     infoContainerContext.toggleInfoContainerStatus();
   }
-  marketCap = parseFloat(marketCap)
+  marketCapFormatted = parseFloat(marketCapFormatted)
     .toFixed(2)
     .replace(".", ",")
     .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  valorAplicado = parseFloat(valorAplicado)
+  valorAplicadoFormatted = parseFloat(valorAplicadoFormatted)
     .toFixed(2)
     .replace(".", ",")
     .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  valorAcao = parseFloat(valorAcao).toFixed(2).replace(".", ",");
-  rendimentoParcial = parseFloat(rendimentoParcial)
+  valorAcaoFormatted = parseFloat(valorAcaoFormatted).toFixed(2).replace(".", ",");
+  rendimentoParcialFormatted = parseFloat(rendimentoParcialFormatted)
     .toFixed(2)
     .replace(".", ",")
     .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  rendimentoPorcentagem = parseFloat(rendimentoPorcentagem)
+    rendimentoTotalFormatted = parseFloat(rendimentoTotalFormatted)
+    .toFixed(2)
+    .replace(".", ",")
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  rendimentoPorcentagemFormatted = parseFloat(rendimentoPorcentagemFormatted)
     .toFixed(2)
     .replace(".", ",")
     .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -46,13 +50,13 @@ export default function InvestmentCardInfo() {
         <hr id="investmentFirstInfoHr" />
         <div className="investmentInfoMarketCap">
           <p>Capitalização de Mercado</p>
-          <p>{marketCap}</p>
+          <p>{marketCapFormatted}</p>
         </div>
         <hr id="investmentSecondInfoHr" />
         <div className="investmentInfo">
           <span>
             <p>Total Investido</p>
-            <p>{valorAplicado}</p>
+            <p>{valorAplicadoFormatted}</p>
           </span>
           <span>
             <p>Quantidade de Ações</p>
@@ -60,19 +64,19 @@ export default function InvestmentCardInfo() {
           </span>
           <span>
             <p>Valor Atual por Ação</p>
-            <p>{valorAcao}</p>
+            <p>{valorAcaoFormatted}</p>
           </span>
           <span>
             <p>Rendimento Total</p>
-            <p>{rendimentoTotal}</p>
+            <p className={}>{rendimentoTotalFormatted}</p>
           </span>
           <span>
             <p>Rendimento Parcial</p>
-            <p>{rendimentoParcial}</p>
+            <p>{rendimentoParcialFormatted}</p>
           </span>
           <span>
             <p>Rendimento Parcial(%)</p>
-            <p>{rendimentoPorcentagem}</p>
+            <p>{rendimentoPorcentagemFormatted}</p>
           </span>
         </div>
         <div className="investmentInfoBtns">

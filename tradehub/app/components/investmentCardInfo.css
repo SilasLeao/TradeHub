@@ -61,6 +61,22 @@
   border: none;
 }
 
+.investmentInfo {
+  color: honeydew;
+}
+
+.investmentInfo span {
+  display: flex;
+}
+
+.investmentVermelho {
+  color: #f52a2a;
+}
+
+.investmentVerde {
+  color: #5dec85;
+}
+
 .investmentInfoBtns {
   width: 100%;
   display: flex;

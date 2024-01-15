@@ -61,7 +61,7 @@ export default function InvestmentCard({ investimento }) {
     sessionStorage.setItem("valorAplicado", valorAplicado);
     sessionStorage.setItem("quantidade", quantidade);
     sessionStorage.setItem("valorAcao", valorAcao);
-    sessionStorage.setItem("rendimentoTotal", rentabilidadeTotalFormatted);
+    sessionStorage.setItem("rendimentoTotal", rentabilidadeTotal);
     sessionStorage.setItem("rendimentoParcial", rentabilidadeParcial);
     sessionStorage.setItem("rendimentoPorcentagem", variacao);
     infoContainerContext.toggleInfoContainerStatus();
