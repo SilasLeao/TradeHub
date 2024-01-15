@@ -90,8 +90,6 @@
 }
 
 #quantidade {
-  color: #5dec85;
-  border: 1px solid #5dec85;
-  padding: 0.6rem;
-  border-radius: 100%;
+  color: honeydew;
+  border-bottom: 1px solid #5dec85;
 }

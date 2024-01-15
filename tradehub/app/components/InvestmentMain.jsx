@@ -19,7 +19,9 @@ export default function InvestmentMain() {
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5qampqcGtneG9kbHJocnlzYmV2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDE4MTg1MzQsImV4cCI6MjAxNzM5NDUzNH0.BJ8RAHt3jHIAJgq9vD1P8_gaWI-R-zn9AbGN71zyItc";
   const supabase = createClient(supabaseUrl, supabaseKey);
 
+  const [searchFilter, setSearchFilter] = useState("");
   const [investmentData, setInvestmentData] = useState([]);
+  const [filteredInvestments, setFilteredInvestments] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,6 +37,26 @@ export default function InvestmentMain() {
 
     fetchData();
   }, []);
+
+  const handleSearch = () => {
+    const filtered = investmentData.filter((investment) => {
+      return investment.simbolo
+        .toLowerCase()
+        .includes(searchFilter.toLowerCase());
+    });
+    setFilteredInvestments(filtered);
+  };
+
+  function handleChange(event) {
+    setSearchFilter(event.target.value);
+  }
+
+  useEffect(() => {
+    handleSearch();
+  }, [investmentData, searchFilter]);
+
+  const renderInvestments =
+    searchFilter === "" ? investmentData : filteredInvestments;
 
   return (
     <>
@@ -168,7 +190,11 @@ export default function InvestmentMain() {
                       icon={faMagnifyingGlass}
                     />
                   </button>
-                  <input type="text" placeholder="Pesquisar" />
+                  <input
+                    type="text"
+                    placeholder="Pesquisar"
+                    onChange={handleChange}
+                  />
                 </div>
                 <span id="investmentMainWhiteText">Filtrar por:</span>
                 <button className="investmentFilterButton">
@@ -195,7 +221,7 @@ export default function InvestmentMain() {
               </div>
             </div>
             <div className="investmentCardContainer">
-              {investmentData.map((investimento, index) => (
+              {renderInvestments.map((investimento, index) => (
                 <InvestmentCard key={index} investimento={investimento} />
               ))}
             </div>
@@ -323,7 +349,11 @@ export default function InvestmentMain() {
                     icon={faMagnifyingGlass}
                   />
                 </button>
-                <input type="text" placeholder="Pesquisar" />
+                <input
+                  type="text"
+                  placeholder="Pesquisar"
+                  onChange={handleChange}
+                />
               </div>
               <span id="investmentMainWhiteText">Filtrar por:</span>
               <button className="investmentFilterButton">
@@ -350,7 +380,7 @@ export default function InvestmentMain() {
             </div>
           </div>
           <div className="investmentCardContainer">
-            {investmentData.map((investimento, index) => (
+            {renderInvestments.map((investimento, index) => (
               <InvestmentCard key={index} investimento={investimento} />
             ))}
           </div>
