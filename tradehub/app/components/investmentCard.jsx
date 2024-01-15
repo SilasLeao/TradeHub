@@ -12,6 +12,8 @@ export default function InvestmentCard({ investimento }) {
   const [rentabilidadeTotal, setRentabilidadeTotal] = useState();
   const [rentabilidadeParcial, setRentabilidadeParcial] = useState();
   const [valorAcao, setValorAcao] = useState();
+  const [nomeCompletoAcao, setNomeCompletoAcao] = useState();
+  const [marketCap, setMarketCap] = useState();
   const [variacao, setVariacao] = useState();
   const nome = investimento.simbolo;
   const valorAplicado = investimento.valor_aplicado;
@@ -25,6 +27,8 @@ export default function InvestmentCard({ investimento }) {
         );
         const resultado = await resposta.json();
         setValorAcao(resultado.results[0].regularMarketPrice);
+        setNomeCompletoAcao(resultado.results[0].longName);
+        setMarketCap(resultado.results[0].marketCap);
         const total = resultado.results[0].regularMarketPrice * quantidade;
         setRentabilidadeTotal(total);
         setRentabilidadeParcial(total - valorAplicado);
@@ -52,9 +56,14 @@ export default function InvestmentCard({ investimento }) {
 
   function handleInfoButton() {
     sessionStorage.setItem("codigoAcaoPesquisada", nome);
-    sessionStorage.setItem("nomeAcaoPesquisada", fullName);
+    sessionStorage.setItem("nomeAcaoPesquisada", nomeCompletoAcao);
     sessionStorage.setItem("marketCap", marketCap);
+    sessionStorage.setItem("valorAplicado", valorAplicado);
+    sessionStorage.setItem("quantidade", quantidade);
     sessionStorage.setItem("valorAcao", valorAcao);
+    sessionStorage.setItem("rendimentoTotal", rentabilidadeTotalFormatted);
+    sessionStorage.setItem("rendimentoParcial", rentabilidadeParcial);
+    sessionStorage.setItem("rendimentoPorcentagem", variacao);
     infoContainerContext.toggleInfoContainerStatus();
   }
 
