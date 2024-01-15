@@ -53,7 +53,9 @@ export default function AcaoDestaqueCard({ acao }) {
               : "variacaoDestaqueVerde acaoCardChangeDestaque"
           }
         >
-          {variacao.toFixed(2)}%
+          {variacao > 0
+            ? `+${variacao.toFixed(2)}%`
+            : `${variacao.toFixed(2)}%`}
         </p>
       </div>
     </>

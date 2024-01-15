@@ -13,7 +13,9 @@ export default function DestaqueComponentInfo({ acao }) {
       <div className={variacao < 0 ? "destaqueVermelho" : "destaqueVerde"}>
         <FontAwesomeIcon icon={variacao < 0 ? faArrowDown : faArrowUp} />
         <span>
-          {nome} {variacao.toFixed(2)}%
+          {variacao > 0
+            ? `${nome} +${variacao.toFixed(2)}%`
+            : `${nome} ${variacao.toFixed(2)}%`}
         </span>
       </div>
     </>
