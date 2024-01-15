@@ -84,29 +84,29 @@ export default function InvestmentMain() {
                   </thead>
                   <tbody>
                     <tr>
-                      <th className="whiteTableText">HGRU11</th>
-                      <td className="whiteTableText">R$ 130.92</td>
-                      <td className="greenTableText">0.71%</td>
+                      <th className=""></th>
+                      <td className=""></td>
+                      <td className=""></td>
                     </tr>
                     <tr>
-                      <th className="whiteTableText">IRDM11</th>
-                      <td className="whiteTableText">R$ 75.72</td>
-                      <td className="greenTableText">2.75%</td>
+                      <th className=""></th>
+                      <td className=""></td>
+                      <td className=""></td>
                     </tr>
                     <tr>
-                      <th className="whiteTableText">AAPL34</th>
-                      <td className="whiteTableText">R$ 46.67</td>
-                      <td className="greenTableText">0.39%</td>
+                      <th className=""></th>
+                      <td className=""></td>
+                      <td className=""></td>
                     </tr>
                     <tr>
-                      <th className="whiteTableText">SPTW11</th>
-                      <td className="whiteTableText">R$ 41.66</td>
-                      <td className="greenTableText">0.51%</td>
+                      <th className="">SPTW11</th>
+                      <td className="">R$ 41.66</td>
+                      <td className="">0.51%</td>
                     </tr>
                     <tr>
-                      <th className="whiteTableText">PETR4</th>
-                      <td className="whiteTableText">R$ 34.91</td>
-                      <td className="redTableText">-2.13%</td>
+                      <th className=""></th>
+                      <td className=""></td>
+                      <td className=""></td>
                     </tr>
                   </tbody>
                 </table>
@@ -243,29 +243,29 @@ export default function InvestmentMain() {
                 </thead>
                 <tbody>
                   <tr>
-                    <th className="whiteTableText">HGRU11</th>
-                    <td className="whiteTableText">R$ 130.92</td>
-                    <td className="greenTableText">0.71%</td>
+                    <th className=""></th>
+                    <td className=""></td>
+                    <td className=""></td>
                   </tr>
                   <tr>
-                    <th className="whiteTableText">IRDM11</th>
-                    <td className="whiteTableText">R$ 75.72</td>
-                    <td className="greenTableText">2.75%</td>
+                    <th className=""></th>
+                    <td className=""></td>
+                    <td className=""></td>
                   </tr>
                   <tr>
-                    <th className="whiteTableText">AAPL34</th>
-                    <td className="whiteTableText">R$ 46.67</td>
-                    <td className="greenTableText">0.39%</td>
+                    <th className=""></th>
+                    <td className=""></td>
+                    <td className=""></td>
                   </tr>
                   <tr>
-                    <th className="whiteTableText">SPTW11</th>
-                    <td className="whiteTableText">R$ 41.66</td>
-                    <td className="greenTableText">0.51%</td>
+                    <th className=""></th>
+                    <td className=""></td>
+                    <td className=""></td>
                   </tr>
                   <tr>
-                    <th className="whiteTableText">PETR4</th>
-                    <td className="whiteTableText">R$ 34.91</td>
-                    <td className="redTableText">-2.13%</td>
+                    <th className=""></th>
+                    <td className=""></td>
+                    <td className=""></td>
                   </tr>
                 </tbody>
               </table>
