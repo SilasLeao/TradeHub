@@ -5,10 +5,13 @@ import {
   faInfoCircle,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { InfoContainerContext } from "../mainPage/page";
+
 export default function InvestmentCard({ investimento }) {
   const [rentabilidadeTotal, setRentabilidadeTotal] = useState();
   const [rentabilidadeParcial, setRentabilidadeParcial] = useState();
+  const [valorAcao, setValorAcao] = useState();
   const [variacao, setVariacao] = useState();
   const nome = investimento.simbolo;
   const valorAplicado = investimento.valor_aplicado;
@@ -21,6 +24,7 @@ export default function InvestmentCard({ investimento }) {
           `https://brapi.dev/api/quote/${nome}?token=8QE9zJXLMnT7w6wppfyXEs`
         );
         const resultado = await resposta.json();
+        setValorAcao(resultado.results[0].regularMarketPrice);
         const total = resultado.results[0].regularMarketPrice * quantidade;
         setRentabilidadeTotal(total);
         setRentabilidadeParcial(total - valorAplicado);
@@ -43,6 +47,16 @@ export default function InvestmentCard({ investimento }) {
   rentabilidadeTotalFormatted = rentabilidadeTotalFormatted
     ? rentabilidadeTotalFormatted.replace(/\B(?=(\d{3})+(?!\d))/g, ".")
     : "Loading...";
+
+  const infoContainerContext = useContext(InfoContainerContext);
+
+  function handleInfoButton() {
+    sessionStorage.setItem("codigoAcaoPesquisada", nome);
+    sessionStorage.setItem("nomeAcaoPesquisada", fullName);
+    sessionStorage.setItem("marketCap", marketCap);
+    sessionStorage.setItem("valorAcao", valorAcao);
+    infoContainerContext.toggleInfoContainerStatus();
+  }
 
   return (
     <>
@@ -74,7 +88,11 @@ export default function InvestmentCard({ investimento }) {
             : "Loading..."}
         </p>
         <div className="investmentCardBtns">
-          <FontAwesomeIcon className="investmentCardIcon" icon={faInfoCircle} />
+          <FontAwesomeIcon
+            className="investmentCardIcon"
+            icon={faInfoCircle}
+            onClick={handleInfoButton}
+          />
           <button>Vender</button>
           <p id="quantidade">{quantidade}</p>
         </div>
