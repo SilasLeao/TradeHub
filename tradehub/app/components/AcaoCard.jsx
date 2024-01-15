@@ -34,7 +34,7 @@ export default function AcaoCard({ acao }) {
     <>
       <div className="acaoCard">
         <p className="acaoCardTitle">{nome}</p>
-        <p className="acaoCardPrice">R$ {valor}</p>
+        <p className="acaoCardPrice">R$ {valor.toFixed(2).replace(".", ",")}</p>
         <hr className="acaoCardHr" />
         <p className={`acaoCardChange ${corTextoClass}`}>
           {Number(variacao).toFixed(2)}%

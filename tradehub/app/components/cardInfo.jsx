@@ -38,7 +38,7 @@ export default function CardInfo() {
         </div>
         <hr id="firstInfoHr" />
         <div className="infoMarketCap">
-          <p>Capitalização de mercado</p>
+          <p>Capitalização de Mercado</p>
           <p>{marketCap}</p>
         </div>
         <hr id="secondInfoHr" />

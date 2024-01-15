@@ -36,6 +36,14 @@ export default function InvestmentCard({ investimento }) {
     fetchInvestmentData();
   }, [nome, quantidade, valorAplicado, rentabilidadeParcial]);
 
+  let rentabilidadeTotalFormatted = rentabilidadeTotal
+    ? rentabilidadeTotal.toFixed(2).replace(".", ",")
+    : "Loading...";
+
+  rentabilidadeTotalFormatted = rentabilidadeTotalFormatted
+    ? rentabilidadeTotalFormatted.replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+    : "Loading...";
+
   return (
     <>
       <div className="investmentCard">
@@ -48,7 +56,7 @@ export default function InvestmentCard({ investimento }) {
           }
         >
           {rentabilidadeTotal !== undefined
-            ? `R$ ${rentabilidadeTotal.toFixed(2)}`
+            ? `R$ ${rentabilidadeTotalFormatted}`
             : "Loading..."}
         </p>
         <hr className="investmentCardHr" />
