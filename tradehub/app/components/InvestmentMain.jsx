@@ -29,7 +29,11 @@ export default function InvestmentMain() {
         const { data, error } = await supabase
           .from("Investimentos")
           .select("*");
+        const { data: watchlistData, error: watchlistError } = await supabase
+          .from("Watchlist")
+          .select("*");
         setInvestmentData(data);
+        console.log(watchlistData);
       } catch (error) {
         console.error("Erro:", error);
       }
