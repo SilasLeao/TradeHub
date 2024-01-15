@@ -30,7 +30,32 @@ export default function InvestmentCardInfo() {
           <p>{marketCap}</p>
         </div>
         <hr id="investmentSecondInfoHr" />
-        <div className=""></div>
+        <div className="investmentInfo">
+          <span>
+            <p>Total Investido</p>
+            <p>{valorAplicado}</p>
+          </span>
+          <span>
+            <p>Quantidade de Ações</p>
+            <p>{quantidade}</p>
+          </span>
+          <span>
+            <p>Valor Atual por Ação</p>
+            <p>{valorAcao}</p>
+          </span>
+          <span>
+            <p>Rendimento Total</p>
+            <p>{rendimentoTotal}</p>
+          </span>
+          <span>
+            <p>Rendimento Parcial</p>
+            <p>{rendimentoParcial}</p>
+          </span>
+          <span>
+            <p>Rendimento Parcial(%)</p>
+            <p>{rendimentoPorcentagem}</p>
+          </span>
+        </div>
         <div className="investmentInfoBtns">
           <button className="investmentExitButton" onClick={handleExit}>
             Voltar
