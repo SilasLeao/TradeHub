@@ -109,7 +109,7 @@ export default function InvestmentMain() {
                     </tr>
                   </thead>
                   <tbody>
-                    {watchlist.map((investimento) => (
+                    {watchlist.slice(0, 5).map((investimento) => (
                       <tr>
                         <th>{investimento.nome}</th>
                         <td>R$ {investimento.cotacao}</td>
@@ -122,6 +122,15 @@ export default function InvestmentMain() {
                     ))}
                   </tbody>
                 </table>
+                <div className="expandirContainer">
+                  <div className="expandir">
+                    <span>Expandir</span>
+                    <FontAwesomeIcon
+                      className="expandirIcon"
+                      icon={faCaretDown}
+                    />
+                  </div>
+                </div>
               </div>
               <div className="transacoes">
                 <p className="tablesTitle">Últimas Transações</p>
@@ -173,6 +182,15 @@ export default function InvestmentMain() {
                     </tr>
                   </tbody>
                 </table>
+                <div className="expandirContainer">
+                  <div className="expandir">
+                    <span>Expandir</span>
+                    <FontAwesomeIcon
+                      className="expandirIcon"
+                      icon={faCaretDown}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
             <div className="investmentSearchContainer">
@@ -227,41 +245,47 @@ export default function InvestmentMain() {
           <div className="tablesContainer">
             <div className="watchlist">
               <p className="tablesTitle">Watchlist</p>
-              <div className="tableWrap">
-                <table className="watchlistTable">
-                  <thead>
-                    <tr>
-                      <th className="roundLeftTableCorner">Simbolo</th>
-                      <th>Cotação</th>
-                      <th className="roundRightTableCorner">Rendimento</th>
+              <table className="watchlistTable">
+                <thead>
+                  <tr>
+                    <th className="roundLeftTableCorner">Simbolo</th>
+                    <th>Cotação</th>
+                    <th className="roundRightTableCorner">Rendimento</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {watchlist.slice(0, 5).map((investimento, index) => (
+                    <tr key={index}>
+                      <th>
+                        {investimento.nome && investimento.nome.length > 0
+                          ? `${investimento.nome}`
+                          : "Loading..."}
+                      </th>
+                      <td>
+                        {investimento.cotacao && investimento.cotacao.length > 0
+                          ? `R$ ${investimento.cotacao}`
+                          : "Loading..."}
+                      </td>
+                      <td>
+                        {investimento.variacao &&
+                        investimento.variacao.length > 0
+                          ? investimento.variacao[0] === "-"
+                            ? `${investimento.variacao}%`
+                            : `+${investimento.variacao}%`
+                          : "Loading..."}
+                      </td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    {watchlist.map((investimento, index) => (
-                      <tr key={index}>
-                        <th>
-                          {investimento.nome && investimento.nome.length > 0
-                            ? `${investimento.nome}`
-                            : "Loading..."}
-                        </th>
-                        <td>
-                          {investimento.cotacao &&
-                          investimento.cotacao.length > 0
-                            ? `R$ ${investimento.cotacao}`
-                            : "Loading..."}
-                        </td>
-                        <td>
-                          {investimento.variacao &&
-                          investimento.variacao.length > 0
-                            ? investimento.variacao[0] === "-"
-                              ? `${investimento.variacao}%`
-                              : `+${investimento.variacao}%`
-                            : "Loading..."}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                  ))}
+                </tbody>
+              </table>
+              <div className="expandirContainer">
+                <div className="expandir">
+                  <span>Expandir</span>
+                  <FontAwesomeIcon
+                    className="expandirIcon"
+                    icon={faCaretDown}
+                  />
+                </div>
               </div>
             </div>
             <div className="transacoes">
@@ -314,6 +338,15 @@ export default function InvestmentMain() {
                   </tr>
                 </tbody>
               </table>
+              <div className="expandirContainer">
+                <div className="expandir">
+                  <span>Expandir</span>
+                  <FontAwesomeIcon
+                    className="expandirIcon"
+                    icon={faCaretDown}
+                  />
+                </div>
+              </div>
             </div>
           </div>
           <div className="investmentSearchContainer">
