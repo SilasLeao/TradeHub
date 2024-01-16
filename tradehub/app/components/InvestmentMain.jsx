@@ -36,7 +36,27 @@ export default function InvestmentMain() {
           .select("*")
           .filter("usuario_id", "eq", "5GJV756PUC");
         setInvestmentData(data);
+        console.log(watchlistData);
         setWatchlist(watchlistData);
+
+        const promises = watchlistData.map(async (investimento) => {
+          const resposta = await fetch(
+            `https://brapi.dev/api/quote/${investimento.simbolo}?token=8QE9zJXLMnT7w6wppfyXEs`
+          );
+          const resultado = await resposta.json();
+          return {
+            nome: resultado.results[0].symbol,
+            cotacao: resultado.results[0].regularMarketPrice
+              .toFixed(2)
+              .replace(".", ","),
+            variacao: resultado.results[0].regularMarketChangePercent
+              .toFixed(2)
+              .replace(".", ","),
+          };
+        });
+
+        const watchlistInvestmentsData = await Promise.all(promises);
+        setWatchlist(watchlistInvestmentsData);
       } catch (error) {
         console.error("Erro:", error);
       }
@@ -90,31 +110,13 @@ export default function InvestmentMain() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th className=""></th>
-                      <td className=""></td>
-                      <td className=""></td>
-                    </tr>
-                    <tr>
-                      <th className=""></th>
-                      <td className=""></td>
-                      <td className=""></td>
-                    </tr>
-                    <tr>
-                      <th className=""></th>
-                      <td className=""></td>
-                      <td className=""></td>
-                    </tr>
-                    <tr>
-                      <th className="">SPTW11</th>
-                      <td className="">R$ 41.66</td>
-                      <td className="">0.51%</td>
-                    </tr>
-                    <tr>
-                      <th className=""></th>
-                      <td className=""></td>
-                      <td className=""></td>
-                    </tr>
+                    {watchlist.map((investimento, index) => (
+                      <tr key={index}>
+                        <th>{investimento.nome}</th>
+                        <td>R$ {investimento.cotacao}</td>
+                        <td>{investimento.variacao}</td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
                 <div className="expandirContainer">
@@ -249,31 +251,13 @@ export default function InvestmentMain() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th className=""></th>
-                    <td className=""></td>
-                    <td className=""></td>
-                  </tr>
-                  <tr>
-                    <th className=""></th>
-                    <td className=""></td>
-                    <td className=""></td>
-                  </tr>
-                  <tr>
-                    <th className=""></th>
-                    <td className=""></td>
-                    <td className=""></td>
-                  </tr>
-                  <tr>
-                    <th className=""></th>
-                    <td className=""></td>
-                    <td className=""></td>
-                  </tr>
-                  <tr>
-                    <th className=""></th>
-                    <td className=""></td>
-                    <td className=""></td>
-                  </tr>
+                  {watchlist.map((investimento, index) => (
+                    <tr key={index}>
+                      <th>{investimento.nome}</th>
+                      <td>R$ {investimento.cotacao}</td>
+                      <td>{investimento.variacao}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
               <div className="expandirContainer">
