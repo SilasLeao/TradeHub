@@ -108,7 +108,7 @@ tr {
 
 .expandirContainer {
   background-color: #2a2a2a;
-  padding: 0.5rem 0 1rem 0;
+  padding: 0.5rem 0 0.8rem 0;
   border-radius: 0 0 30px 30px;
   display: flex;
   justify-content: center;
@@ -145,7 +145,7 @@ td {
   display: flex;
   align-items: center;
   border-bottom: 1px solid #5dec85;
-  margin: 2rem 2rem 0 2rem;
+  margin: 1.5rem 2rem 0 2rem;
   padding-bottom: 0.5rem;
 }
 
@@ -209,7 +209,7 @@ td {
   flex-wrap: wrap;
   gap: 2rem;
   align-content: flex-start;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .investmentCardContainer::-webkit-scrollbar {
