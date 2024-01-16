@@ -58,6 +58,7 @@ table {
   background-color: #2a2a2a;
   border-collapse: collapse;
   height: 280px;
+  overflow-y: scroll;
 }
 
 .watchlistTable {

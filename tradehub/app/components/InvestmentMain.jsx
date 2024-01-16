@@ -114,7 +114,11 @@ export default function InvestmentMain() {
                       <tr>
                         <th>{investimento.nome}</th>
                         <td>R$ {investimento.cotacao}</td>
-                        <td>{investimento.variacao}</td>
+                        <td>
+                          {investimento.variacao[0] == "-"
+                            ? `${investimento.variacao}%`
+                            : `+${investimento.variacao}%`}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -253,9 +257,24 @@ export default function InvestmentMain() {
                 <tbody>
                   {watchlist.map((investimento) => (
                     <tr>
-                      <th>{investimento.nome}</th>
-                      <td>R$ {investimento.cotacao}</td>
-                      <td>{investimento.variacao}</td>
+                      <th>
+                        {investimento.nome && investimento.nome.length > 0
+                          ? `${investimento.nome}`
+                          : "Loading..."}
+                      </th>
+                      <td>
+                        {investimento.cotacao && investimento.cotacao.length > 0
+                          ? `R$ ${investimento.cotacao}`
+                          : "Loading..."}
+                      </td>
+                      <td>
+                        {investimento.variacao &&
+                        investimento.variacao.length > 0
+                          ? investimento.variacao[0] === "-"
+                            ? `${investimento.variacao}%`
+                            : `+${investimento.variacao}%`
+                          : "Loading..."}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
