@@ -22,18 +22,21 @@ export default function InvestmentMain() {
   const [searchFilter, setSearchFilter] = useState("");
   const [investmentData, setInvestmentData] = useState([]);
   const [filteredInvestments, setFilteredInvestments] = useState([]);
+  const [watchlist, setWatchlist] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const { data, error } = await supabase
           .from("Investimentos")
-          .select("*");
+          .select("*")
+          .filter("usuario_id", "eq", "5GJV756PUC");
         const { data: watchlistData, error: watchlistError } = await supabase
           .from("Watchlist")
-          .select("*");
+          .select("*")
+          .filter("usuario_id", "eq", "5GJV756PUC");
         setInvestmentData(data);
-        console.log(watchlistData);
+        setWatchlist(watchlistData);
       } catch (error) {
         console.error("Erro:", error);
       }
