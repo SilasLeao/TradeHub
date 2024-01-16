@@ -17,6 +17,7 @@ export default function InvestmentCardInfo() {
   let rendimentoParcial = sessionStorage.getItem("rendimentoParcial");
   let rendimentoPorcentagem = sessionStorage.getItem("rendimentoPorcentagem");
   let custoMedio = valorAplicado / quantidade;
+
   function handleExit() {
     infoContainerContext.toggleInfoContainerStatus();
   }
@@ -79,7 +80,7 @@ export default function InvestmentCardInfo() {
             <p>Rendimento Total</p>
             <p
               className={
-                rendimentoTotal > valorAplicado
+                Number(rendimentoTotal) > Number(valorAplicado)
                   ? "investmentVerde"
                   : "investmentVermelho"
               }
@@ -91,7 +92,7 @@ export default function InvestmentCardInfo() {
             <p>Rendimento Parcial</p>
             <p
               className={
-                rendimentoTotal > valorAplicado
+                Number(rendimentoTotal) > Number(valorAplicado)
                   ? "investmentVerde"
                   : "investmentVermelho"
               }
@@ -103,12 +104,12 @@ export default function InvestmentCardInfo() {
             <p>Rendimento Parcial(%)</p>
             <p
               className={
-                rendimentoTotal > valorAplicado
+                Number(rendimentoTotal) > Number(valorAplicado)
                   ? "investmentVerde"
                   : "investmentVermelho"
               }
             >
-              {rendimentoTotal > valorAplicado
+              {Number(rendimentoTotal) > Number(valorAplicado)
                 ? `+${rendimentoPorcentagemFormatted}%`
                 : `${rendimentoPorcentagemFormatted}%`}
             </p>
