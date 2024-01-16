@@ -36,7 +36,6 @@ export default function InvestmentMain() {
           .select("*")
           .filter("usuario_id", "eq", "5GJV756PUC");
         setInvestmentData(data);
-        console.log(watchlistData);
         setWatchlist(watchlistData);
 
         const promises = watchlistData.map(async (investimento) => {
@@ -123,15 +122,6 @@ export default function InvestmentMain() {
                     ))}
                   </tbody>
                 </table>
-                <div className="expandirContainer">
-                  <div className="expandir">
-                    <span>Expandir</span>
-                    <FontAwesomeIcon
-                      className="expandirIcon"
-                      icon={faCaretDown}
-                    />
-                  </div>
-                </div>
               </div>
               <div className="transacoes">
                 <p className="tablesTitle">Últimas Transações</p>
@@ -183,15 +173,6 @@ export default function InvestmentMain() {
                     </tr>
                   </tbody>
                 </table>
-                <div className="expandirContainer">
-                  <div className="expandir">
-                    <span>Expandir</span>
-                    <FontAwesomeIcon
-                      className="expandirIcon"
-                      icon={faCaretDown}
-                    />
-                  </div>
-                </div>
               </div>
             </div>
             <div className="investmentSearchContainer">
@@ -255,8 +236,8 @@ export default function InvestmentMain() {
                   </tr>
                 </thead>
                 <tbody>
-                  {watchlist.map((investimento) => (
-                    <tr>
+                  {watchlist.map((investimento, index) => (
+                    <tr key={index}>
                       <th>
                         {investimento.nome && investimento.nome.length > 0
                           ? `${investimento.nome}`
@@ -279,15 +260,6 @@ export default function InvestmentMain() {
                   ))}
                 </tbody>
               </table>
-              <div className="expandirContainer">
-                <div className="expandir">
-                  <span>Expandir</span>
-                  <FontAwesomeIcon
-                    className="expandirIcon"
-                    icon={faCaretDown}
-                  />
-                </div>
-              </div>
             </div>
             <div className="transacoes">
               <p className="tablesTitle">Últimas Transações</p>
@@ -339,15 +311,6 @@ export default function InvestmentMain() {
                   </tr>
                 </tbody>
               </table>
-              <div className="expandirContainer">
-                <div className="expandir">
-                  <span>Expandir</span>
-                  <FontAwesomeIcon
-                    className="expandirIcon"
-                    icon={faCaretDown}
-                  />
-                </div>
-              </div>
             </div>
           </div>
           <div className="investmentSearchContainer">

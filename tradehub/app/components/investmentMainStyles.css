@@ -57,12 +57,16 @@ table {
   border-radius: 20px 20px 0 0;
   background-color: #2a2a2a;
   border-collapse: collapse;
-  height: 280px;
-  overflow-y: scroll;
 }
 
 .watchlistTable {
   width: 380px;
+  height: 300px;
+}
+
+.scrollableTableBody {
+  overflow-y: auto;
+  max-height: 250px;
 }
 
 .transacaoTable {
@@ -91,6 +95,7 @@ thead th {
 
 tr {
   border-bottom: 1px solid #5dec85;
+  height: 50px;
 }
 
 .whiteTableText {
