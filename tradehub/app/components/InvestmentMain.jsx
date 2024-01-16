@@ -227,39 +227,42 @@ export default function InvestmentMain() {
           <div className="tablesContainer">
             <div className="watchlist">
               <p className="tablesTitle">Watchlist</p>
-              <table className="watchlistTable">
-                <thead>
-                  <tr>
-                    <th className="roundLeftTableCorner">Simbolo</th>
-                    <th>Cotação</th>
-                    <th className="roundRightTableCorner">Rendimento</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {watchlist.map((investimento, index) => (
-                    <tr key={index}>
-                      <th>
-                        {investimento.nome && investimento.nome.length > 0
-                          ? `${investimento.nome}`
-                          : "Loading..."}
-                      </th>
-                      <td>
-                        {investimento.cotacao && investimento.cotacao.length > 0
-                          ? `R$ ${investimento.cotacao}`
-                          : "Loading..."}
-                      </td>
-                      <td>
-                        {investimento.variacao &&
-                        investimento.variacao.length > 0
-                          ? investimento.variacao[0] === "-"
-                            ? `${investimento.variacao}%`
-                            : `+${investimento.variacao}%`
-                          : "Loading..."}
-                      </td>
+              <div className="tableWrap">
+                <table className="watchlistTable">
+                  <thead>
+                    <tr>
+                      <th className="roundLeftTableCorner">Simbolo</th>
+                      <th>Cotação</th>
+                      <th className="roundRightTableCorner">Rendimento</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {watchlist.map((investimento, index) => (
+                      <tr key={index}>
+                        <th>
+                          {investimento.nome && investimento.nome.length > 0
+                            ? `${investimento.nome}`
+                            : "Loading..."}
+                        </th>
+                        <td>
+                          {investimento.cotacao &&
+                          investimento.cotacao.length > 0
+                            ? `R$ ${investimento.cotacao}`
+                            : "Loading..."}
+                        </td>
+                        <td>
+                          {investimento.variacao &&
+                          investimento.variacao.length > 0
+                            ? investimento.variacao[0] === "-"
+                              ? `${investimento.variacao}%`
+                              : `+${investimento.variacao}%`
+                            : "Loading..."}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
             <div className="transacoes">
               <p className="tablesTitle">Últimas Transações</p>

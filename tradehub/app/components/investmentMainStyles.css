@@ -53,7 +53,25 @@
   font-size: 1.4rem;
 }
 
+.tableWrap {
+  height: 300px;
+  overflow: auto;
+  width: 380px;
+}
+
+.tableWrap thead tr th {
+  position: sticky;
+  top: 0;
+}
+
 table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #2a2a2a;
+  border-radius: 30px;
+}
+
+/* table {
   border-radius: 20px 20px 0 0;
   background-color: #2a2a2a;
   border-collapse: collapse;
@@ -67,7 +85,7 @@ table {
 .scrollableTableBody {
   overflow-y: auto;
   max-height: 250px;
-}
+} */
 
 .transacaoTable {
   width: 580px;
@@ -81,16 +99,12 @@ table {
   border-radius: 0 20px 0 0;
 }
 
-thead {
-  background-color: #5dec85;
-  border-radius: 30px 30px 0 0;
-}
-
 thead th {
   color: #2a2a2a;
   text-align: center;
   vertical-align: middle;
   padding: 0.5rem 0;
+  background-color: #5dec85;
 }
 
 tr {
