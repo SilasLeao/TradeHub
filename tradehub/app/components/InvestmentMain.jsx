@@ -110,8 +110,8 @@ export default function InvestmentMain() {
                     </tr>
                   </thead>
                   <tbody>
-                    {watchlist.map((investimento, index) => (
-                      <tr key={index}>
+                    {watchlist.map((investimento) => (
+                      <tr>
                         <th>{investimento.nome}</th>
                         <td>R$ {investimento.cotacao}</td>
                         <td>{investimento.variacao}</td>
@@ -251,8 +251,8 @@ export default function InvestmentMain() {
                   </tr>
                 </thead>
                 <tbody>
-                  {watchlist.map((investimento, index) => (
-                    <tr key={index}>
+                  {watchlist.map((investimento) => (
+                    <tr>
                       <th>{investimento.nome}</th>
                       <td>R$ {investimento.cotacao}</td>
                       <td>{investimento.variacao}</td>
