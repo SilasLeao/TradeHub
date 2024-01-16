@@ -109,14 +109,35 @@ export default function InvestmentMain() {
                     </tr>
                   </thead>
                   <tbody>
-                    {watchlist.slice(0, 5).map((investimento) => (
-                      <tr>
-                        <th>{investimento.nome}</th>
-                        <td>R$ {investimento.cotacao}</td>
-                        <td>
-                          {investimento.variacao[0] == "-"
-                            ? `${investimento.variacao}%`
-                            : `+${investimento.variacao}%`}
+                    {watchlist.slice(0, 5).map((investimento, index) => (
+                      <tr key={index}>
+                        <th className="whiteTableText">
+                          {investimento.nome && investimento.nome.length > 0
+                            ? `${investimento.nome}`
+                            : "Loading..."}
+                        </th>
+                        <td className="whiteTableText">
+                          {investimento.cotacao &&
+                          investimento.cotacao.length > 0
+                            ? `R$ ${investimento.cotacao}`
+                            : "Loading..."}
+                        </td>
+                        <td
+                          className={
+                            investimento.variacao &&
+                            investimento.variacao.length > 0
+                              ? investimento.variacao[0] === "-"
+                                ? "redTableText"
+                                : "greenTableText"
+                              : ""
+                          }
+                        >
+                          {investimento.variacao &&
+                          investimento.variacao.length > 0
+                            ? investimento.variacao[0] === "-"
+                              ? `${investimento.variacao}%`
+                              : `+${investimento.variacao}%`
+                            : "Loading..."}
                         </td>
                       </tr>
                     ))}
@@ -256,17 +277,26 @@ export default function InvestmentMain() {
                 <tbody>
                   {watchlist.slice(0, 5).map((investimento, index) => (
                     <tr key={index}>
-                      <th>
+                      <th className="whiteTableText">
                         {investimento.nome && investimento.nome.length > 0
                           ? `${investimento.nome}`
                           : "Loading..."}
                       </th>
-                      <td>
+                      <td className="whiteTableText">
                         {investimento.cotacao && investimento.cotacao.length > 0
                           ? `R$ ${investimento.cotacao}`
                           : "Loading..."}
                       </td>
-                      <td>
+                      <td
+                        className={
+                          investimento.variacao &&
+                          investimento.variacao.length > 0
+                            ? investimento.variacao[0] === "-"
+                              ? "redTableText"
+                              : "greenTableText"
+                            : ""
+                        }
+                      >
                         {investimento.variacao &&
                         investimento.variacao.length > 0
                           ? investimento.variacao[0] === "-"
