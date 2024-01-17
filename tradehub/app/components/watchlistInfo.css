@@ -25,3 +25,17 @@
   box-sizing: border-box;
   gap: 1rem;
 }
+
+.watchlistInvestmentsContainer {
+  height: 100%;
+  overflow-y: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.watchlistInvestments {
+  display: flex;
+  justify-content: space-evenly;
+}
