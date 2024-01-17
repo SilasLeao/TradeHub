@@ -60,7 +60,7 @@
 .acoesDestaque::-webkit-scrollbar {
   background-color: #5dec85;
   border-radius: 20px;
-  height: 8px;
+  height: 6px;
 }
 
 .acoesDestaque::-webkit-scrollbar-thumb {

@@ -89,8 +89,6 @@ export default function InvestmentMain() {
     infoContainerContext.toggleInfoContainerStatus("watchlist");
   }
 
-  console.log(infoContainerContext.infoContainerStatus);
-
   let renderedContent;
   switch (infoContainerContext.infoContainerStatus) {
     case "investment":

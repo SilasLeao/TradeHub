@@ -17,7 +17,7 @@ export default function InvestmentSideBar() {
             infoContainerContext.infoContainerStatus
           )
             ? "blurEffect"
-            : ""
+            : "investmentSidebar"
         }`}
       >
         <TitleCard />

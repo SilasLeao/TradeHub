@@ -141,8 +141,6 @@ export default function AcoesMain() {
     fetchInvestmentData();
   }
 
-  console.log(infoContainerContext.infoContainerStatus);
-
   return (
     <>
       {infoContainerContext.infoContainerStatus === "acoes" ? (
