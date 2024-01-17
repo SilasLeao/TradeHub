@@ -46,9 +46,8 @@
   border-radius: 6px;
 }
 
-.watchlistInvestments {
-  display: flex;
-  justify-content: space-evenly;
+.watchlistTitle {
+  color: honeydew;
 }
 
 table {
@@ -62,6 +61,23 @@ tr {
   height: 50px;
 }
 
+td button {
+  background-color: transparent;
+  border: none;
+}
+
+.watchlistIcon {
+  color: honeydew;
+  transition: 0.2s;
+  font-size: 1.2rem;
+}
+
+.watchlistIcon:hover {
+  cursor: pointer;
+  scale: 1.1;
+  color: #f52a2a;
+}
+
 .whiteTableText {
   font-weight: 400;
   color: honeydew;
@@ -73,4 +89,22 @@ tr {
 
 .redTableText {
   color: #f52a2a;
+}
+
+.closeWatchlistButton {
+  width: 10rem;
+  height: 3.5rem;
+  font-size: 1.5rem;
+  border-radius: 30px;
+  border: 2px solid #5dec85;
+  transition: 0.2s;
+  color: #5dec85;
+  background-color: transparent;
+}
+
+.closeWatchlistButton:hover {
+  scale: 1.1;
+  background-color: #5dec85;
+  color: honeydew;
+  cursor: pointer;
 }

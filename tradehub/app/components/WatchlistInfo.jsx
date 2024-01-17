@@ -52,13 +52,10 @@ export default function WatchlistInfo() {
 
     fetchData();
   }, []);
-
-  console.log(watchlist);
-
   return (
     <>
       <div className="watchlistInfoContainer">
-        <h1>Watchlist</h1>
+        <h1 className="watchlistTitle">Watchlist</h1>
         <div className="watchlistInvestmentsContainer">
           <table className="watchlistTable">
             <tbody>
@@ -90,14 +87,21 @@ export default function WatchlistInfo() {
                       : "Loading..."}
                   </td>
                   <td>
-                    <FontAwesomeIcon icon={faTrashCan} />
+                    <button>
+                      <FontAwesomeIcon
+                        className="watchlistIcon"
+                        icon={faTrashCan}
+                      />
+                    </button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <button onClick={handleExit}>Voltar</button>
+        <button className="closeWatchlistButton" onClick={handleExit}>
+          Voltar
+        </button>
       </div>
     </>
   );
