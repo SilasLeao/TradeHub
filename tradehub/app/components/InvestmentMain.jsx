@@ -262,7 +262,364 @@ export default function InvestmentMain() {
             </div>
           </div>
         </div>
+      ) : //            /* Watchlist Info Overlay */
+      //            /* Watchlist Info Overlay */
+      //            /* Watchlist Info Overlay */
+      infoContainerContext.infoContainerStatus === "watchlist" ? (
+        <div className="investmentMainContainer">
+          <div className="backgroundContainer">Watchlist</div>
+          <div
+            className={`${
+              infoContainerContext.infoContainerStatus === "watchlist"
+                ? "blurEffect"
+                : ""
+            } investmentMainContainerContent`}
+          >
+            <h1 className="investmentMainH1">Meus Investimentos</h1>
+            <div className="tablesContainer">
+              <div className="watchlist">
+                <p className="tablesTitle">Watchlist</p>
+                <table className="watchlistTable">
+                  <thead>
+                    <tr>
+                      <th className="roundLeftTableCorner">Simbolo</th>
+                      <th>Cotação</th>
+                      <th className="roundRightTableCorner">Rendimento</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {watchlist.slice(0, 5).map((investimento, index) => (
+                      <tr key={index}>
+                        <th className="whiteTableText">
+                          {investimento.nome && investimento.nome.length > 0
+                            ? `${investimento.nome}`
+                            : "Loading..."}
+                        </th>
+                        <td className="whiteTableText">
+                          {investimento.cotacao &&
+                          investimento.cotacao.length > 0
+                            ? `R$ ${investimento.cotacao}`
+                            : "Loading..."}
+                        </td>
+                        <td
+                          className={
+                            investimento.variacao &&
+                            investimento.variacao.length > 0
+                              ? investimento.variacao[0] === "-"
+                                ? "redTableText"
+                                : "greenTableText"
+                              : ""
+                          }
+                        >
+                          {investimento.variacao &&
+                          investimento.variacao.length > 0
+                            ? investimento.variacao[0] === "-"
+                              ? `${investimento.variacao}%`
+                              : `+${investimento.variacao}%`
+                            : "Loading..."}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <div className="expandirContainer">
+                  <div className="expandir">
+                    <span>Expandir</span>
+                    <FontAwesomeIcon
+                      className="expandirIcon"
+                      icon={faCaretDown}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="transacoes">
+                <p className="tablesTitle">Últimas Transações</p>
+                <table className="transacaoTable">
+                  <thead>
+                    <tr>
+                      <th className="roundLeftTableCorner">Simbolo</th>
+                      <th>Tipo</th>
+                      <th>Quantidade</th>
+                      <th>Preço Uni.</th>
+                      <th className="roundRightTableCorner">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th className="whiteTableText">HGRU11</th>
+                      <td className="greenTableText">Compra</td>
+                      <td className="whiteTableText">11</td>
+                      <td className="whiteTableText">R$ 130.92</td>
+                      <td className="redTableText">- R$ 1.440,12</td>
+                    </tr>
+                    <tr>
+                      <th className="whiteTableText">IRDM11</th>
+                      <td className="redTableText">Venda</td>
+                      <td className="whiteTableText">13</td>
+                      <td className="whiteTableText">R$ 75.72</td>
+                      <td className="greenTableText">+ R$ 984.36</td>
+                    </tr>
+                    <tr>
+                      <th className="whiteTableText">AAPL34</th>
+                      <td className="greenTableText">Compra</td>
+                      <td className="whiteTableText">23</td>
+                      <td className="whiteTableText">R$ 46.67</td>
+                      <td className="redTableText">- R$ 1.073,41</td>
+                    </tr>
+                    <tr>
+                      <th className="whiteTableText">SPTW11</th>
+                      <td className="greenTableText">Compra</td>
+                      <td className="whiteTableText">17</td>
+                      <td className="whiteTableText">R$ 41.66</td>
+                      <td className="redTableText">- R$ 708.22</td>
+                    </tr>
+                    <tr>
+                      <th className="whiteTableText">TRXF11</th>
+                      <td className="redTableText">Venda</td>
+                      <td className="whiteTableText">31</td>
+                      <td className="whiteTableText">R$ 107.97</td>
+                      <td className="greenTableText">+ R$ 3.347,07</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div className="expandirContainer">
+                  <div className="expandir">
+                    <span>Expandir</span>
+                    <FontAwesomeIcon
+                      className="expandirIcon"
+                      icon={faCaretDown}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="investmentSearchContainer">
+              <div className="investmentSearchHeader">
+                <div className="investmentSearchBar">
+                  <button>
+                    <FontAwesomeIcon
+                      className="investmentSearchIcon"
+                      icon={faMagnifyingGlass}
+                    />
+                  </button>
+                  <input
+                    type="text"
+                    placeholder="Pesquisar"
+                    onChange={handleChange}
+                  />
+                </div>
+                <span id="investmentMainWhiteText">Filtrar por:</span>
+                <button className="investmentFilterButton">
+                  Valor
+                  <FontAwesomeIcon
+                    className="investmentSearchIcon"
+                    icon={faCaretDown}
+                  />
+                </button>
+                <button className="investmentFilterButton">
+                  Dividendos
+                  <FontAwesomeIcon
+                    className="investmentSearchIcon"
+                    icon={faCaretDown}
+                  />
+                </button>
+                <button className="investmentFilterButton">
+                  Crescimento
+                  <FontAwesomeIcon
+                    className="investmentSearchIcon"
+                    icon={faCaretDown}
+                  />
+                </button>
+              </div>
+            </div>
+            <div className="investmentCardContainer">
+              {renderInvestments.map((investimento, index) => (
+                <InvestmentCard key={index} investimento={investimento} />
+              ))}
+            </div>
+          </div>
+        </div>
+      ) : //            /* History Info Overlay */
+      //            /* History Info Overlay */
+      //            /* History Info Overlay */
+      infoContainerContext.infoContainerStatus === "history" ? (
+        <div className="investmentMainContainer">
+          <div className="backgroundContainer">History</div>
+          <div
+            className={`${
+              infoContainerContext.infoContainerStatus === "history"
+                ? "blurEffect"
+                : ""
+            } investmentMainContainerContent`}
+          >
+            <h1 className="investmentMainH1">Meus Investimentos</h1>
+            <div className="tablesContainer">
+              <div className="watchlist">
+                <p className="tablesTitle">Watchlist</p>
+                <table className="watchlistTable">
+                  <thead>
+                    <tr>
+                      <th className="roundLeftTableCorner">Simbolo</th>
+                      <th>Cotação</th>
+                      <th className="roundRightTableCorner">Rendimento</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {watchlist.slice(0, 5).map((investimento, index) => (
+                      <tr key={index}>
+                        <th className="whiteTableText">
+                          {investimento.nome && investimento.nome.length > 0
+                            ? `${investimento.nome}`
+                            : "Loading..."}
+                        </th>
+                        <td className="whiteTableText">
+                          {investimento.cotacao &&
+                          investimento.cotacao.length > 0
+                            ? `R$ ${investimento.cotacao}`
+                            : "Loading..."}
+                        </td>
+                        <td
+                          className={
+                            investimento.variacao &&
+                            investimento.variacao.length > 0
+                              ? investimento.variacao[0] === "-"
+                                ? "redTableText"
+                                : "greenTableText"
+                              : ""
+                          }
+                        >
+                          {investimento.variacao &&
+                          investimento.variacao.length > 0
+                            ? investimento.variacao[0] === "-"
+                              ? `${investimento.variacao}%`
+                              : `+${investimento.variacao}%`
+                            : "Loading..."}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <div className="expandirContainer">
+                  <div className="expandir">
+                    <span>Expandir</span>
+                    <FontAwesomeIcon
+                      className="expandirIcon"
+                      icon={faCaretDown}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="transacoes">
+                <p className="tablesTitle">Últimas Transações</p>
+                <table className="transacaoTable">
+                  <thead>
+                    <tr>
+                      <th className="roundLeftTableCorner">Simbolo</th>
+                      <th>Tipo</th>
+                      <th>Quantidade</th>
+                      <th>Preço Uni.</th>
+                      <th className="roundRightTableCorner">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th className="whiteTableText">HGRU11</th>
+                      <td className="greenTableText">Compra</td>
+                      <td className="whiteTableText">11</td>
+                      <td className="whiteTableText">R$ 130.92</td>
+                      <td className="redTableText">- R$ 1.440,12</td>
+                    </tr>
+                    <tr>
+                      <th className="whiteTableText">IRDM11</th>
+                      <td className="redTableText">Venda</td>
+                      <td className="whiteTableText">13</td>
+                      <td className="whiteTableText">R$ 75.72</td>
+                      <td className="greenTableText">+ R$ 984.36</td>
+                    </tr>
+                    <tr>
+                      <th className="whiteTableText">AAPL34</th>
+                      <td className="greenTableText">Compra</td>
+                      <td className="whiteTableText">23</td>
+                      <td className="whiteTableText">R$ 46.67</td>
+                      <td className="redTableText">- R$ 1.073,41</td>
+                    </tr>
+                    <tr>
+                      <th className="whiteTableText">SPTW11</th>
+                      <td className="greenTableText">Compra</td>
+                      <td className="whiteTableText">17</td>
+                      <td className="whiteTableText">R$ 41.66</td>
+                      <td className="redTableText">- R$ 708.22</td>
+                    </tr>
+                    <tr>
+                      <th className="whiteTableText">TRXF11</th>
+                      <td className="redTableText">Venda</td>
+                      <td className="whiteTableText">31</td>
+                      <td className="whiteTableText">R$ 107.97</td>
+                      <td className="greenTableText">+ R$ 3.347,07</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div className="expandirContainer">
+                  <div className="expandir">
+                    <span>Expandir</span>
+                    <FontAwesomeIcon
+                      className="expandirIcon"
+                      icon={faCaretDown}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="investmentSearchContainer">
+              <div className="investmentSearchHeader">
+                <div className="investmentSearchBar">
+                  <button>
+                    <FontAwesomeIcon
+                      className="investmentSearchIcon"
+                      icon={faMagnifyingGlass}
+                    />
+                  </button>
+                  <input
+                    type="text"
+                    placeholder="Pesquisar"
+                    onChange={handleChange}
+                  />
+                </div>
+                <span id="investmentMainWhiteText">Filtrar por:</span>
+                <button className="investmentFilterButton">
+                  Valor
+                  <FontAwesomeIcon
+                    className="investmentSearchIcon"
+                    icon={faCaretDown}
+                  />
+                </button>
+                <button className="investmentFilterButton">
+                  Dividendos
+                  <FontAwesomeIcon
+                    className="investmentSearchIcon"
+                    icon={faCaretDown}
+                  />
+                </button>
+                <button className="investmentFilterButton">
+                  Crescimento
+                  <FontAwesomeIcon
+                    className="investmentSearchIcon"
+                    icon={faCaretDown}
+                  />
+                </button>
+              </div>
+            </div>
+            <div className="investmentCardContainer">
+              {renderInvestments.map((investimento, index) => (
+                <InvestmentCard key={index} investimento={investimento} />
+              ))}
+            </div>
+          </div>
+        </div>
       ) : (
+        //            /* No Info Overlay */
+        //            /* No Info Overlay */
+        //            /* No Info Overlay */
         <div className="investmentMainContainer">
           <h1 className="investmentMainH1">Meus Investimentos</h1>
           <div className="tablesContainer">
@@ -312,7 +669,13 @@ export default function InvestmentMain() {
               </table>
               <div className="expandirContainer">
                 <div className="expandir">
-                  <span>Expandir</span>
+                  <button
+                    onClick={infoContainerContext.toggleInfoContainerStatus(
+                      "watchlist"
+                    )}
+                  >
+                    Expandir
+                  </button>
                   <FontAwesomeIcon
                     className="expandirIcon"
                     icon={faCaretDown}
