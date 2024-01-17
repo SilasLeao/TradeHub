@@ -60,14 +60,42 @@ export default function WatchlistInfo() {
       <div className="watchlistInfoContainer">
         <h1>Watchlist</h1>
         <div className="watchlistInvestmentsContainer">
-          {watchlist.map((investimento) => (
-            <div className="watchlistInvestments">
-              <p>{investimento.nome}</p>
-              <p>{investimento.cotacao}</p>
-              <p>{investimento.variacao}</p>
-              <FontAwesomeIcon icon={faTrashCan} />
-            </div>
-          ))}
+          <table className="watchlistTable">
+            <tbody>
+              {watchlist.map((investimento, index) => (
+                <tr key={index}>
+                  <th className="whiteTableText">
+                    {investimento.nome && investimento.nome.length > 0
+                      ? `${investimento.nome}`
+                      : "Loading..."}
+                  </th>
+                  <td className="whiteTableText">
+                    {investimento.cotacao && investimento.cotacao.length > 0
+                      ? `R$ ${investimento.cotacao}`
+                      : "Loading..."}
+                  </td>
+                  <td
+                    className={
+                      investimento.variacao && investimento.variacao.length > 0
+                        ? investimento.variacao[0] === "-"
+                          ? "redTableText"
+                          : "greenTableText"
+                        : ""
+                    }
+                  >
+                    {investimento.variacao && investimento.variacao.length > 0
+                      ? investimento.variacao[0] === "-"
+                        ? `${investimento.variacao}%`
+                        : `+${investimento.variacao}%`
+                      : "Loading..."}
+                  </td>
+                  <td>
+                    <FontAwesomeIcon icon={faTrashCan} />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
         <button onClick={handleExit}>Voltar</button>
       </div>

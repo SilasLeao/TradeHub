@@ -35,7 +35,42 @@
   flex-direction: column;
 }
 
+.watchlistInvestmentsContainer::-webkit-scrollbar {
+  background-color: #5dec85;
+  border-radius: 20px;
+  width: 8px;
+}
+
+.watchlistInvestmentsContainer::-webkit-scrollbar-thumb {
+  background-color: #3f3f3f;
+  border-radius: 6px;
+}
+
 .watchlistInvestments {
   display: flex;
   justify-content: space-evenly;
+}
+
+table {
+  border-radius: 20px 20px 0 0;
+  background-color: #2a2a2a;
+  border-collapse: collapse;
+}
+
+tr {
+  border-bottom: 1px solid #5dec85;
+  height: 50px;
+}
+
+.whiteTableText {
+  font-weight: 400;
+  color: honeydew;
+}
+
+.greenTableText {
+  color: #5dec85;
+}
+
+.redTableText {
+  color: #f52a2a;
 }
