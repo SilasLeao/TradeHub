@@ -10,6 +10,7 @@ import {
 import { createClient } from "@supabase/supabase-js";
 import InvestmentCard from "./investmentCard";
 import InvestmentCardInfo from "./InvestmentCardInfo";
+import WatchlistInfo from "./WatchlistInfo";
 
 export default function InvestmentMain() {
   const infoContainerContext = useContext(InfoContainerContext);
@@ -84,9 +85,16 @@ export default function InvestmentMain() {
   const renderInvestments =
     searchFilter === "" ? investmentData : filteredInvestments;
 
-  return (
-    <>
-      {infoContainerContext.infoContainerStatus === "investment" ? (
+  function toggleWatchlistContext() {
+    infoContainerContext.toggleInfoContainerStatus("watchlist");
+  }
+
+  console.log(infoContainerContext.infoContainerStatus);
+
+  let renderedContent;
+  switch (infoContainerContext.infoContainerStatus) {
+    case "investment":
+      renderedContent = (
         <div className="investmentMainContainer">
           <div className="backgroundContainer">
             <InvestmentCardInfo />
@@ -262,12 +270,15 @@ export default function InvestmentMain() {
             </div>
           </div>
         </div>
-      ) : //            /* Watchlist Info Overlay */
-      //            /* Watchlist Info Overlay */
-      //            /* Watchlist Info Overlay */
-      infoContainerContext.infoContainerStatus === "watchlist" ? (
+      );
+      break;
+
+    case "watchlist":
+      renderedContent = (
         <div className="investmentMainContainer">
-          <div className="backgroundContainer">Watchlist</div>
+          <div className="backgroundContainer">
+            <WatchlistInfo />
+          </div>
           <div
             className={`${
               infoContainerContext.infoContainerStatus === "watchlist"
@@ -439,10 +450,11 @@ export default function InvestmentMain() {
             </div>
           </div>
         </div>
-      ) : //            /* History Info Overlay */
-      //            /* History Info Overlay */
-      //            /* History Info Overlay */
-      infoContainerContext.infoContainerStatus === "history" ? (
+      );
+      break;
+
+    case "history":
+      renderedContent = (
         <div className="investmentMainContainer">
           <div className="backgroundContainer">History</div>
           <div
@@ -616,10 +628,11 @@ export default function InvestmentMain() {
             </div>
           </div>
         </div>
-      ) : (
-        //            /* No Info Overlay */
-        //            /* No Info Overlay */
-        //            /* No Info Overlay */
+      );
+      break;
+
+    default:
+      renderedContent = (
         <div className="investmentMainContainer">
           <h1 className="investmentMainH1">Meus Investimentos</h1>
           <div className="tablesContainer">
@@ -669,13 +682,7 @@ export default function InvestmentMain() {
               </table>
               <div className="expandirContainer">
                 <div className="expandir">
-                  <button
-                    onClick={infoContainerContext.toggleInfoContainerStatus(
-                      "watchlist"
-                    )}
-                  >
-                    Expandir
-                  </button>
+                  <button onClick={toggleWatchlistContext}>Expandir</button>
                   <FontAwesomeIcon
                     className="expandirIcon"
                     icon={faCaretDown}
@@ -789,7 +796,9 @@ export default function InvestmentMain() {
             ))}
           </div>
         </div>
-      )}
-    </>
-  );
+      );
+      break;
+  }
+
+  return <>{renderedContent}</>;
 }

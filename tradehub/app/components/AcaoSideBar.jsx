@@ -12,8 +12,10 @@ export default function AcaoSideBar() {
     <>
       <div
         className={`${
-          infoContainerContext.infoContainerStatus ? "blurEffect" : ""
-        } acaoSidebar`}
+          infoContainerContext.infoContainerStatus === "acoes"
+            ? "blurEffect"
+            : ""
+        }`}
       >
         <TitleCard />
         <Resumo />

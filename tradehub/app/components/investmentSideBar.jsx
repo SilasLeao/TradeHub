@@ -13,8 +13,12 @@ export default function InvestmentSideBar() {
     <>
       <div
         className={`${
-          infoContainerContext.infoContainerStatus ? "blurEffect" : ""
-        } investmentSidebar`}
+          ["investment", "watchlist", "history"].includes(
+            infoContainerContext.infoContainerStatus
+          )
+            ? "blurEffect"
+            : ""
+        }`}
       >
         <TitleCard />
         <Destaque />

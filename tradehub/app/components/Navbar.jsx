@@ -52,7 +52,11 @@ export default function Navbar() {
   return (
     <div
       className={`${
-        infoContainerContext.infoContainerStatus ? "blurEffect" : ""
+        ["acoes", "investment", "watchlist", "history"].includes(
+          infoContainerContext.infoContainerStatus
+        )
+          ? "blurEffect"
+          : ""
       }`}
     >
       <aside className="navbarAside">

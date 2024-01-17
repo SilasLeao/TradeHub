@@ -8,7 +8,7 @@ import NoLogin from "../components/NoLogin";
 export const InfoContainerContext = createContext();
 
 export default function MainPage() {
-  let [infoContainerStatus, setInfoContainerStatus] = useState(false);
+  let [infoContainerStatus, setInfoContainerStatus] = useState("");
 
   const toggleInfoContainerStatus = (statusValue) => {
     setInfoContainerStatus(statusValue);
