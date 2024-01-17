@@ -52,6 +52,26 @@ export default function WatchlistInfo() {
 
     fetchData();
   }, []);
+
+  async function handleWatchlistDelete(index) {
+    try {
+      const deletarAcao = watchlist[index];
+
+      const { error } = await supabase
+        .from("Watchlist")
+        .delete()
+        .eq("simbolo", deletarAcao.nome)
+        .eq("usuario_id", "5GJV756PUC");
+      if (!error) {
+        let updatedWatchlist = [...watchlist];
+        updatedWatchlist.splice(index, 1);
+        setWatchlist(updatedWatchlist);
+      }
+    } catch (error) {
+      console.error("Erro ao tentar deletar ação", error);
+    }
+  }
+
   return (
     <>
       <div className="watchlistInfoContainer">
@@ -87,7 +107,11 @@ export default function WatchlistInfo() {
                       : "Loading..."}
                   </td>
                   <td>
-                    <button>
+                    <button
+                      onClick={() => {
+                        handleWatchlistDelete(index);
+                      }}
+                    >
                       <FontAwesomeIcon
                         className="watchlistIcon"
                         icon={faTrashCan}
