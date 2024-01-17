@@ -10,8 +10,8 @@ export const InfoContainerContext = createContext();
 export default function MainPage() {
   let [infoContainerStatus, setInfoContainerStatus] = useState(false);
 
-  const toggleInfoContainerStatus = () => {
-    setInfoContainerStatus(!infoContainerStatus);
+  const toggleInfoContainerStatus = (statusValue) => {
+    setInfoContainerStatus(statusValue);
   };
 
   return (

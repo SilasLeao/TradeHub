@@ -143,7 +143,7 @@ export default function AcoesMain() {
 
   return (
     <>
-      {infoContainerContext.infoContainerStatus ? (
+      {infoContainerContext.infoContainerStatus === "acoes" ? (
         <div className="acoesMainContainer">
           <div className="backgroundContainer">
             <ChartTimelineContext.Provider
@@ -154,7 +154,9 @@ export default function AcoesMain() {
           </div>
           <div
             className={`${
-              infoContainerContext.infoContainerStatus ? "blurEffect" : ""
+              infoContainerContext.infoContainerStatus === "acoes"
+                ? "blurEffect"
+                : ""
             } acoesMainContainerContent`}
           >
             <h1 className="acaoH1">Ações da Bolsa</h1>

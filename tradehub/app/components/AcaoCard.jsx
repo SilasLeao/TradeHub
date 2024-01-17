@@ -27,7 +27,7 @@ export default function AcaoCard({ acao }) {
     sessionStorage.setItem("codigoAcaoPesquisada", nome);
     sessionStorage.setItem("nomeAcaoPesquisada", fullName);
     sessionStorage.setItem("marketCap", marketCap);
-    infoContainerContext.toggleInfoContainerStatus();
+    infoContainerContext.toggleInfoContainerStatus("acoes");
   }
 
   return (

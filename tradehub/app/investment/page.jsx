@@ -10,8 +10,8 @@ import { InfoContainerContext } from "../mainPage/page";
 export default function InvestmentPage() {
   const infoContainerContext = useContext(InfoContainerContext);
   let [infoContainerStatus, setInfoContainerStatus] = useState(false);
-  const toggleInfoContainerStatus = () => {
-    setInfoContainerStatus(!infoContainerStatus);
+  const toggleInfoContainerStatus = (statusValue) => {
+    setInfoContainerStatus(statusValue);
   };
   return (
     <>

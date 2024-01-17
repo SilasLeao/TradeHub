@@ -16,7 +16,7 @@ export default function CardInfo() {
   }
 
   function handleExit() {
-    infoContainerContext.toggleInfoContainerStatus();
+    infoContainerContext.toggleInfoContainerStatus("");
   }
 
   function handleChartTimelineButtons(isDayButton) {

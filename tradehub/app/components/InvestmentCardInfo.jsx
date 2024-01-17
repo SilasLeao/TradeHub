@@ -19,7 +19,7 @@ export default function InvestmentCardInfo() {
   let custoMedio = valorAplicado / quantidade;
 
   function handleExit() {
-    infoContainerContext.toggleInfoContainerStatus();
+    infoContainerContext.toggleInfoContainerStatus("");
   }
   let marketCapFormatted = parseFloat(marketCap)
     .toFixed(2)

@@ -86,14 +86,16 @@ export default function InvestmentMain() {
 
   return (
     <>
-      {infoContainerContext.infoContainerStatus ? (
+      {infoContainerContext.infoContainerStatus === "investment" ? (
         <div className="investmentMainContainer">
           <div className="backgroundContainer">
             <InvestmentCardInfo />
           </div>
           <div
             className={`${
-              infoContainerContext.infoContainerStatus ? "blurEffect" : ""
+              infoContainerContext.infoContainerStatus === "investment"
+                ? "blurEffect"
+                : ""
             } investmentMainContainerContent`}
           >
             <h1 className="investmentMainH1">Meus Investimentos</h1>
