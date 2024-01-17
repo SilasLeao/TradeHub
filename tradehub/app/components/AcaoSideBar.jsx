@@ -13,7 +13,7 @@ export default function AcaoSideBar() {
       <div
         className={`${
           infoContainerContext.infoContainerStatus === "acoes"
-            ? "blurEffect"
+            ? "blurEffect acaoSidebar"
             : "acaoSidebar"
         }`}
       >

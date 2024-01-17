@@ -16,7 +16,7 @@ export default function InvestmentSideBar() {
           ["investment", "watchlist", "history"].includes(
             infoContainerContext.infoContainerStatus
           )
-            ? "blurEffect"
+            ? "blurEffect investmentSidebar"
             : "investmentSidebar"
         }`}
       >

@@ -153,7 +153,7 @@ export default function InvestmentMain() {
                 </table>
                 <div className="expandirContainer">
                   <div className="expandir">
-                    <span>Expandir</span>
+                    <button>Expandir</button>
                     <FontAwesomeIcon
                       className="expandirIcon"
                       icon={faCaretDown}
@@ -213,7 +213,7 @@ export default function InvestmentMain() {
                 </table>
                 <div className="expandirContainer">
                   <div className="expandir">
-                    <span>Expandir</span>
+                    <button>Expandir</button>
                     <FontAwesomeIcon
                       className="expandirIcon"
                       icon={faCaretDown}
@@ -333,7 +333,7 @@ export default function InvestmentMain() {
                 </table>
                 <div className="expandirContainer">
                   <div className="expandir">
-                    <span>Expandir</span>
+                    <button>Expandir</button>
                     <FontAwesomeIcon
                       className="expandirIcon"
                       icon={faCaretDown}
@@ -393,7 +393,7 @@ export default function InvestmentMain() {
                 </table>
                 <div className="expandirContainer">
                   <div className="expandir">
-                    <span>Expandir</span>
+                    <button>Expandir</button>
                     <FontAwesomeIcon
                       className="expandirIcon"
                       icon={faCaretDown}
@@ -511,7 +511,7 @@ export default function InvestmentMain() {
                 </table>
                 <div className="expandirContainer">
                   <div className="expandir">
-                    <span>Expandir</span>
+                    <button>Expandir</button>
                     <FontAwesomeIcon
                       className="expandirIcon"
                       icon={faCaretDown}
@@ -571,7 +571,7 @@ export default function InvestmentMain() {
                 </table>
                 <div className="expandirContainer">
                   <div className="expandir">
-                    <span>Expandir</span>
+                    <button>Expandir</button>
                     <FontAwesomeIcon
                       className="expandirIcon"
                       icon={faCaretDown}
@@ -740,7 +740,7 @@ export default function InvestmentMain() {
               </table>
               <div className="expandirContainer">
                 <div className="expandir">
-                  <span>Expandir</span>
+                  <button>Expandir</button>
                   <FontAwesomeIcon
                     className="expandirIcon"
                     icon={faCaretDown}

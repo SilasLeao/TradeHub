@@ -127,8 +127,15 @@ tr {
   cursor: pointer;
 }
 
-.expandir span {
+.expandir button {
   color: #5dec85;
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+}
+
+.expandir button:hover {
+  cursor: pointer;
 }
 
 .expandirIcon {
