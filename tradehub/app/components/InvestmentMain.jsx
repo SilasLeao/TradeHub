@@ -799,7 +799,7 @@ export default function InvestmentMain() {
                           {transacao.total
                             ? transacao.tipo === "Compra"
                               ? `-${formatCurrency(transacao.total)}`
-                              : formatCurrency(transacao.total)
+                              : `+${formatCurrency(transacao.total)}`
                             : "Loading..."}
                         </td>
                       </tr>

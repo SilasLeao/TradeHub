@@ -99,7 +99,7 @@ export default function InvestmentCardInfo() {
               }
             >
               {Number(rendimentoTotal) > Number(valorAplicado)
-                ? `R$ ${rendimentoParcialFormatted}`
+                ? `+R$ ${rendimentoParcialFormatted}`
                 : `-R$ ${rendimentoParcialFormatted}`}
             </p>
           </span>

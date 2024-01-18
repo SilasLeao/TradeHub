@@ -98,7 +98,7 @@ export default function HistoryInfo() {
                     {transacao.total
                       ? transacao.tipo === "Compra"
                         ? `-${formatCurrency(transacao.total)}`
-                        : formatCurrency(transacao.total)
+                        : `+${formatCurrency(transacao.total)}`
                       : "Loading..."}
                   </td>
                   <td className="whiteTableText">

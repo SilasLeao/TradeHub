@@ -172,7 +172,7 @@ export default function Resumo() {
             }`}
           >
             {rendimentoTotal > valorAplicado
-              ? `R$ ${rendimentoParcialFormatted}`
+              ? `+R$ ${rendimentoParcialFormatted}`
               : `-R$ ${rendimentoParcialFormatted}`}
           </span>
         </div>
