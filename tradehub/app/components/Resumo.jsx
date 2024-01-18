@@ -122,7 +122,9 @@ export default function Resumo() {
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
-  rendimentoParcialFormatted = rendimentoParcialFormatted.replace(".", ",");
+  rendimentoParcialFormatted = rendimentoParcialFormatted
+    .replace(".", ",")
+    .replace("-", "");
   rendimentoParcialFormatted = rendimentoParcialFormatted
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -169,7 +171,9 @@ export default function Resumo() {
                 : "resumoNumeroVermelho"
             }`}
           >
-            {`R$ ${rendimentoParcialFormatted}`}
+            {rendimentoTotal > valorAplicado
+              ? `R$ ${rendimentoParcialFormatted}`
+              : `-R$ ${rendimentoParcialFormatted}`}
           </span>
         </div>
         <div className="rendimentoPorcento">

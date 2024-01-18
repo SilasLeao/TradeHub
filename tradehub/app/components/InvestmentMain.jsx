@@ -88,6 +88,14 @@ export default function InvestmentMain() {
     setSearchFilter(event.target.value);
   }
 
+  const formatCurrency = (value) => {
+    value = value
+      .toFixed(2)
+      .replace(".", ",")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return `R$ ${value}`;
+  };
+
   useEffect(() => {
     handleSearch();
   }, [investmentData, searchFilter]);
@@ -778,7 +786,7 @@ export default function InvestmentMain() {
                         </td>
                         <td className="whiteTableText">
                           {transacao.preco_unitario
-                            ? `R$ ${transacao.preco_unitario}`
+                            ? formatCurrency(transacao.preco_unitario)
                             : "Loading..."}
                         </td>
                         <td
@@ -789,7 +797,9 @@ export default function InvestmentMain() {
                           }
                         >
                           {transacao.total
-                            ? `R$ ${transacao.total}`
+                            ? transacao.tipo === "Compra"
+                              ? `-${formatCurrency(transacao.total)}`
+                              : formatCurrency(transacao.total)
                             : "Loading..."}
                         </td>
                       </tr>

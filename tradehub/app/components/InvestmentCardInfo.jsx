@@ -32,6 +32,7 @@ export default function InvestmentCardInfo() {
   let valorAcaoFormatted = parseFloat(valorAcao).toFixed(2).replace(".", ",");
   let rendimentoParcialFormatted = parseFloat(rendimentoParcial)
     .toFixed(2)
+    .replace("-", "")
     .replace(".", ",")
     .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   let rendimentoTotalFormatted = parseFloat(rendimentoTotal)
@@ -97,7 +98,9 @@ export default function InvestmentCardInfo() {
                   : "investmentVermelho"
               }
             >
-              R$ {rendimentoParcialFormatted}
+              {Number(rendimentoTotal) > Number(valorAplicado)
+                ? `R$ ${rendimentoParcialFormatted}`
+                : `-R$ ${rendimentoParcialFormatted}`}
             </p>
           </span>
           <span>
