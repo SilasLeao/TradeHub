@@ -42,6 +42,7 @@ export default function InvestmentMain() {
           .from("Historico")
           .select("*")
           .filter("usuario_id", "eq", "5GJV756PUC");
+        console.log(historyData);
         setInvestmentData(data);
         setWatchlist(watchlistData);
         setHistory(historyData);
@@ -714,33 +715,29 @@ export default function InvestmentMain() {
                   </tr>
                 </thead>
                 <tbody>
-                  {watchlist.slice(0, 5).map((investimento, index) => (
+                  {history.slice(0, 5).map((transacao, index) => (
                     <tr key={index}>
                       <th className="whiteTableText">
-                        {investimento.nome && investimento.nome.length > 0
-                          ? `${investimento.nome}`
+                        {transacao.simbolo
+                          ? `${transacao.simbolo}`
                           : "Loading..."}
                       </th>
+                      <td className="">
+                        {transacao.tipo ? `${transacao.tipo}` : "Loading..."}
+                      </td>
                       <td className="whiteTableText">
-                        {investimento.cotacao && investimento.cotacao.length > 0
-                          ? `R$ ${investimento.cotacao}`
+                        {transacao.quantidade
+                          ? `${transacao.quantidade}`
                           : "Loading..."}
                       </td>
-                      <td
-                        className={
-                          investimento.variacao &&
-                          investimento.variacao.length > 0
-                            ? investimento.variacao[0] === "-"
-                              ? "redTableText"
-                              : "greenTableText"
-                            : ""
-                        }
-                      >
-                        {investimento.variacao &&
-                        investimento.variacao.length > 0
-                          ? investimento.variacao[0] === "-"
-                            ? `${investimento.variacao}%`
-                            : `+${investimento.variacao}%`
+                      <td className="">
+                        {transacao.preco_unitario
+                          ? `R$ ${transacao.preco_unitario}`
+                          : "Loading..."}
+                      </td>
+                      <td className="">
+                        {transacao.total
+                          ? `R$ ${transacao.total}`
                           : "Loading..."}
                       </td>
                     </tr>
