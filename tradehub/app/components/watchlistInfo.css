@@ -51,10 +51,18 @@
   color: honeydew;
 }
 
-table {
+.watchlistTableInfo {
+  width: 80%;
   border-radius: 20px 20px 0 0;
   background-color: #2a2a2a;
   border-collapse: collapse;
+}
+
+.watchlistTableInfo thead tr th {
+  position: sticky;
+  top: 0;
+  background-color: #2a2a2a;
+  color: honeydew;
 }
 
 tr {

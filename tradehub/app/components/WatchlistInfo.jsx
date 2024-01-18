@@ -77,7 +77,15 @@ export default function WatchlistInfo() {
       <div className="watchlistInfoContainer">
         <h1 className="watchlistTitle">Watchlist</h1>
         <div className="watchlistInvestmentsContainer">
-          <table className="watchlistTable">
+          <table className="watchlistTableInfo">
+            <thead>
+              <tr>
+                <th>Ação</th>
+                <th>Cotação</th>
+                <th>Variação</th>
+                <th>X</th>
+              </tr>
+            </thead>
             <tbody>
               {watchlist.map((investimento, index) => (
                 <tr key={index}>

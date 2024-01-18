@@ -58,6 +58,13 @@
   border-collapse: collapse;
 }
 
+.historyTable thead tr th {
+  position: sticky;
+  top: 0;
+  background-color: #2a2a2a;
+  color: honeydew;
+}
+
 tr {
   border-bottom: 1px solid #5dec85;
   height: 50px;

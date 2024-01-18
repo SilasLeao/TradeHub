@@ -31,8 +31,12 @@ export default function HistoryInfo() {
           .from("Historico")
           .select("*")
           .filter("usuario_id", "eq", "5GJV756PUC");
-        const sortedHistory = data.reverse();
-        setHistory(sortedHistory);
+        // const sortedHistory = data.reverse();
+        // setHistory(sortedHistory);
+        const sortedHistory = data.sort(
+          (a, b) => new Date(a.data) - new Date(b.data)
+        );
+        setHistory(sortedHistory.reverse());
       } catch (error) {
         console.error("Erro:", error);
       }
@@ -44,9 +48,19 @@ export default function HistoryInfo() {
   return (
     <>
       <div className="historyInfoContainer">
-        <h1 className="historyTitle">Watchlist</h1>
+        <h1 className="historyTitle">Histórico de Transação</h1>
         <div className="historyInvestmentsContainer">
           <table className="historyTable">
+            <thead>
+              <tr>
+                <th>Ação</th>
+                <th>Tipo</th>
+                <th>Quantidade</th>
+                <th>Preço Unitário</th>
+                <th>Total</th>
+                <th>Data</th>
+              </tr>
+            </thead>
             <tbody>
               {history.map((transacao, index) => (
                 <tr key={index}>
