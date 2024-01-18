@@ -11,8 +11,10 @@ import classNames from "classnames";
 import { createClient } from "@supabase/supabase-js";
 import CardInfo from "./cardInfo";
 import { InfoContainerContext } from "../mainPage/page";
+import { icon } from "@fortawesome/fontawesome-svg-core";
 export default function AcaoCard({ acao }) {
   const [watchlist, setWatchlist] = useState([]);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const nome = acao.symbol;
   const marketCap = acao.marketCap;
@@ -45,11 +47,12 @@ export default function AcaoCard({ acao }) {
           .from("Watchlist")
           .select("*")
           .filter("usuario_id", "eq", "5GJV756PUC");
-        setWatchlist(
-          data.map((investimento) => {
-            return investimento.simbolo;
-          })
-        );
+        const updatedWatchlist = data.map((investimento) => {
+          return investimento.simbolo;
+        });
+
+        setWatchlist(updatedWatchlist);
+        setIsFavorite(updatedWatchlist.includes(nome));
       } catch (error) {
         console.error("Erro ao consultar watchlist", error);
       }
@@ -57,6 +60,43 @@ export default function AcaoCard({ acao }) {
 
     fetchData();
   }, []);
+
+  function handleFavoriteButton() {
+    if (isFavorite) {
+      const removeFavorite = async () => {
+        try {
+          const { error } = await supabase
+            .from("Watchlist")
+            .delete()
+            .eq("simbolo", nome)
+            .eq("usuario_id", "5GJV756PUC");
+          if (!error) {
+            setWatchlist(watchlist.filter((acao) => acao !== nome));
+            setIsFavorite(!isFavorite);
+          }
+        } catch (error) {
+          console.error("Erro ao tentar remover ação da watchlist", error);
+        }
+      };
+      removeFavorite();
+    } else {
+      const addFavorite = async () => {
+        try {
+          const { data, error } = await supabase
+            .from("Watchlist")
+            .insert([{ simbolo: nome, usuario_id: "5GJV756PUC" }])
+            .select();
+          if (!error) {
+            setWatchlist([...watchlist, nome]);
+            setIsFavorite(!isFavorite);
+          }
+        } catch (error) {
+          console.error("Erro ao tentar adicionar ação a watchlist", error);
+        }
+      };
+      addFavorite();
+    }
+  }
 
   return (
     <>
@@ -77,14 +117,9 @@ export default function AcaoCard({ acao }) {
           />
           <button>Comprar</button>
           <FontAwesomeIcon
+            onClick={handleFavoriteButton}
             className="acaoCardIcon"
-            icon={
-              watchlist && watchlist.length > 0
-                ? watchlist.includes(nome)
-                  ? faStar
-                  : faEmptyStar
-                : ""
-            }
+            icon={isFavorite ? faStar : faEmptyStar}
           />
         </div>
       </div>
