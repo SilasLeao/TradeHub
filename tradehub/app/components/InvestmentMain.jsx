@@ -11,6 +11,7 @@ import { createClient } from "@supabase/supabase-js";
 import InvestmentCard from "./investmentCard";
 import InvestmentCardInfo from "./InvestmentCardInfo";
 import WatchlistInfo from "./WatchlistInfo";
+import HistoryInfo from "./HistoryInfo";
 
 export default function InvestmentMain() {
   const infoContainerContext = useContext(InfoContainerContext);
@@ -24,6 +25,7 @@ export default function InvestmentMain() {
   const [investmentData, setInvestmentData] = useState([]);
   const [filteredInvestments, setFilteredInvestments] = useState([]);
   const [watchlist, setWatchlist] = useState([]);
+  const [history, setHistory] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,8 +38,13 @@ export default function InvestmentMain() {
           .from("Watchlist")
           .select("*")
           .filter("usuario_id", "eq", "5GJV756PUC");
+        const { data: historyData, error: historyError } = await supabase
+          .from("History")
+          .select("*")
+          .filter("usuario_id", "eq", "5GJV756PUC");
         setInvestmentData(data);
         setWatchlist(watchlistData);
+        setHistory(historyData);
 
         const promises = watchlistData.map(async (investimento) => {
           const resposta = await fetch(
@@ -87,6 +94,10 @@ export default function InvestmentMain() {
 
   function toggleWatchlistContext() {
     infoContainerContext.toggleInfoContainerStatus("watchlist");
+  }
+
+  function toggleHistoryContext() {
+    infoContainerContext.toggleInfoContainerStatus("history");
   }
 
   let renderedContent;
@@ -454,7 +465,9 @@ export default function InvestmentMain() {
     case "history":
       renderedContent = (
         <div className="investmentMainContainer">
-          <div className="backgroundContainer">History</div>
+          <div className="backgroundContainer">
+            <HistoryInfo />
+          </div>
           <div
             className={`${
               infoContainerContext.infoContainerStatus === "history"
@@ -701,46 +714,42 @@ export default function InvestmentMain() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th className="whiteTableText">HGRU11</th>
-                    <td className="greenTableText">Compra</td>
-                    <td className="whiteTableText">11</td>
-                    <td className="whiteTableText">R$ 130.92</td>
-                    <td className="redTableText">- R$ 1.440,12</td>
-                  </tr>
-                  <tr>
-                    <th className="whiteTableText">IRDM11</th>
-                    <td className="redTableText">Venda</td>
-                    <td className="whiteTableText">13</td>
-                    <td className="whiteTableText">R$ 75.72</td>
-                    <td className="greenTableText">+ R$ 984.36</td>
-                  </tr>
-                  <tr>
-                    <th className="whiteTableText">AAPL34</th>
-                    <td className="greenTableText">Compra</td>
-                    <td className="whiteTableText">23</td>
-                    <td className="whiteTableText">R$ 46.67</td>
-                    <td className="redTableText">- R$ 1.073,41</td>
-                  </tr>
-                  <tr>
-                    <th className="whiteTableText">SPTW11</th>
-                    <td className="greenTableText">Compra</td>
-                    <td className="whiteTableText">17</td>
-                    <td className="whiteTableText">R$ 41.66</td>
-                    <td className="redTableText">- R$ 708.22</td>
-                  </tr>
-                  <tr>
-                    <th className="whiteTableText">TRXF11</th>
-                    <td className="redTableText">Venda</td>
-                    <td className="whiteTableText">31</td>
-                    <td className="whiteTableText">R$ 107.97</td>
-                    <td className="greenTableText">+ R$ 3.347,07</td>
-                  </tr>
+                  {watchlist.slice(0, 5).map((investimento, index) => (
+                    <tr key={index}>
+                      <th className="whiteTableText">
+                        {investimento.nome && investimento.nome.length > 0
+                          ? `${investimento.nome}`
+                          : "Loading..."}
+                      </th>
+                      <td className="whiteTableText">
+                        {investimento.cotacao && investimento.cotacao.length > 0
+                          ? `R$ ${investimento.cotacao}`
+                          : "Loading..."}
+                      </td>
+                      <td
+                        className={
+                          investimento.variacao &&
+                          investimento.variacao.length > 0
+                            ? investimento.variacao[0] === "-"
+                              ? "redTableText"
+                              : "greenTableText"
+                            : ""
+                        }
+                      >
+                        {investimento.variacao &&
+                        investimento.variacao.length > 0
+                          ? investimento.variacao[0] === "-"
+                            ? `${investimento.variacao}%`
+                            : `+${investimento.variacao}%`
+                          : "Loading..."}
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
               <div className="expandirContainer">
                 <div className="expandir">
-                  <button>Expandir</button>
+                  <button onClick={toggleHistoryContext}>Expandir</button>
                   <FontAwesomeIcon
                     className="expandirIcon"
                     icon={faCaretDown}
