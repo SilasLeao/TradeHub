@@ -97,17 +97,20 @@ export default function AcaoCard({ acao }) {
       addFavorite();
     }
   }
-
   return (
     <>
       <div className="acaoCard">
         <p className="acaoCardTitle">{nome}</p>
-        <p className="acaoCardPrice">R$ {valor.toFixed(2).replace(".", ",")}</p>
+        <p className="acaoCardPrice">
+          R$ {valor ? valor.toFixed(2).replace(".", ",") : "Loading..."}
+        </p>
         <hr className="acaoCardHr" />
         <p className={`acaoCardChange ${corTextoClass}`}>
-          {variacao > 0
-            ? `+${variacao.toFixed(2)}%`
-            : `${variacao.toFixed(2)}%`}
+          {(variacao !== null) & (variacao !== undefined)
+            ? variacao > 0
+              ? `+${variacao.toFixed(2)}%`
+              : `${variacao.toFixed(2)}%`
+            : "Loading..."}
         </p>
         <div className="acaoCardBtns">
           <FontAwesomeIcon
