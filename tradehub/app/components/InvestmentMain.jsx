@@ -42,10 +42,12 @@ export default function InvestmentMain() {
           .from("Historico")
           .select("*")
           .filter("usuario_id", "eq", "5GJV756PUC");
-        console.log(historyData);
+        const sortedHistory = historyData.sort(
+          (a, b) => new Date(a.data) - new Date(b.data)
+        );
         setInvestmentData(data);
         setWatchlist(watchlistData);
-        setHistory(historyData);
+        setHistory(sortedHistory);
 
         const promises = watchlistData.map(async (investimento) => {
           const resposta = await fetch(
@@ -186,41 +188,52 @@ export default function InvestmentMain() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th className="whiteTableText">HGRU11</th>
-                      <td className="greenTableText">Compra</td>
-                      <td className="whiteTableText">11</td>
-                      <td className="whiteTableText">R$ 130.92</td>
-                      <td className="redTableText">- R$ 1.440,12</td>
-                    </tr>
-                    <tr>
-                      <th className="whiteTableText">IRDM11</th>
-                      <td className="redTableText">Venda</td>
-                      <td className="whiteTableText">13</td>
-                      <td className="whiteTableText">R$ 75.72</td>
-                      <td className="greenTableText">+ R$ 984.36</td>
-                    </tr>
-                    <tr>
-                      <th className="whiteTableText">AAPL34</th>
-                      <td className="greenTableText">Compra</td>
-                      <td className="whiteTableText">23</td>
-                      <td className="whiteTableText">R$ 46.67</td>
-                      <td className="redTableText">- R$ 1.073,41</td>
-                    </tr>
-                    <tr>
-                      <th className="whiteTableText">SPTW11</th>
-                      <td className="greenTableText">Compra</td>
-                      <td className="whiteTableText">17</td>
-                      <td className="whiteTableText">R$ 41.66</td>
-                      <td className="redTableText">- R$ 708.22</td>
-                    </tr>
-                    <tr>
-                      <th className="whiteTableText">TRXF11</th>
-                      <td className="redTableText">Venda</td>
-                      <td className="whiteTableText">31</td>
-                      <td className="whiteTableText">R$ 107.97</td>
-                      <td className="greenTableText">+ R$ 3.347,07</td>
-                    </tr>
+                    {history
+                      .slice(-5)
+                      .reverse()
+                      .map((transacao, index) => (
+                        <tr key={index}>
+                          <th className="whiteTableText">
+                            {transacao.simbolo
+                              ? `${transacao.simbolo}`
+                              : "Loading..."}
+                          </th>
+                          <td
+                            className={
+                              transacao.tipo
+                                ? transacao.tipo === "Compra"
+                                  ? "greenTableText"
+                                  : "redTableText"
+                                : "Loading..."
+                            }
+                          >
+                            {transacao.tipo
+                              ? `${transacao.tipo}`
+                              : "Loading..."}
+                          </td>
+                          <td className="whiteTableText">
+                            {transacao.quantidade
+                              ? `${transacao.quantidade}`
+                              : "Loading..."}
+                          </td>
+                          <td className="whiteTableText">
+                            {transacao.preco_unitario
+                              ? `R$ ${transacao.preco_unitario}`
+                              : "Loading..."}
+                          </td>
+                          <td
+                            className={
+                              transacao.tipo === "Compra"
+                                ? "redTableText"
+                                : "greenTableText"
+                            }
+                          >
+                            {transacao.total
+                              ? `R$ ${transacao.total}`
+                              : "Loading..."}
+                          </td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
                 <div className="expandirContainer">
@@ -366,41 +379,52 @@ export default function InvestmentMain() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th className="whiteTableText">HGRU11</th>
-                      <td className="greenTableText">Compra</td>
-                      <td className="whiteTableText">11</td>
-                      <td className="whiteTableText">R$ 130.92</td>
-                      <td className="redTableText">- R$ 1.440,12</td>
-                    </tr>
-                    <tr>
-                      <th className="whiteTableText">IRDM11</th>
-                      <td className="redTableText">Venda</td>
-                      <td className="whiteTableText">13</td>
-                      <td className="whiteTableText">R$ 75.72</td>
-                      <td className="greenTableText">+ R$ 984.36</td>
-                    </tr>
-                    <tr>
-                      <th className="whiteTableText">AAPL34</th>
-                      <td className="greenTableText">Compra</td>
-                      <td className="whiteTableText">23</td>
-                      <td className="whiteTableText">R$ 46.67</td>
-                      <td className="redTableText">- R$ 1.073,41</td>
-                    </tr>
-                    <tr>
-                      <th className="whiteTableText">SPTW11</th>
-                      <td className="greenTableText">Compra</td>
-                      <td className="whiteTableText">17</td>
-                      <td className="whiteTableText">R$ 41.66</td>
-                      <td className="redTableText">- R$ 708.22</td>
-                    </tr>
-                    <tr>
-                      <th className="whiteTableText">TRXF11</th>
-                      <td className="redTableText">Venda</td>
-                      <td className="whiteTableText">31</td>
-                      <td className="whiteTableText">R$ 107.97</td>
-                      <td className="greenTableText">+ R$ 3.347,07</td>
-                    </tr>
+                    {history
+                      .slice(-5)
+                      .reverse()
+                      .map((transacao, index) => (
+                        <tr key={index}>
+                          <th className="whiteTableText">
+                            {transacao.simbolo
+                              ? `${transacao.simbolo}`
+                              : "Loading..."}
+                          </th>
+                          <td
+                            className={
+                              transacao.tipo
+                                ? transacao.tipo === "Compra"
+                                  ? "greenTableText"
+                                  : "redTableText"
+                                : "Loading..."
+                            }
+                          >
+                            {transacao.tipo
+                              ? `${transacao.tipo}`
+                              : "Loading..."}
+                          </td>
+                          <td className="whiteTableText">
+                            {transacao.quantidade
+                              ? `${transacao.quantidade}`
+                              : "Loading..."}
+                          </td>
+                          <td className="whiteTableText">
+                            {transacao.preco_unitario
+                              ? `R$ ${transacao.preco_unitario}`
+                              : "Loading..."}
+                          </td>
+                          <td
+                            className={
+                              transacao.tipo === "Compra"
+                                ? "redTableText"
+                                : "greenTableText"
+                            }
+                          >
+                            {transacao.total
+                              ? `R$ ${transacao.total}`
+                              : "Loading..."}
+                          </td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
                 <div className="expandirContainer">
@@ -546,41 +570,52 @@ export default function InvestmentMain() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th className="whiteTableText">HGRU11</th>
-                      <td className="greenTableText">Compra</td>
-                      <td className="whiteTableText">11</td>
-                      <td className="whiteTableText">R$ 130.92</td>
-                      <td className="redTableText">- R$ 1.440,12</td>
-                    </tr>
-                    <tr>
-                      <th className="whiteTableText">IRDM11</th>
-                      <td className="redTableText">Venda</td>
-                      <td className="whiteTableText">13</td>
-                      <td className="whiteTableText">R$ 75.72</td>
-                      <td className="greenTableText">+ R$ 984.36</td>
-                    </tr>
-                    <tr>
-                      <th className="whiteTableText">AAPL34</th>
-                      <td className="greenTableText">Compra</td>
-                      <td className="whiteTableText">23</td>
-                      <td className="whiteTableText">R$ 46.67</td>
-                      <td className="redTableText">- R$ 1.073,41</td>
-                    </tr>
-                    <tr>
-                      <th className="whiteTableText">SPTW11</th>
-                      <td className="greenTableText">Compra</td>
-                      <td className="whiteTableText">17</td>
-                      <td className="whiteTableText">R$ 41.66</td>
-                      <td className="redTableText">- R$ 708.22</td>
-                    </tr>
-                    <tr>
-                      <th className="whiteTableText">TRXF11</th>
-                      <td className="redTableText">Venda</td>
-                      <td className="whiteTableText">31</td>
-                      <td className="whiteTableText">R$ 107.97</td>
-                      <td className="greenTableText">+ R$ 3.347,07</td>
-                    </tr>
+                    {history
+                      .slice(-5)
+                      .reverse()
+                      .map((transacao, index) => (
+                        <tr key={index}>
+                          <th className="whiteTableText">
+                            {transacao.simbolo
+                              ? `${transacao.simbolo}`
+                              : "Loading..."}
+                          </th>
+                          <td
+                            className={
+                              transacao.tipo
+                                ? transacao.tipo === "Compra"
+                                  ? "greenTableText"
+                                  : "redTableText"
+                                : "Loading..."
+                            }
+                          >
+                            {transacao.tipo
+                              ? `${transacao.tipo}`
+                              : "Loading..."}
+                          </td>
+                          <td className="whiteTableText">
+                            {transacao.quantidade
+                              ? `${transacao.quantidade}`
+                              : "Loading..."}
+                          </td>
+                          <td className="whiteTableText">
+                            {transacao.preco_unitario
+                              ? `R$ ${transacao.preco_unitario}`
+                              : "Loading..."}
+                          </td>
+                          <td
+                            className={
+                              transacao.tipo === "Compra"
+                                ? "redTableText"
+                                : "greenTableText"
+                            }
+                          >
+                            {transacao.total
+                              ? `R$ ${transacao.total}`
+                              : "Loading..."}
+                          </td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
                 <div className="expandirContainer">
@@ -715,33 +750,50 @@ export default function InvestmentMain() {
                   </tr>
                 </thead>
                 <tbody>
-                  {history.slice(0, 5).map((transacao, index) => (
-                    <tr key={index}>
-                      <th className="whiteTableText">
-                        {transacao.simbolo
-                          ? `${transacao.simbolo}`
-                          : "Loading..."}
-                      </th>
-                      <td className="">
-                        {transacao.tipo ? `${transacao.tipo}` : "Loading..."}
-                      </td>
-                      <td className="whiteTableText">
-                        {transacao.quantidade
-                          ? `${transacao.quantidade}`
-                          : "Loading..."}
-                      </td>
-                      <td className="">
-                        {transacao.preco_unitario
-                          ? `R$ ${transacao.preco_unitario}`
-                          : "Loading..."}
-                      </td>
-                      <td className="">
-                        {transacao.total
-                          ? `R$ ${transacao.total}`
-                          : "Loading..."}
-                      </td>
-                    </tr>
-                  ))}
+                  {history
+                    .slice(-5)
+                    .reverse()
+                    .map((transacao, index) => (
+                      <tr key={index}>
+                        <th className="whiteTableText">
+                          {transacao.simbolo
+                            ? `${transacao.simbolo}`
+                            : "Loading..."}
+                        </th>
+                        <td
+                          className={
+                            transacao.tipo
+                              ? transacao.tipo === "Compra"
+                                ? "greenTableText"
+                                : "redTableText"
+                              : "Loading..."
+                          }
+                        >
+                          {transacao.tipo ? `${transacao.tipo}` : "Loading..."}
+                        </td>
+                        <td className="whiteTableText">
+                          {transacao.quantidade
+                            ? `${transacao.quantidade}`
+                            : "Loading..."}
+                        </td>
+                        <td className="whiteTableText">
+                          {transacao.preco_unitario
+                            ? `R$ ${transacao.preco_unitario}`
+                            : "Loading..."}
+                        </td>
+                        <td
+                          className={
+                            transacao.tipo === "Compra"
+                              ? "redTableText"
+                              : "greenTableText"
+                          }
+                        >
+                          {transacao.total
+                            ? `R$ ${transacao.total}`
+                            : "Loading..."}
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
               <div className="expandirContainer">
