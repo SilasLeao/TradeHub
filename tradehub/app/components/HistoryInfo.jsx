@@ -114,7 +114,9 @@ export default function HistoryInfo() {
             </tbody>
           </table>
         </div>
-        <button onClick={handleExit}>Voltar</button>
+        <button className="closeHistoryButton" onClick={handleExit}>
+          Voltar
+        </button>
       </div>
     </>
   );

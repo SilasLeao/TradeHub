@@ -100,7 +100,7 @@ td button {
   color: #f52a2a;
 }
 
-.closeWatchlistButton {
+.closeHistoryButton {
   width: 10rem;
   height: 4rem;
   font-size: 1.5rem;
@@ -111,7 +111,7 @@ td button {
   background-color: transparent;
 }
 
-.closeWatchlistButton:hover {
+.closeHistoryButton:hover {
   scale: 1.1;
   background-color: #5dec85;
   color: honeydew;
