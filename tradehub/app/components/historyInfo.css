@@ -12,8 +12,8 @@
 .historyInfoContainer {
   display: flex;
   flex-direction: column;
-  height: 60vh;
-  width: 25vw;
+  height: 65vh;
+  width: 40vw;
   background-color: #2a2a2a;
   border-radius: 50px;
   box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.25);
@@ -24,4 +24,89 @@
   padding: 2rem 0;
   box-sizing: border-box;
   gap: 1rem;
+}
+
+.historyInvestmentsContainer {
+  height: 100%;
+  overflow-y: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.historyInvestmentsContainer::-webkit-scrollbar {
+  background-color: #5dec85;
+  border-radius: 20px;
+  width: 8px;
+  padding-right: 1rem;
+}
+
+.historyInvestmentsContainer::-webkit-scrollbar-thumb {
+  background-color: #3f3f3f;
+  border-radius: 6px;
+}
+
+.historyTitle {
+  color: honeydew;
+}
+
+.historyTable {
+  width: 80%;
+  border-radius: 20px 20px 0 0;
+  background-color: #2a2a2a;
+  border-collapse: collapse;
+}
+
+tr {
+  border-bottom: 1px solid #5dec85;
+  height: 50px;
+}
+
+td button {
+  background-color: transparent;
+  border: none;
+}
+
+.watchlistIcon {
+  color: honeydew;
+  transition: 0.2s;
+  font-size: 1.2rem;
+}
+
+.watchlistIcon:hover {
+  cursor: pointer;
+  scale: 1.1;
+  color: #f52a2a;
+}
+
+.whiteTableText {
+  font-weight: 400;
+  color: honeydew;
+}
+
+.greenTableText {
+  color: #5dec85;
+}
+
+.redTableText {
+  color: #f52a2a;
+}
+
+.closeWatchlistButton {
+  width: 10rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  border-radius: 30px;
+  border: 2px solid #5dec85;
+  transition: 0.2s;
+  color: #5dec85;
+  background-color: transparent;
+}
+
+.closeWatchlistButton:hover {
+  scale: 1.1;
+  background-color: #5dec85;
+  color: honeydew;
+  cursor: pointer;
 }
