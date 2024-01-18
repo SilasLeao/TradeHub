@@ -39,7 +39,7 @@ export default function InvestmentMain() {
           .select("*")
           .filter("usuario_id", "eq", "5GJV756PUC");
         const { data: historyData, error: historyError } = await supabase
-          .from("History")
+          .from("Historico")
           .select("*")
           .filter("usuario_id", "eq", "5GJV756PUC");
         setInvestmentData(data);
