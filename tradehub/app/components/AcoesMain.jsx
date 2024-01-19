@@ -12,6 +12,7 @@ import {
 import { InfoContainerContext } from "../mainPage/page";
 import CardInfo from "./cardInfo";
 import AcaoDestaqueCard from "./AcaoDestaqueCard";
+import Comprar from "./Comprar";
 
 export const ChartTimelineContext = createContext();
 
@@ -141,9 +142,10 @@ export default function AcoesMain() {
     fetchInvestmentData();
   }
 
-  return (
-    <>
-      {infoContainerContext.infoContainerStatus === "acoes" ? (
+  let renderedContent;
+  switch (infoContainerContext.infoContainerStatus) {
+    case "acoes":
+      renderedContent = (
         <div className="acoesMainContainer">
           <div className="backgroundContainer">
             <ChartTimelineContext.Provider
@@ -205,7 +207,73 @@ export default function AcoesMain() {
             </div>
           </div>
         </div>
-      ) : (
+      );
+      break;
+
+    case "comprar":
+      renderedContent = (
+        <div className="acoesMainContainer">
+          <div className="backgroundContainer">
+            <Comprar />
+          </div>
+          <div
+            className={`${
+              infoContainerContext.infoContainerStatus === "comprar"
+                ? "blurEffect"
+                : ""
+            } acoesMainContainerContent`}
+          >
+            <h1 className="acaoH1">Ações da Bolsa</h1>
+            <div className="acaoDestaqueSection">
+              <p className="acaoDestaqueTitle">Ações em Destaque</p>
+              <div className="acoesDestaque">
+                {acaoDestaque.map((acao, index) => (
+                  <AcaoDestaqueCard key={index} acao={acao} />
+                ))}
+              </div>
+            </div>
+            <div className="acaoSearchContainer">
+              <div className="acaoSearchHeader">
+                <div className="acaoSearchBar">
+                  <button onClick={handleSearch}>
+                    <FontAwesomeIcon
+                      className="acoesIcon"
+                      icon={faMagnifyingGlass}
+                    />
+                  </button>
+                  <input
+                    onChange={handleChange}
+                    type="text"
+                    placeholder="Pesquisar"
+                  />
+                </div>
+                <span id="acoesMainWhiteText">Filtrar por:</span>
+                <button className="acaoFilterButton">
+                  Valor
+                  <FontAwesomeIcon className="acoesIcon" icon={faCaretDown} />
+                </button>
+                <button className="acaoFilterButton">
+                  Dividendos
+                  <FontAwesomeIcon className="acoesIcon" icon={faCaretDown} />
+                </button>
+                <button className="acaoFilterButton">
+                  Crescimento
+                  <FontAwesomeIcon className="acoesIcon" icon={faCaretDown} />
+                </button>
+              </div>
+            </div>
+            <div className="acaoCardContainer">
+              {acaoCards.map((acao, index) => (
+                <AcaoCard key={index} acao={acao} />
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+      break;
+
+    default:
+      renderedContent = (
         <div className="acoesMainContainer">
           <h1 className="acaoH1">Ações da Bolsa</h1>
           <div className="acaoDestaqueSection">
@@ -252,7 +320,7 @@ export default function AcoesMain() {
             ))}
           </div>
         </div>
-      )}
-    </>
-  );
+      );
+  }
+  return <>{renderedContent}</>;
 }

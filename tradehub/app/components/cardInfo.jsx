@@ -29,6 +29,11 @@ export default function CardInfo() {
     chartTimelineContext.toggleChartTimeline();
   }
 
+  function handleBuyButton() {
+    sessionStorage.setItem("codigoAcaoPesquisada", nomeAcao);
+    infoContainerContext.toggleInfoContainerStatus("comprar");
+  }
+
   return (
     <>
       <div className="infoContainer">
@@ -71,7 +76,9 @@ export default function CardInfo() {
           <button className="exitButton" onClick={handleExit}>
             Voltar
           </button>
-          <button className="buyButton">Comprar</button>
+          <button onClick={handleBuyButton} className="buyButton">
+            Comprar
+          </button>
         </div>
       </div>
     </>

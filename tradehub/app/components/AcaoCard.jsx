@@ -97,6 +97,12 @@ export default function AcaoCard({ acao }) {
       addFavorite();
     }
   }
+
+  function handleBuyButton() {
+    sessionStorage.setItem("codigoAcaoPesquisada", nome);
+    infoContainerContext.toggleInfoContainerStatus("comprar");
+  }
+
   return (
     <>
       <div className="acaoCard">
@@ -118,7 +124,7 @@ export default function AcaoCard({ acao }) {
             icon={faInfoCircle}
             onClick={handleInfoButton}
           />
-          <button>Comprar</button>
+          <button onClick={handleBuyButton}>Comprar</button>
           <FontAwesomeIcon
             onClick={handleFavoriteButton}
             className="acaoCardIcon"
