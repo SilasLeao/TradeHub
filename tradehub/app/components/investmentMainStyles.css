@@ -189,6 +189,11 @@ td {
   font-size: 1rem;
 }
 
+.investmentSearchIcon {
+  font-size: 1.2rem;
+  color: #2a2a2a;
+}
+
 .investmentFilterButton {
   display: flex;
   align-items: center;

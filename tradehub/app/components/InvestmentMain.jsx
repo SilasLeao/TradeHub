@@ -175,7 +175,7 @@ export default function InvestmentMain() {
                 </table>
                 <div className="expandirContainer">
                   <div className="expandir">
-                    <button>Expandir</button>
+                    <button onClick={toggleWatchlistContext}>Expandir</button>
                     <FontAwesomeIcon
                       className="expandirIcon"
                       icon={faCaretDown}
@@ -226,7 +226,7 @@ export default function InvestmentMain() {
                           </td>
                           <td className="whiteTableText">
                             {transacao.preco_unitario
-                              ? `R$ ${transacao.preco_unitario}`
+                              ? formatCurrency(transacao.preco_unitario)
                               : "Loading..."}
                           </td>
                           <td
@@ -237,7 +237,9 @@ export default function InvestmentMain() {
                             }
                           >
                             {transacao.total
-                              ? `R$ ${transacao.total}`
+                              ? transacao.tipo === "Compra"
+                                ? `-${formatCurrency(transacao.total)}`
+                                : `+${formatCurrency(transacao.total)}`
                               : "Loading..."}
                           </td>
                         </tr>
@@ -246,7 +248,7 @@ export default function InvestmentMain() {
                 </table>
                 <div className="expandirContainer">
                   <div className="expandir">
-                    <button>Expandir</button>
+                    <button onClick={toggleHistoryContext}>Expandir</button>
                     <FontAwesomeIcon
                       className="expandirIcon"
                       icon={faCaretDown}
@@ -366,7 +368,7 @@ export default function InvestmentMain() {
                 </table>
                 <div className="expandirContainer">
                   <div className="expandir">
-                    <button>Expandir</button>
+                    <button onClick={toggleWatchlistContext}>Expandir</button>
                     <FontAwesomeIcon
                       className="expandirIcon"
                       icon={faCaretDown}
@@ -417,7 +419,7 @@ export default function InvestmentMain() {
                           </td>
                           <td className="whiteTableText">
                             {transacao.preco_unitario
-                              ? `R$ ${transacao.preco_unitario}`
+                              ? formatCurrency(transacao.preco_unitario)
                               : "Loading..."}
                           </td>
                           <td
@@ -428,7 +430,9 @@ export default function InvestmentMain() {
                             }
                           >
                             {transacao.total
-                              ? `R$ ${transacao.total}`
+                              ? transacao.tipo === "Compra"
+                                ? `-${formatCurrency(transacao.total)}`
+                                : `+${formatCurrency(transacao.total)}`
                               : "Loading..."}
                           </td>
                         </tr>
@@ -437,7 +441,7 @@ export default function InvestmentMain() {
                 </table>
                 <div className="expandirContainer">
                   <div className="expandir">
-                    <button>Expandir</button>
+                    <button onClick={toggleHistoryContext}>Expandir</button>
                     <FontAwesomeIcon
                       className="expandirIcon"
                       icon={faCaretDown}
@@ -557,7 +561,7 @@ export default function InvestmentMain() {
                 </table>
                 <div className="expandirContainer">
                   <div className="expandir">
-                    <button>Expandir</button>
+                    <button onClick={toggleWatchlistContext}>Expandir</button>
                     <FontAwesomeIcon
                       className="expandirIcon"
                       icon={faCaretDown}
@@ -608,7 +612,7 @@ export default function InvestmentMain() {
                           </td>
                           <td className="whiteTableText">
                             {transacao.preco_unitario
-                              ? `R$ ${transacao.preco_unitario}`
+                              ? formatCurrency(transacao.preco_unitario)
                               : "Loading..."}
                           </td>
                           <td
@@ -619,7 +623,9 @@ export default function InvestmentMain() {
                             }
                           >
                             {transacao.total
-                              ? `R$ ${transacao.total}`
+                              ? transacao.tipo === "Compra"
+                                ? `-${formatCurrency(transacao.total)}`
+                                : `+${formatCurrency(transacao.total)}`
                               : "Loading..."}
                           </td>
                         </tr>
@@ -628,7 +634,7 @@ export default function InvestmentMain() {
                 </table>
                 <div className="expandirContainer">
                   <div className="expandir">
-                    <button>Expandir</button>
+                    <button onClick={toggleHistoryContext}>Expandir</button>
                     <FontAwesomeIcon
                       className="expandirIcon"
                       icon={faCaretDown}
