@@ -52,15 +52,19 @@ export default function Comprar() {
   };
 
   function handleSubtractButton() {
-    quantidadeAcao === 1 ? null : setQuantidadeAcao(quantidadeAcao - 1);
+    quantidadeAcao <= 1 ? null : setQuantidadeAcao(quantidadeAcao - 1);
   }
 
   function handleAddButton() {
-    quantidadeAcao === 1000 ? null : setQuantidadeAcao(quantidadeAcao + 1);
+    quantidadeAcao >= 1000 ? null : setQuantidadeAcao(quantidadeAcao + 1);
   }
 
   function handleQuantityButton(value) {
-    setQuantidadeAcao(value);
+    if (quantidadeAcao + value >= 1000) {
+      setQuantidadeAcao(1000);
+    } else {
+      setQuantidadeAcao(quantidadeAcao + value);
+    }
   }
 
   return (
@@ -144,13 +148,20 @@ export default function Comprar() {
             </p>
             <p>{formatCurrency((0.0325 / 100) * (cotacao * quantidadeAcao))}</p>
           </div>
-          <hr />
+          <section className="comprarHrSection">
+            <hr />
+          </section>
           <div className="comprarTotal">
             <p>Total</p>
-            <p>R$ 000,00</p>
+            <p>
+              {formatCurrency(
+                quantidadeAcao * cotacao +
+                  (0.0325 / 100) * (cotacao * quantidadeAcao)
+              )}
+            </p>
           </div>
         </section>
-        <section>
+        <section className="comprarButtonSection">
           <button className="exitButton" onClick={handleExitButton}>
             Voltar
           </button>

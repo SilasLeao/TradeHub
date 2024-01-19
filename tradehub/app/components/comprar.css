@@ -12,7 +12,7 @@
 .comprarContainer {
   display: flex;
   flex-direction: column;
-  height: 60vh;
+  height: 70vh;
   width: 25vw;
   background-color: #2a2a2a;
   border-radius: 50px;
@@ -32,9 +32,12 @@
 
 .comprarContainer > hr {
   width: 80%;
+  background-color: #5dec85;
+  height: 2px;
+  border: none;
 }
 
-hr {
+.comprarContainer hr {
   background-color: #5dec85;
   height: 2px;
   border: none;
@@ -63,7 +66,6 @@ hr {
 .comprarQuantidade {
   width: 100%;
   color: honeydew;
-  /* text-align: center; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -147,7 +149,7 @@ hr {
 }
 
 .quantidadeButtonsContainer button {
-  border: 1px solid #5dec85;
+  border: 2px solid #5dec85;
   background-color: transparent;
   color: #5dec85;
   border-radius: 30px;
@@ -179,12 +181,14 @@ hr {
 
 .comprarResumoCotainer {
   background-color: #363636;
-  width: 100%;
+  width: 80%;
   font-size: 1.2rem;
+  border-radius: 30px;
+  padding: 1rem 0;
 }
 
 .comprarResumoCotainer div {
-  padding: 0 15%;
+  padding: 0.5rem 10%;
 }
 
 .comprarAcoesPreco {
@@ -199,10 +203,31 @@ hr {
   justify-content: space-between;
 }
 
+.comprarTaxaCorretagem > p {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
 .comprarTaxaB3 {
   color: honeydew;
   display: flex;
   justify-content: space-between;
+}
+
+.comprarTaxaB3 > p {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.comprarHrSection {
+  display: flex;
+  justify-content: center;
+}
+
+.comprarHrSection hr {
+  width: 80%;
 }
 
 .comprarTotal {
@@ -213,6 +238,12 @@ hr {
 
 .questionMarkIcon {
   color: #5dec85;
+}
+
+.comprarButtonSection {
+  margin-top: 1rem;
+  display: flex;
+  gap: 2rem;
 }
 
 .exitButton {
