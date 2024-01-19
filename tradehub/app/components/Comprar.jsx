@@ -12,16 +12,28 @@ export default function Comprar() {
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5qampqcGtneG9kbHJocnlzYmV2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDE4MTg1MzQsImV4cCI6MjAxNzM5NDUzNH0.BJ8RAHt3jHIAJgq9vD1P8_gaWI-R-zn9AbGN71zyItc";
   const supabase = createClient(supabaseUrl, supabaseKey);
   const [cotacao, setCotacao] = useState();
+  const [saldo, setSaldo] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const resposta = await fetch(
-          `https://brapi.dev/api/quote/${nomeAcao}?token=8QE9zJXLMnT7w6wppfyXEs`
-        );
-        const resultado = await resposta.json();
-        setCotacao(resultado.results[0].regularMarketPrice);
-      } catch (error) {}
+        const [stockResponse, supabaseResponse] = await Promise.all([
+          fetch(
+            `https://brapi.dev/api/quote/${nomeAcao}?token=8QE9zJXLMnT7w6wppfyXEs`
+          ).then((res) => res.json()),
+          supabase
+            .from("Usuario")
+            .select("*")
+            .filter("conta_id", "eq", "5GJV756PUC"),
+        ]);
+
+        const { data } = supabaseResponse;
+
+        setCotacao(stockResponse.results[0].regularMarketPrice);
+        setSaldo(data[0].saldo);
+      } catch (error) {
+        console.error(error);
+      }
     };
     fetchData();
   }, []);
@@ -37,24 +49,29 @@ export default function Comprar() {
       .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     return `R$ ${value}`;
   };
+
+  function handleTeste() {
+    console.log(saldo);
+  }
   return (
     <>
       <div className="comprarContainer">
         <h1>{nomeAcao}</h1>
         <hr />
-        <section>
+        <section className="comprarPreco">
           <p>Preço por unidade</p>
-          <p>R$ 00,00</p>
+          <p>{cotacao ? formatCurrency(cotacao) : "Loading..."}</p>
           <hr />
         </section>
-        <section>
+        <section className="comprarQuantidade">
           <p>Quantidade de ações</p>
-          <div>
+          <div className="quantidadeCounter">
             <button>-</button>
             <p>15</p>
             <button>+</button>
           </div>
-          <div>
+          <hr />
+          <div className="quantidadeButtonsContainer">
             <button>10</button>
             <button>25</button>
             <button>50</button>
@@ -62,9 +79,9 @@ export default function Comprar() {
             <button>200</button>
           </div>
         </section>
-        <section>
+        <section className="comprarSaldo">
           <p>Saldo disponível</p>
-          <p>R$ 1000,00</p>
+          <p>{saldo ? formatCurrency(saldo) : "Loading..."}</p>
         </section>
         <section>
           <div>
@@ -96,7 +113,7 @@ export default function Comprar() {
         </section>
         <section>
           <button onClick={handleExitButton}>Voltar</button>
-          <button>Comprar</button>
+          <button onClick={handleTeste}>Comprar</button>
         </section>
       </div>
     </>

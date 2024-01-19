@@ -39,3 +39,35 @@ hr {
   height: 2px;
   border: none;
 }
+
+.comprarPreco {
+  color: honeydew;
+  text-align: center;
+}
+
+.comprarQuantidade {
+  color: honeydew;
+  text-align: center;
+}
+
+.quantidadeCounter {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.quantidadeButtonsContainer {
+}
+
+.quantidadeButtonsContainer button {
+  border: 1px solid #5dec85;
+  background-color: transparent;
+  color: #5dec85;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.comprarSaldo {
+  color: honeydew;
+  text-align: center;
+}

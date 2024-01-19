@@ -30,7 +30,7 @@ export default function CardInfo() {
   }
 
   function handleBuyButton() {
-    sessionStorage.setItem("codigoAcaoPesquisada", nomeAcao);
+    sessionStorage.setItem("codigoAcaoPesquisada", codigoAcao);
     infoContainerContext.toggleInfoContainerStatus("comprar");
   }
 
