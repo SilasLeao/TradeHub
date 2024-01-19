@@ -71,3 +71,75 @@ hr {
   color: honeydew;
   text-align: center;
 }
+
+.comprarResumoCotainer {
+  background-color: #363636;
+  width: 100%;
+}
+
+.comprarResumoCotainer div {
+  padding: 0 15%;
+}
+
+.comprarAcoesPreco {
+  color: honeydew;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comprarTaxaCorretagem {
+  color: honeydew;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comprarTaxaB3 {
+  color: honeydew;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comprarTotal {
+  color: honeydew;
+  display: flex;
+  justify-content: space-between;
+}
+
+.questionMarkIcon {
+  color: #5dec85;
+}
+
+.exitButton {
+  width: 10rem;
+  height: 3.5rem;
+  font-size: 1.5rem;
+  border-radius: 30px;
+  border: none;
+  border: 2px solid #5dec85;
+  transition: 0.2s;
+  color: #5dec85;
+  background-color: transparent;
+}
+
+.exitButton:hover {
+  scale: 1.1;
+  cursor: pointer;
+  background-color: #5dec85;
+  color: honeydew;
+}
+
+.buyButton {
+  width: 10rem;
+  height: 3.5rem;
+  font-size: 1.5rem;
+  border-radius: 30px;
+  border: none;
+  background-color: #5dec85;
+  transition: 0.2s;
+  color: honeydew;
+}
+
+.buyButton:hover {
+  scale: 1.1;
+  cursor: pointer;
+}

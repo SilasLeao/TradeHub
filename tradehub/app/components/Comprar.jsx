@@ -83,37 +83,44 @@ export default function Comprar() {
           <p>Saldo disponível</p>
           <p>{saldo ? formatCurrency(saldo) : "Loading..."}</p>
         </section>
-        <section>
-          <div>
+        <section className="comprarResumoCotainer">
+          <div className="comprarAcoesPreco">
             <p>15 ações</p>
             <p>R$ 000,00</p>
           </div>
-          <div>
+          <div className="comprarTaxaCorretagem">
             <p>
               Taxa de corretagem
-              <FontAwesomeIcon icon={faCircleQuestion} />
+              <FontAwesomeIcon
+                className="questionMarkIcon"
+                icon={faCircleQuestion}
+              />
             </p>
             <p>Zero</p>
           </div>
-          <div>
+          <div className="comprarTaxaB3">
             <p>
               Taxa da B3
               <FontAwesomeIcon
-                className="expandirIcon"
+                className="questionMarkIcon"
                 icon={faCircleQuestion}
               />
             </p>
             <p>R$ 0,00</p>
           </div>
           <hr />
-          <div>
+          <div className="comprarTotal">
             <p>Total</p>
             <p>R$ 000,00</p>
           </div>
         </section>
         <section>
-          <button onClick={handleExitButton}>Voltar</button>
-          <button onClick={handleTeste}>Comprar</button>
+          <button className="exitButton" onClick={handleExitButton}>
+            Voltar
+          </button>
+          <button className="buyButton" onClick={handleTeste}>
+            Comprar
+          </button>
         </section>
       </div>
     </>
