@@ -52,7 +52,7 @@ export default function Navbar() {
   return (
     <div
       className={`${
-        ["acoes", "investment", "watchlist", "history"].includes(
+        ["acoes", "investment", "watchlist", "history", "comprar"].includes(
           infoContainerContext.infoContainerStatus
         )
           ? "blurEffect"

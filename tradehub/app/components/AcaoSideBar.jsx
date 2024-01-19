@@ -12,7 +12,9 @@ export default function AcaoSideBar() {
     <>
       <div
         className={`${
-          infoContainerContext.infoContainerStatus === "acoes"
+          ["acoes", "comprar"].includes(
+            infoContainerContext.infoContainerStatus
+          )
             ? "blurEffect acaoSidebar"
             : "acaoSidebar"
         }`}

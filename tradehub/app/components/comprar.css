@@ -25,3 +25,17 @@
   box-sizing: border-box;
   gap: 1rem;
 }
+
+.comprarContainer h1 {
+  color: honeydew;
+}
+
+.comprarContainer > hr {
+  width: 80%;
+}
+
+hr {
+  background-color: #5dec85;
+  height: 2px;
+  border: none;
+}
