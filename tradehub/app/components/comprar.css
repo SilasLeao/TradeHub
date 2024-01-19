@@ -42,18 +42,50 @@ hr {
 
 .comprarPreco {
   color: honeydew;
-  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comprarPreco > p {
+  font-size: 1.2rem;
+}
+
+#comprarPrecoNumero {
+  font-size: 1.5rem;
+}
+
+#comprarSegundoHr {
+  width: 65%;
 }
 
 .comprarQuantidade {
+  width: 100%;
   color: honeydew;
-  text-align: center;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comprarQuantidade > p {
+  font-size: 1.2rem;
 }
 
 .quantidadeCounter {
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
+}
+
+.quantidadeCounter p {
+  font-size: 1.5rem;
+}
+
+#comprarTerceiroHr {
+  width: 60%;
 }
 
 .comprarBotaoMenos {
@@ -109,19 +141,40 @@ hr {
 }
 
 .quantidadeButtonsContainer {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 10px;
 }
 
 .quantidadeButtonsContainer button {
   border: 1px solid #5dec85;
   background-color: transparent;
   color: #5dec85;
-  border-radius: 15px;
-  padding: 10px;
+  border-radius: 30px;
+  width: 3rem;
+  height: 2rem;
+  transition: 0.2s;
+  font-size: 1.1rem;
+}
+
+.quantidadeButtonsContainer button:hover {
+  color: honeydew;
+  background-color: #5dec85;
+  cursor: pointer;
+  scale: 1.1;
 }
 
 .comprarSaldo {
   color: honeydew;
   text-align: center;
+}
+
+.comprarSaldo > p {
+  font-size: 1.2rem;
+}
+
+#comprarSaldoNumero {
+  font-size: 1.5rem;
 }
 
 .comprarResumoCotainer {

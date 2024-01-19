@@ -70,9 +70,11 @@ export default function Comprar() {
         <hr />
         <section className="comprarPreco">
           <p>Preço por unidade</p>
-          <p>{cotacao ? formatCurrency(cotacao) : "Loading..."}</p>
-          <hr />
+          <p id="comprarPrecoNumero">
+            {cotacao ? formatCurrency(cotacao) : "Loading..."}
+          </p>
         </section>
+        <hr id="comprarSegundoHr" />
         <section className="comprarQuantidade">
           <p>Quantidade de ações</p>
           <div className="quantidadeCounter">
@@ -98,7 +100,7 @@ export default function Comprar() {
               +
             </button>
           </div>
-          <hr />
+          <hr id="comprarTerceiroHr" />
           <div className="quantidadeButtonsContainer">
             <button onClick={() => handleQuantityButton(10)}>10</button>
             <button onClick={() => handleQuantityButton(25)}>25</button>
@@ -109,7 +111,9 @@ export default function Comprar() {
         </section>
         <section className="comprarSaldo">
           <p>Saldo disponível</p>
-          <p>{saldo ? formatCurrency(saldo) : "Loading..."}</p>
+          <p id="comprarSaldoNumero">
+            {saldo ? formatCurrency(saldo) : "Loading..."}
+          </p>
         </section>
         <section className="comprarResumoCotainer">
           <div className="comprarAcoesPreco">
