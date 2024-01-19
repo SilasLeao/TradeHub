@@ -56,6 +56,58 @@ hr {
   justify-content: space-around;
 }
 
+.comprarBotaoMenos {
+  border: none;
+  background-color: transparent;
+  color: #f52a2a;
+  font-size: 2rem;
+  transition: 0.2s;
+}
+
+.comprarBotaoMenos:hover {
+  cursor: pointer;
+  scale: 1.2;
+}
+
+.comprarBotaoMenosDesabilitado {
+  border: none;
+  background-color: transparent;
+  color: #f52a2a80;
+  font-size: 2rem;
+  transition: 0.2s;
+}
+
+.comprarBotaoMenosDesabilitado:hover {
+  cursor: pointer;
+  scale: 1.2;
+}
+
+.comprarBotaoMais {
+  border: none;
+  background-color: transparent;
+  color: #5dec85;
+  font-size: 1.5rem;
+  transition: 0.2s;
+}
+
+.comprarBotaoMais:hover {
+  cursor: pointer;
+  scale: 1.2;
+}
+
+.comprarBotaoMaisDesabilitado {
+  border: none;
+  background-color: transparent;
+  color: #5dec8580;
+  font-size: 1.5rem;
+  transition: 0.2s;
+}
+
+.comprarBotaoMaisDesabilitado:hover {
+  cursor: pointer;
+  scale: 1.2;
+}
+
 .quantidadeButtonsContainer {
 }
 

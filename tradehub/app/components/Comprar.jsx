@@ -13,6 +13,7 @@ export default function Comprar() {
   const supabase = createClient(supabaseUrl, supabaseKey);
   const [cotacao, setCotacao] = useState();
   const [saldo, setSaldo] = useState();
+  const [quantidadeAcao, setQuantidadeAcao] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,9 +51,18 @@ export default function Comprar() {
     return `R$ ${value}`;
   };
 
-  function handleTeste() {
-    console.log(saldo);
+  function handleSubtractButton() {
+    quantidadeAcao === 1 ? null : setQuantidadeAcao(quantidadeAcao - 1);
   }
+
+  function handleAddButton() {
+    quantidadeAcao === 1000 ? null : setQuantidadeAcao(quantidadeAcao + 1);
+  }
+
+  function handleQuantityButton(value) {
+    setQuantidadeAcao(value);
+  }
+
   return (
     <>
       <div className="comprarContainer">
@@ -66,17 +76,35 @@ export default function Comprar() {
         <section className="comprarQuantidade">
           <p>Quantidade de ações</p>
           <div className="quantidadeCounter">
-            <button>-</button>
-            <p>15</p>
-            <button>+</button>
+            <button
+              onClick={handleSubtractButton}
+              className={
+                quantidadeAcao === 1
+                  ? "comprarBotaoMenosDesabilitado"
+                  : "comprarBotaoMenos"
+              }
+            >
+              -
+            </button>
+            <p>{quantidadeAcao}</p>
+            <button
+              onClick={handleAddButton}
+              className={
+                quantidadeAcao === 1000
+                  ? "comprarBotaoMaisDesabilitado"
+                  : "comprarBotaoMais"
+              }
+            >
+              +
+            </button>
           </div>
           <hr />
           <div className="quantidadeButtonsContainer">
-            <button>10</button>
-            <button>25</button>
-            <button>50</button>
-            <button>100</button>
-            <button>200</button>
+            <button onClick={() => handleQuantityButton(10)}>10</button>
+            <button onClick={() => handleQuantityButton(25)}>25</button>
+            <button onClick={() => handleQuantityButton(50)}>50</button>
+            <button onClick={() => handleQuantityButton(100)}>100</button>
+            <button onClick={() => handleQuantityButton(200)}>200</button>
           </div>
         </section>
         <section className="comprarSaldo">
@@ -118,9 +146,7 @@ export default function Comprar() {
           <button className="exitButton" onClick={handleExitButton}>
             Voltar
           </button>
-          <button className="buyButton" onClick={handleTeste}>
-            Comprar
-          </button>
+          <button className="buyButton">Comprar</button>
         </section>
       </div>
     </>
