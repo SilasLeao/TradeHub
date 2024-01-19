@@ -117,8 +117,12 @@ export default function Comprar() {
         </section>
         <section className="comprarResumoCotainer">
           <div className="comprarAcoesPreco">
-            <p>15 ações</p>
-            <p>R$ 000,00</p>
+            <p>
+              {quantidadeAcao === 1
+                ? `${quantidadeAcao} ação`
+                : `${quantidadeAcao} ações`}
+            </p>
+            <p>{formatCurrency(cotacao * quantidadeAcao)}</p>
           </div>
           <div className="comprarTaxaCorretagem">
             <p>
@@ -138,7 +142,7 @@ export default function Comprar() {
                 icon={faCircleQuestion}
               />
             </p>
-            <p>R$ 0,00</p>
+            <p>{formatCurrency((0.0325 / 100) * (cotacao * quantidadeAcao))}</p>
           </div>
           <hr />
           <div className="comprarTotal">
