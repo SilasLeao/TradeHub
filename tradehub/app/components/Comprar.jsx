@@ -14,6 +14,8 @@ export default function Comprar() {
   const [cotacao, setCotacao] = useState();
   const [saldo, setSaldo] = useState();
   const [quantidadeAcao, setQuantidadeAcao] = useState(1);
+  const [taxaDeCorretagem, setTaxaDeCorretagem] = useState(false);
+  const [taxaB3, setTaxaB3] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,6 +67,22 @@ export default function Comprar() {
     } else {
       setQuantidadeAcao(quantidadeAcao + value);
     }
+  }
+
+  function handleCorretagemHover() {
+    setTaxaDeCorretagem(true);
+  }
+
+  function handleCorretagemHoverOut() {
+    setTaxaDeCorretagem(false);
+  }
+
+  function handleB3Hover() {
+    setTaxaB3(true);
+  }
+
+  function handleB3HoverOut() {
+    setTaxaB3(false);
   }
 
   return (
@@ -131,7 +149,15 @@ export default function Comprar() {
           <div className="comprarTaxaCorretagem">
             <p>
               Taxa de corretagem
+              {taxaDeCorretagem ? (
+                <p className="corretagemPopUp">
+                  Taxa cobrada pela intermediação da sua compra na Bolsa de
+                  Valores
+                </p>
+              ) : null}
               <FontAwesomeIcon
+                onMouseOver={handleCorretagemHover}
+                onMouseOut={handleCorretagemHoverOut}
                 className="questionMarkIcon"
                 icon={faCircleQuestion}
               />
@@ -141,7 +167,15 @@ export default function Comprar() {
           <div className="comprarTaxaB3">
             <p>
               Taxa da B3
+              {taxaB3 ? (
+                <p className="B3PopUp">
+                  Taxas obrigatórias cobradas pela B3 sobre o valor total da
+                  operação.
+                </p>
+              ) : null}
               <FontAwesomeIcon
+                onMouseOver={handleB3Hover}
+                onMouseOut={handleB3HoverOut}
                 className="questionMarkIcon"
                 icon={faCircleQuestion}
               />
