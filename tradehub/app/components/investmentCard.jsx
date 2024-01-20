@@ -68,6 +68,7 @@ export default function InvestmentCard({ investimento }) {
   }
 
   function handleSellButton() {
+    sessionStorage.setItem("codigoAcaoPesquisada", nome);
     infoContainerContext.toggleInfoContainerStatus("vender");
   }
 
