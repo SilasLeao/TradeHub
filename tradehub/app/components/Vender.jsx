@@ -17,6 +17,12 @@ export default function Vender() {
   const [quantidadeAcao, setQuantidadeAcao] = useState(1);
   const [taxaDeCorretagem, setTaxaDeCorretagem] = useState(false);
   const [taxaB3, setTaxaB3] = useState(false);
+  const [valorAplicado, setValorAplicado] = useState();
+  let dataAtual = new Date();
+  let ano = dataAtual.getFullYear();
+  let mes = (dataAtual.getMonth() + 1).toString().padStart(2, "0");
+  let dia = dataAtual.getDate().toString().padStart(2, "0");
+  let formattedDate = ano + "-" + mes + "-" + dia;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,13 +46,12 @@ export default function Vender() {
             .filter("usuario_id", "eq", "5GJV756PUC"),
         ]);
 
-        const { investimentoData } = supabaseInvestimentoResponse;
-
         setCotacao(stockResponse.results[0].regularMarketPrice);
         setSaldo(supabaseUsuarioResponse.data[0].saldo);
         setQuantidadeAcaoUsuario(
           supabaseInvestimentoResponse.data[0].quantidade
         );
+        setValorAplicado(supabaseInvestimentoResponse.data[0].valor_aplicado);
       } catch (error) {
         console.error(error);
       }
@@ -96,6 +101,64 @@ export default function Vender() {
 
   function handleB3HoverOut() {
     setTaxaB3(false);
+  }
+
+  function handleSell(value) {
+    const updateData = async () => {
+      try {
+        let novoSaldo = saldo + value;
+        let custoMedio = valorAplicado / quantidadeAcaoUsuario;
+
+        const atualizarSaldo = supabase
+          .from("Usuario")
+          .update({ saldo: novoSaldo })
+          .eq("conta_id", "5GJV756PUC");
+        const inserirHistorico = supabase.from("Historico").insert([
+          {
+            simbolo: `${nomeAcao}`,
+            usuario_id: "5GJV756PUC",
+            tipo: "Venda",
+            quantidade: `${quantidadeAcao}`,
+            preco_unitario: `${cotacao}`,
+            total: `${value}`,
+            data: `${formattedDate}`,
+          },
+        ]);
+
+        let atualizarInvestimento;
+
+        if (quantidadeAcao === quantidadeAcaoUsuario) {
+          atualizarInvestimento = supabase
+            .from("Investimentos")
+            .delete()
+            .eq("simbolo", `${nomeAcao}`)
+            .eq("usuario_id", "5GJV756PUC");
+        } else {
+          atualizarInvestimento = supabase.from("Investimentos").update({
+            quantidade: `${quantidadeAcaoUsuario - quantidadeAcao}`,
+            valorAplicado: `${
+              (quantidadeAcaoUsuario - quantidadeAcao) * custoMedio
+            }`,
+          });
+        }
+
+        const [
+          // adicionar coluna de codigo de transação no historico, usando um uuid random como chave primaria
+          atualizarSaldoUsuario, //atualizou com erro
+          atualizarTransacaoHistorico, // nao atualizou
+          atualizarAcaoInvestimento, // removeu do bd
+        ] = await Promise.all([
+          atualizarSaldo,
+          inserirHistorico,
+          atualizarInvestimento,
+        ]);
+      } catch (error) {
+        console.error(error);
+      }
+      infoContainerContext.toggleInfoContainerStatus("");
+    };
+
+    updateData();
   }
 
   return (
@@ -218,7 +281,17 @@ export default function Vender() {
           <button className="exitButton" onClick={handleExitButton}>
             Voltar
           </button>
-          <button className="sellButton">Vender</button>
+          <button
+            onClick={() =>
+              handleSell(
+                quantidadeAcao * cotacao -
+                  (0.0325 / 100) * (cotacao * quantidadeAcao)
+              )
+            }
+            className="sellButton"
+          >
+            Vender
+          </button>
         </section>
       </div>
     </>
