@@ -14,13 +14,24 @@ export default function Comprar() {
   const [cotacao, setCotacao] = useState();
   const [saldo, setSaldo] = useState();
   const [quantidadeAcao, setQuantidadeAcao] = useState(1);
+  const [quantidadeAcaoInvestimento, setQuantidadeAcaoInvestimento] =
+    useState();
   const [taxaDeCorretagem, setTaxaDeCorretagem] = useState(false);
   const [taxaB3, setTaxaB3] = useState(false);
+  let dataAtual = new Date();
+  let ano = dataAtual.getFullYear();
+  let mes = (dataAtual.getMonth() + 1).toString().padStart(2, "0");
+  let dia = dataAtual.getDate().toString().padStart(2, "0");
+  let formattedDate = ano + "-" + mes + "-" + dia;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [stockResponse, supabaseResponse] = await Promise.all([
+        const [
+          stockResponse,
+          supabaseUserResponse,
+          supabaseInvestmentResponse,
+        ] = await Promise.all([
           fetch(
             `https://brapi.dev/api/quote/${nomeAcao}?token=8QE9zJXLMnT7w6wppfyXEs`
           ).then((res) => res.json()),
@@ -28,12 +39,18 @@ export default function Comprar() {
             .from("Usuario")
             .select("*")
             .filter("conta_id", "eq", "5GJV756PUC"),
+          supabase
+            .from("Investimentos")
+            .select("*")
+            .eq("simbolo", `${nomeAcao}`)
+            .filter("usuario_id", "eq", "5GJV756PUC"),
         ]);
 
-        const { data } = supabaseResponse;
-
         setCotacao(stockResponse.results[0].regularMarketPrice);
-        setSaldo(data[0].saldo);
+        setSaldo(supabaseUserResponse.data[0].saldo);
+        setQuantidadeAcaoInvestimento(
+          supabaseInvestmentResponse.data[0].quantidade
+        );
       } catch (error) {
         console.error(error);
       }
@@ -83,6 +100,75 @@ export default function Comprar() {
 
   function handleB3HoverOut() {
     setTaxaB3(false);
+  }
+
+  function handleBuy(value) {
+    const updateData = async () => {
+      try {
+        if (saldo < value) {
+          return alert("Você não possui saldo suficiente!");
+        } else {
+          let novoSaldo = saldo - value;
+          const atualizarSaldo = supabase
+            .from("Usuario")
+            .update({ saldo: `${novoSaldo}` })
+            .eq("conta_id", "5GJV756PUC");
+
+          let atualizarQuantidade;
+          const checkInvestimento = supabase
+            .from("Investimentos")
+            .select("*")
+            .eq("simbolo", `${nomeAcao}`);
+          if (checkInvestimento.length > 0) {
+            atualizarQuantidade = supabase
+              .from("Investimentos")
+              .update({
+                quantidade: `${quantidadeAcaoInvestimento + quantidadeAcao}`,
+              })
+              .eq("usuario_id", "5GJV756PUC");
+          } else {
+            atualizarQuantidade = supabase.from("Investimentos").insert([
+              {
+                simbolo: `${nomeAcao}`,
+                usuario_id: "5GJV756PUC",
+                quantidade: `${quantidadeAcao}`,
+                valor_aplicado: `${Number(cotacao * quantidadeAcao).toFixed(
+                  2
+                )}`,
+              },
+            ]);
+          }
+
+          const inserirHistorico = supabase.from("Historico").insert([
+            {
+              simbolo: `${nomeAcao}`,
+              usuario_id: "5GJV756PUC",
+              tipo: "Compra",
+              quantidade: `${quantidadeAcao}`,
+              preco_unitario: `${cotacao}`,
+              total: `${value}`,
+              data: `${formattedDate}`,
+            },
+          ]);
+
+          const [
+            atualizarSaldoUsuario,
+            atualizarQuantidadeInvestimento,
+            atualizarTransacaoHistorico,
+          ] = await Promise.all([
+            atualizarSaldo,
+            atualizarQuantidade,
+            inserirHistorico,
+          ]);
+          infoContainerContext.toggleInfoContainerStatus("");
+          window.location.reload();
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    updateData();
   }
 
   return (
@@ -199,7 +285,19 @@ export default function Comprar() {
           <button className="exitButton" onClick={handleExitButton}>
             Voltar
           </button>
-          <button className="buyButton">Comprar</button>
+          <button
+            onClick={() =>
+              handleBuy(
+                Number(
+                  quantidadeAcao * cotacao +
+                    (0.0325 / 100) * (cotacao * quantidadeAcao)
+                ).toFixed(2)
+              )
+            }
+            className="buyButton"
+          >
+            Comprar
+          </button>
         </section>
       </div>
     </>

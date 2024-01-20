@@ -86,7 +86,7 @@ export default function InvestmentCardInfo() {
             <p>Rendimento Total</p>
             <p
               className={
-                Number(rendimentoTotal) > Number(valorAplicado)
+                Number(rendimentoTotal) >= Number(valorAplicado)
                   ? "investmentVerde"
                   : "investmentVermelho"
               }
@@ -98,12 +98,12 @@ export default function InvestmentCardInfo() {
             <p>Rendimento Parcial</p>
             <p
               className={
-                Number(rendimentoTotal) > Number(valorAplicado)
+                Number(rendimentoTotal) >= Number(valorAplicado)
                   ? "investmentVerde"
                   : "investmentVermelho"
               }
             >
-              {Number(rendimentoTotal) > Number(valorAplicado)
+              {Number(rendimentoTotal) >= Number(valorAplicado)
                 ? `+R$ ${rendimentoParcialFormatted}`
                 : `-R$ ${rendimentoParcialFormatted}`}
             </p>
@@ -112,12 +112,12 @@ export default function InvestmentCardInfo() {
             <p>Rendimento Parcial(%)</p>
             <p
               className={
-                Number(rendimentoTotal) > Number(valorAplicado)
+                Number(rendimentoTotal) >= Number(valorAplicado)
                   ? "investmentVerde"
                   : "investmentVermelho"
               }
             >
-              {Number(rendimentoTotal) > Number(valorAplicado)
+              {Number(rendimentoTotal) >= Number(valorAplicado)
                 ? `+${rendimentoPorcentagemFormatted}%`
                 : `${rendimentoPorcentagemFormatted}%`}
             </p>
