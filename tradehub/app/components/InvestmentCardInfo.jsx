@@ -18,9 +18,14 @@ export default function InvestmentCardInfo() {
   let rendimentoPorcentagem = sessionStorage.getItem("rendimentoPorcentagem");
   let custoMedio = valorAplicado / quantidade;
 
+  function handleSellButton() {
+    infoContainerContext.toggleInfoContainerStatus("vender");
+  }
+
   function handleExit() {
     infoContainerContext.toggleInfoContainerStatus("");
   }
+
   let marketCapFormatted = parseFloat(marketCap)
     .toFixed(2)
     .replace(".", ",")
@@ -122,7 +127,9 @@ export default function InvestmentCardInfo() {
           <button className="investmentExitButton" onClick={handleExit}>
             Voltar
           </button>
-          <button className="sellButton">Vender</button>
+          <button onClick={handleSellButton} className="sellButton">
+            Vender
+          </button>
         </div>
       </div>
     </>

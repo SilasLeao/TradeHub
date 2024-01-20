@@ -67,6 +67,10 @@ export default function InvestmentCard({ investimento }) {
     infoContainerContext.toggleInfoContainerStatus("investment");
   }
 
+  function handleSellButton() {
+    infoContainerContext.toggleInfoContainerStatus("vender");
+  }
+
   return (
     <>
       <div className="investmentCard">
@@ -102,7 +106,7 @@ export default function InvestmentCard({ investimento }) {
             icon={faInfoCircle}
             onClick={handleInfoButton}
           />
-          <button>Vender</button>
+          <button onClick={handleSellButton}>Vender</button>
           <p id="quantidade">{quantidade}</p>
         </div>
       </div>
