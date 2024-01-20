@@ -94,7 +94,7 @@ export default function Login() {
           <section className="loginOptions">
             <span>
               <input className="loginCheckbox" type="checkbox" />
-              <span>Lembrar-se de mim</span>
+              <span>Lembrar minha conta</span>
             </span>
             <span id="esqueceuSenha">Esqueceu sua senha?</span>
           </section>
