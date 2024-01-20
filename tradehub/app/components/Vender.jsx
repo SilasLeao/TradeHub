@@ -106,7 +106,7 @@ export default function Vender() {
   function handleSell(value) {
     const updateData = async () => {
       try {
-        let novoSaldo = saldo + value;
+        let novoSaldo = Number((saldo + value).toFixed(2));
         let custoMedio = valorAplicado / quantidadeAcaoUsuario;
 
         const atualizarSaldo = supabase
@@ -136,26 +136,27 @@ export default function Vender() {
         } else {
           atualizarInvestimento = supabase.from("Investimentos").update({
             quantidade: `${quantidadeAcaoUsuario - quantidadeAcao}`,
-            valorAplicado: `${
-              (quantidadeAcaoUsuario - quantidadeAcao) * custoMedio
-            }`,
+            valorAplicado: `${(
+              (quantidadeAcaoUsuario - quantidadeAcao) *
+              custoMedio
+            ).toFixed(2)}`,
           });
         }
 
         const [
-          // adicionar coluna de codigo de transação no historico, usando um uuid random como chave primaria
-          atualizarSaldoUsuario, //atualizou com erro
-          atualizarTransacaoHistorico, // nao atualizou
-          atualizarAcaoInvestimento, // removeu do bd
+          atualizarSaldoUsuario,
+          atualizarTransacaoHistorico,
+          atualizarAcaoInvestimento,
         ] = await Promise.all([
           atualizarSaldo,
           inserirHistorico,
           atualizarInvestimento,
         ]);
+        infoContainerContext.toggleInfoContainerStatus("");
+        window.location.reload();
       } catch (error) {
         console.error(error);
       }
-      infoContainerContext.toggleInfoContainerStatus("");
     };
 
     updateData();
