@@ -120,7 +120,7 @@ export default function Vender() {
             tipo: "Venda",
             quantidade: `${quantidadeAcao}`,
             preco_unitario: `${cotacao}`,
-            total: `${value}`,
+            total: `${value.toFixed(2)}`,
             data: `${formattedDate}`,
           },
         ]);
