@@ -94,7 +94,7 @@ export default function Resumo() {
     return <h1>Loading...</h1>;
   }
 
-  let conta = usuarioData[0].conta_id;
+  let conta = usuarioData[0].email;
   let saldo = `R$ ${usuarioData[0].saldo}`;
   let valorAplicado = rendimentoData.valorAplicado;
   let valorAplicadoFormatted = `R$ ${valorAplicado.toFixed(2)}`;

@@ -30,9 +30,7 @@ export default function HistoryInfo() {
         const { data, error } = await supabase
           .from("Historico")
           .select("*")
-          .filter("usuario_id", "eq", "5GJV756PUC");
-        // const sortedHistory = data.reverse();
-        // setHistory(sortedHistory);
+          .filter("usuario_id", "eq", "55021470-36ad-42ea-835b-fefaef8f21d5");
         const sortedHistory = data.sort(
           (a, b) => new Date(a.data) - new Date(b.data)
         );

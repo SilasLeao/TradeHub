@@ -34,15 +34,15 @@ export default function InvestmentMain() {
         const { data, error } = await supabase
           .from("Investimentos")
           .select("*")
-          .filter("usuario_id", "eq", "5GJV756PUC");
+          .filter("usuario_id", "eq", "55021470-36ad-42ea-835b-fefaef8f21d5");
         const { data: watchlistData, error: watchlistError } = await supabase
           .from("Watchlist")
           .select("*")
-          .filter("usuario_id", "eq", "5GJV756PUC");
+          .filter("usuario_id", "eq", "55021470-36ad-42ea-835b-fefaef8f21d5");
         const { data: historyData, error: historyError } = await supabase
           .from("Historico")
           .select("*")
-          .filter("usuario_id", "eq", "5GJV756PUC");
+          .filter("usuario_id", "eq", "55021470-36ad-42ea-835b-fefaef8f21d5");
         const sortedHistory = historyData.sort(
           (a, b) => new Date(a.data) - new Date(b.data)
         );

@@ -38,12 +38,12 @@ export default function Comprar() {
           supabase
             .from("Usuario")
             .select("*")
-            .filter("conta_id", "eq", "5GJV756PUC"),
+            .filter("conta_id", "eq", "55021470-36ad-42ea-835b-fefaef8f21d5"),
           supabase
             .from("Investimentos")
             .select("*")
             .eq("simbolo", `${nomeAcao}`)
-            .filter("usuario_id", "eq", "5GJV756PUC"),
+            .filter("usuario_id", "eq", "55021470-36ad-42ea-835b-fefaef8f21d5"),
         ]);
 
         setCotacao(stockResponse.results[0].regularMarketPrice);
@@ -112,7 +112,7 @@ export default function Comprar() {
           const atualizarSaldo = supabase
             .from("Usuario")
             .update({ saldo: `${novoSaldo}` })
-            .eq("conta_id", "5GJV756PUC");
+            .eq("conta_id", "55021470-36ad-42ea-835b-fefaef8f21d5");
 
           let atualizarQuantidade;
           const checkInvestimento = supabase
@@ -125,12 +125,12 @@ export default function Comprar() {
               .update({
                 quantidade: `${quantidadeAcaoInvestimento + quantidadeAcao}`,
               })
-              .eq("usuario_id", "5GJV756PUC");
+              .eq("usuario_id", "55021470-36ad-42ea-835b-fefaef8f21d5");
           } else {
             atualizarQuantidade = supabase.from("Investimentos").insert([
               {
                 simbolo: `${nomeAcao}`,
-                usuario_id: "5GJV756PUC",
+                usuario_id: "55021470-36ad-42ea-835b-fefaef8f21d5",
                 quantidade: `${quantidadeAcao}`,
                 valor_aplicado: `${Number(cotacao * quantidadeAcao).toFixed(
                   2
@@ -142,7 +142,7 @@ export default function Comprar() {
           const inserirHistorico = supabase.from("Historico").insert([
             {
               simbolo: `${nomeAcao}`,
-              usuario_id: "5GJV756PUC",
+              usuario_id: "55021470-36ad-42ea-835b-fefaef8f21d5",
               tipo: "Compra",
               quantidade: `${quantidadeAcao}`,
               preco_unitario: `${cotacao}`,
