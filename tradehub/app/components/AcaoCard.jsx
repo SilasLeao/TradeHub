@@ -46,7 +46,7 @@ export default function AcaoCard({ acao }) {
         const { data, error } = await supabase
           .from("Watchlist")
           .select("*")
-          .filter("usuario_id", "eq", "5GJV756PUC");
+          .filter("usuario_id", "eq", "55021470-36ad-42ea-835b-fefaef8f21d5");
         const updatedWatchlist = data.map((investimento) => {
           return investimento.simbolo;
         });
@@ -69,7 +69,7 @@ export default function AcaoCard({ acao }) {
             .from("Watchlist")
             .delete()
             .eq("simbolo", nome)
-            .eq("usuario_id", "5GJV756PUC");
+            .eq("usuario_id", "55021470-36ad-42ea-835b-fefaef8f21d5");
           if (!error) {
             setWatchlist(watchlist.filter((acao) => acao !== nome));
             setIsFavorite(!isFavorite);
@@ -84,7 +84,12 @@ export default function AcaoCard({ acao }) {
         try {
           const { data, error } = await supabase
             .from("Watchlist")
-            .insert([{ simbolo: nome, usuario_id: "5GJV756PUC" }])
+            .insert([
+              {
+                simbolo: nome,
+                usuario_id: "55021470-36ad-42ea-835b-fefaef8f21d5",
+              },
+            ])
             .select();
           if (!error) {
             setWatchlist([...watchlist, nome]);

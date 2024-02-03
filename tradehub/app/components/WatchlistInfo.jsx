@@ -24,7 +24,7 @@ export default function WatchlistInfo() {
         const { data, error } = await supabase
           .from("Watchlist")
           .select("*")
-          .filter("usuario_id", "eq", "5GJV756PUC");
+          .filter("usuario_id", "eq", "55021470-36ad-42ea-835b-fefaef8f21d5");
         setWatchlist(data);
 
         const promises = data.map(async (investimento) => {
@@ -61,7 +61,7 @@ export default function WatchlistInfo() {
         .from("Watchlist")
         .delete()
         .eq("simbolo", deletarAcao.nome)
-        .eq("usuario_id", "5GJV756PUC");
+        .eq("usuario_id", "55021470-36ad-42ea-835b-fefaef8f21d5");
       if (!error) {
         let updatedWatchlist = [...watchlist];
         updatedWatchlist.splice(index, 1);
