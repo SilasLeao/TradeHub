@@ -27,6 +27,7 @@
     "simplebar-react": "^3.2.4"
   },
   "devDependencies": {
+    "@types/react": "18.2.52",
     "eslint": "^8",
     "eslint-config-next": "14.0.3"
   }

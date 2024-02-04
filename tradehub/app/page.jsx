@@ -18,7 +18,10 @@ export default function Home() {
             objetivos em realidade. Vamos construir o seu sucesso financeiro
             juntos!
           </p>
-          <button onClick={() => signIn("google")} className="landingButton">
+          <button
+            onClick={() => router.push("./login")}
+            className="landingButton"
+          >
             Explore as Oportunidades!
           </button>
         </div>
