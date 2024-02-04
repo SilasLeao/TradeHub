@@ -8,9 +8,11 @@ import {
   faLinkedinIn,
   faSquareFacebook,
 } from "@fortawesome/free-brands-svg-icons";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function Login() {
   const router = useRouter();
+  const { data: session } = useSession();
 
   const [usuario, setUsuario] = useState({
     nome: "",
@@ -110,7 +112,11 @@ export default function Login() {
           </div>
 
           <div className="loginSocialIcons">
-            <FontAwesomeIcon className="loginIcon" icon={faGoogle} />
+            <FontAwesomeIcon
+              onClick={() => signIn("google")}
+              className="loginIcon"
+              icon={faGoogle}
+            />
             <FontAwesomeIcon className="loginIcon" icon={faLinkedinIn} />
             <FontAwesomeIcon className="loginIcon" icon={faSquareFacebook} />
           </div>

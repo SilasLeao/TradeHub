@@ -1,7 +1,7 @@
 "use client";
-
 import { useRouter } from "next/navigation";
 import "./styles.css";
+import { signIn } from "next-auth/react";
 
 export default function Home() {
   const router = useRouter();
@@ -18,10 +18,7 @@ export default function Home() {
             objetivos em realidade. Vamos construir o seu sucesso financeiro
             juntos!
           </p>
-          <button
-            onClick={() => router.push("./login")}
-            className="landingButton"
-          >
+          <button onClick={() => signIn("google")} className="landingButton">
             Explore as Oportunidades!
           </button>
         </div>
