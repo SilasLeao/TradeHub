@@ -41,19 +41,20 @@ export default function Navbar() {
   }
 
   function handleExitButton() {
-    sessionStorage.clear();
     router.push("../login");
+    sessionStorage.clear();
+    signOut();
   }
 
   const [nomeUsuario, setNomeUsuario] = useState("");
   useEffect(() => {
-    if (sessionStorage >= 1) {
+    if (sessionStorage.length >= 1) {
       const nomeUsuarioSessionStorage = sessionStorage.getItem("nomeUsuario");
       setNomeUsuario(nomeUsuarioSessionStorage);
-    } else {
+    } else if (session && session.user) {
       setNomeUsuario(session.user.name);
     }
-  }, []);
+  }, [session]);
   return (
     <div
       className={`${
@@ -66,12 +67,19 @@ export default function Navbar() {
     >
       <aside className="navbarAside">
         <section className="content">
-          <div className="perfil">
-            <div className="perfilIcon">
-              <img src={session.user.image} alt="perfil" />
+          {session && session.user ? (
+            <div className="perfil">
+              <div className="perfilIcon">
+                <img src={session.user.image} alt="perfil" />
+              </div>
+              <span className="navbarWhiteText">Olá, {nomeUsuario}</span>
             </div>
-            <span className="navbarWhiteText">Olá, {nomeUsuario}</span>
-          </div>
+          ) : (
+            <div className="perfil">
+              <FontAwesomeIcon className="fa perfilIcon" icon={faUser} />
+              <span className="navbarWhiteText">Olá, {nomeUsuario}</span>
+            </div>
+          )}
           <hr className="navbarHr" />
           <ul className="navbarUl">
             <li className="navbarLi">

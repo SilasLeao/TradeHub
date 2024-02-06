@@ -96,7 +96,12 @@ export default function Resumo() {
     return <h1>Loading...</h1>;
   }
 
-  let conta = session.user.email;
+  let conta;
+  if (session && session.user) {
+    conta = session.user.email;
+  } else {
+    conta = sessionStorage.getItem("emailUsuario");
+  }
   let saldo = `R$ ${usuarioData[0].saldo}`;
   let valorAplicado = rendimentoData.valorAplicado;
   let valorAplicadoFormatted = `R$ ${valorAplicado.toFixed(2)}`;

@@ -60,6 +60,10 @@
   border-radius: 50%;
 }
 
+.perfil .fa {
+  background-color: #f0fff0;
+}
+
 .fa-headset {
   background-color: #5dec85;
   transition: 0.3s;
