@@ -126,8 +126,6 @@ export default function Login() {
               className="loginIcon"
               icon={faGoogle}
             />
-            <FontAwesomeIcon className="loginIcon" icon={faLinkedinIn} />
-            <FontAwesomeIcon className="loginIcon" icon={faSquareFacebook} />
           </div>
 
           <p id="conta">

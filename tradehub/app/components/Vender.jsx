@@ -76,7 +76,9 @@ export default function Vender() {
   }
 
   function handleAddButton() {
-    quantidadeAcao >= 1000 ? null : setQuantidadeAcao(quantidadeAcao + 1);
+    quantidadeAcao === quantidadeAcaoUsuario
+      ? null
+      : setQuantidadeAcao(quantidadeAcao + 1);
   }
 
   function handleQuantityButton(value) {
