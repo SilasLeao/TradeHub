@@ -67,7 +67,9 @@ export default function Navbar() {
       <aside className="navbarAside">
         <section className="content">
           <div className="perfil">
-            <FontAwesomeIcon className="fa perfilIcon" icon={faUser} />
+            <div className="perfilIcon">
+              <img src={session.user.image} alt="perfil" />
+            </div>
             <span className="navbarWhiteText">Olá, {nomeUsuario}</span>
           </div>
           <hr className="navbarHr" />

@@ -54,8 +54,10 @@
   border-radius: 100%;
 }
 
-.perfilIcon {
-  background-color: honeydew;
+.perfilIcon img {
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 50%;
 }
 
 .fa-headset {

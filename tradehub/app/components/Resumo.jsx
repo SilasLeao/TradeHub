@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { createClient } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 
 export default function Resumo() {
   const supabaseUrl = "https://njjjjpkgxodlrhrysbev.supabase.co";
@@ -19,6 +20,7 @@ export default function Resumo() {
     rendimentoParcial: 0,
     rendimentoPorcentagem: 0,
   });
+  const { data: session } = useSession();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -94,7 +96,7 @@ export default function Resumo() {
     return <h1>Loading...</h1>;
   }
 
-  let conta = usuarioData[0].email;
+  let conta = session.user.email;
   let saldo = `R$ ${usuarioData[0].saldo}`;
   let valorAplicado = rendimentoData.valorAplicado;
   let valorAplicadoFormatted = `R$ ${valorAplicado.toFixed(2)}`;
