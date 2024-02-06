@@ -12,6 +12,7 @@ import {
   faHeadset,
   faUser as filledUser,
 } from "@fortawesome/free-solid-svg-icons";
+import { useSession, signOut } from "next-auth/react";
 
 import { faUser, faCircleQuestion } from "@fortawesome/free-regular-svg-icons";
 import { InfoContainerContext } from "../mainPage/page";
@@ -22,7 +23,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const [acoesActive, setAcoesActive] = useState(false);
   const [investmentActive, setInvestmentActive] = useState(false);
-
+  const { data: session } = useSession();
   useEffect(() => {
     if (pathname.includes("mainPage")) {
       setAcoesActive(true);
@@ -46,8 +47,12 @@ export default function Navbar() {
 
   const [nomeUsuario, setNomeUsuario] = useState("");
   useEffect(() => {
-    const nomeUsuarioSessionStorage = sessionStorage.getItem("nomeUsuario");
-    setNomeUsuario(nomeUsuarioSessionStorage);
+    if (sessionStorage >= 1) {
+      const nomeUsuarioSessionStorage = sessionStorage.getItem("nomeUsuario");
+      setNomeUsuario(nomeUsuarioSessionStorage);
+    } else {
+      setNomeUsuario(session.user.name);
+    }
   }, []);
   return (
     <div

@@ -8,12 +8,10 @@ import {
   faLinkedinIn,
   faSquareFacebook,
 } from "@fortawesome/free-brands-svg-icons";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 
 export default function Login() {
   const router = useRouter();
-  const { data: session } = useSession();
-
   const [usuario, setUsuario] = useState({
     nome: "",
     email: "",
@@ -113,7 +111,11 @@ export default function Login() {
 
           <div className="loginSocialIcons">
             <FontAwesomeIcon
-              onClick={() => signIn("google")}
+              onClick={() =>
+                signIn("google", {
+                  callbackUrl: "http://localhost:3000/mainPage",
+                })
+              }
               className="loginIcon"
               icon={faGoogle}
             />

@@ -5,6 +5,7 @@ import InvestmentMain from "../components/InvestmentMain";
 import InvestmentSideBar from "../components/investmentSideBar";
 import NoLogin from "../components/NoLogin";
 import { useContext, useState } from "react";
+import { useSession } from "next-auth/react";
 import { InfoContainerContext } from "../mainPage/page";
 
 export default function InvestmentPage() {
@@ -13,9 +14,10 @@ export default function InvestmentPage() {
   const toggleInfoContainerStatus = (statusValue) => {
     setInfoContainerStatus(statusValue);
   };
+  const { data: session } = useSession();
   return (
     <>
-      {sessionStorage.length >= 1 ? (
+      {sessionStorage.length >= 1 || session ? (
         <div className="investmentPageComponents">
           <InfoContainerContext.Provider
             value={{ infoContainerStatus, toggleInfoContainerStatus }}
