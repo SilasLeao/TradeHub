@@ -45,10 +45,9 @@ export default function Navbar() {
     sessionStorage.clear();
     signOut();
   }
-
   const [nomeUsuario, setNomeUsuario] = useState("");
   useEffect(() => {
-    if (sessionStorage.length >= 1) {
+    if (sessionStorage.getItem("nomeUsuario")) {
       const nomeUsuarioSessionStorage = sessionStorage.getItem("nomeUsuario");
       setNomeUsuario(nomeUsuarioSessionStorage);
     } else if (session && session.user) {

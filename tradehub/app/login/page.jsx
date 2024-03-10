@@ -13,11 +13,7 @@ import { useSession, signIn } from "next-auth/react";
 export default function Login() {
   const router = useRouter();
   const { data: session } = useSession();
-  if (session) {
-    console.log(session.user);
-  } else {
-    console.log("águia");
-  }
+
   const [usuario, setUsuario] = useState({
     nome: "",
     email: "",
