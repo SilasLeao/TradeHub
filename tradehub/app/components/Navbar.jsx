@@ -69,7 +69,11 @@ export default function Navbar() {
           {session && session.user ? (
             <div className="perfil">
               <div className="perfilIcon">
-                <img src={session.user.image} alt="perfil" />
+                <img
+                  src={session.user.image}
+                  alt="perfil"
+                  referrerPolicy="no-referrer"
+                />
               </div>
               <span className="navbarWhiteText">Olá, {nomeUsuario}</span>
             </div>
