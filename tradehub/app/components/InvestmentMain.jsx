@@ -701,7 +701,7 @@ export default function InvestmentMain() {
           </div>
           <div
             className={`${
-              infoContainerContext.infoContainerStatus === "history"
+              infoContainerContext.infoContainerStatus === "vender"
                 ? "blurEffect"
                 : ""
             } investmentMainContainerContent`}

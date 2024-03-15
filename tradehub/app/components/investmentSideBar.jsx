@@ -13,7 +13,7 @@ export default function InvestmentSideBar() {
     <>
       <div
         className={`${
-          ["investment", "watchlist", "history"].includes(
+          ["investment", "watchlist", "history", "vender"].includes(
             infoContainerContext.infoContainerStatus
           )
             ? "blurEffect investmentSidebar"

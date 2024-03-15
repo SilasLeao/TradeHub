@@ -57,9 +57,14 @@ export default function Navbar() {
   return (
     <div
       className={`${
-        ["acoes", "investment", "watchlist", "history", "comprar"].includes(
-          infoContainerContext.infoContainerStatus
-        )
+        [
+          "acoes",
+          "investment",
+          "watchlist",
+          "history",
+          "comprar",
+          "vender",
+        ].includes(infoContainerContext.infoContainerStatus)
           ? "blurEffect"
           : ""
       }`}
