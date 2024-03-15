@@ -182,7 +182,7 @@ export default function AcoesMain() {
                   <input
                     onChange={handleChange}
                     type="text"
-                    placeholder="Pesquisar"
+                    placeholder="Pesquisar Ticket de Ação"
                   />
                 </div>
                 <span id="acoesMainWhiteText">Filtrar por:</span>
@@ -241,11 +241,7 @@ export default function AcoesMain() {
                       icon={faMagnifyingGlass}
                     />
                   </button>
-                  <input
-                    onChange={handleChange}
-                    type="text"
-                    placeholder="Pesquisar"
-                  />
+                  <input onChange={handleChange} type="text" placeholder=" " />
                 </div>
                 <span id="acoesMainWhiteText">Filtrar por:</span>
                 <button className="acaoFilterButton">
@@ -296,7 +292,7 @@ export default function AcoesMain() {
                 <input
                   onChange={handleChange}
                   type="text"
-                  placeholder="Pesquisar"
+                  placeholder="Pesquisar Ticket de Ação"
                 />
               </div>
               <span id="acoesMainWhiteText">Filtrar por:</span>

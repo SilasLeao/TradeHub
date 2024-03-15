@@ -269,7 +269,7 @@ export default function InvestmentMain() {
                   </button>
                   <input
                     type="text"
-                    placeholder="Pesquisar"
+                    placeholder="Pesquisar Ticket de Ação"
                     onChange={handleChange}
                   />
                 </div>
@@ -462,7 +462,7 @@ export default function InvestmentMain() {
                   </button>
                   <input
                     type="text"
-                    placeholder="Pesquisar"
+                    placeholder="Pesquisar Ticket de Ação"
                     onChange={handleChange}
                   />
                 </div>
@@ -655,7 +655,7 @@ export default function InvestmentMain() {
                   </button>
                   <input
                     type="text"
-                    placeholder="Pesquisar"
+                    placeholder="Pesquisar Ticket de Ação"
                     onChange={handleChange}
                   />
                 </div>
@@ -848,7 +848,7 @@ export default function InvestmentMain() {
                   </button>
                   <input
                     type="text"
-                    placeholder="Pesquisar"
+                    placeholder="Pesquisar Ticket de Ação"
                     onChange={handleChange}
                   />
                 </div>
@@ -1028,7 +1028,7 @@ export default function InvestmentMain() {
                 </button>
                 <input
                   type="text"
-                  placeholder="Pesquisar"
+                  placeholder="Pesquisar Ticket de Ação"
                   onChange={handleChange}
                 />
               </div>
