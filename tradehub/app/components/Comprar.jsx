@@ -60,7 +60,7 @@ export default function Comprar() {
       }
     };
     fetchData();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   function handleExitButton() {
     infoContainerContext.toggleInfoContainerStatus("");

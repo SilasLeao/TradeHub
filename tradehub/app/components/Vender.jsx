@@ -57,7 +57,7 @@ export default function Vender() {
       }
     };
     fetchData();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   function handleExitButton() {
     infoContainerContext.toggleInfoContainerStatus("");

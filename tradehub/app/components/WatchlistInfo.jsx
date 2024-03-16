@@ -51,7 +51,7 @@ export default function WatchlistInfo() {
     };
 
     fetchData();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   async function handleWatchlistDelete(index) {
     try {

@@ -41,7 +41,7 @@ export default function HistoryInfo() {
     };
 
     fetchData();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>

@@ -43,7 +43,7 @@ export default function Resumo() {
     };
 
     fetchData();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const calculateUserData = async () => {

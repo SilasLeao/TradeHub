@@ -53,7 +53,7 @@ export default function Navbar() {
     } else if (session && session.user) {
       setNomeUsuario(session.user.name);
     }
-  }, [session]);
+  }, [session]); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <div
       className={`${

@@ -74,7 +74,7 @@ export default function InvestmentMain() {
     };
 
     fetchData();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSearch = () => {
     const filtered = investmentData.filter((investment) => {

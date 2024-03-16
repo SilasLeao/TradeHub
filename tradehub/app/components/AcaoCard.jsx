@@ -59,7 +59,7 @@ export default function AcaoCard({ acao }) {
     };
 
     fetchData();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   function handleFavoriteButton() {
     if (isFavorite) {
