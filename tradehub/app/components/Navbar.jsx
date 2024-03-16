@@ -30,7 +30,7 @@ export default function Navbar() {
     } else if (pathname.includes("investment")) {
       setInvestmentActive(true);
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   function handleInvestmentButton() {
     router.push("../investment");

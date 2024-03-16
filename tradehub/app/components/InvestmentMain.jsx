@@ -83,7 +83,7 @@ export default function InvestmentMain() {
         .includes(searchFilter.toLowerCase());
     });
     setFilteredInvestments(filtered);
-  };
+  }; // eslint-disable-line react-hooks/exhaustive-deps
 
   function handleChange(event) {
     setSearchFilter(event.target.value);
