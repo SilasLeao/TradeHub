@@ -2,7 +2,7 @@
 
 import { SessionProvider } from "next-auth/react";
 
-export default function RootLayout({ children, pageProps, session }) {
+export default function Layout({ children, pageProps, session }) {
   return (
     <SessionProvider session={session}>
       <html lang="en">
