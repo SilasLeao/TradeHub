@@ -61,3 +61,13 @@ $ npm run dev
 
 # A aplicação será iniciada na porta 3000, acesse pelo navegador: http://localhost:3000
 ```
+
+## 🖥️Layouts
+- Landing Page
+![Landing Page](./tradehub/app/assets/imgs/landingPageScreen.png)
+- Login
+![Login](./tradehub/app/assets/imgs/loginScreen.png)
+- Ações da Bolsa
+![Ações da Bolsa](./tradehub/app/assets/imgs/mainPageScreen.png)
+- Meus Investimentos
+![Meus Investimentos](./tradehub/app/assets/imgs/investmentPageScreen.png)
