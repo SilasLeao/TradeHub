@@ -10,12 +10,11 @@ export const InfoContainerContext = createContext();
 
 export default function MainPage() {
   let [infoContainerStatus, setInfoContainerStatus] = useState("");
+  const { data: session } = useSession();
 
   const toggleInfoContainerStatus = (statusValue) => {
     setInfoContainerStatus(statusValue);
   };
-
-  const { data: session } = useSession();
 
   return (
     <>
