@@ -16,6 +16,7 @@ export default function Comprar() {
   const [quantidadeAcao, setQuantidadeAcao] = useState(1);
   const [quantidadeAcaoInvestimento, setQuantidadeAcaoInvestimento] =
     useState();
+  const [valorAplicadoInvestimento, setValorAplicadoInvestimento] = useState();
   const [taxaDeCorretagem, setTaxaDeCorretagem] = useState(false);
   const [taxaB3, setTaxaB3] = useState(false);
   let dataAtual = new Date();
@@ -50,6 +51,9 @@ export default function Comprar() {
         setSaldo(supabaseUserResponse.data[0].saldo);
         setQuantidadeAcaoInvestimento(
           supabaseInvestmentResponse.data[0].quantidade
+        );
+        setValorAplicadoInvestimento(
+          supabaseInvestmentResponse.data[0].valor_aplicado
         );
       } catch (error) {
         console.error(error);
@@ -115,17 +119,20 @@ export default function Comprar() {
             .eq("conta_id", "55021470-36ad-42ea-835b-fefaef8f21d5");
 
           let atualizarQuantidade;
-          const checkInvestimento = supabase
+          const checkInvestimento = await supabase
             .from("Investimentos")
             .select("*")
             .eq("simbolo", `${nomeAcao}`);
-          if (checkInvestimento.length > 0) {
+          if (checkInvestimento.data[0]) {
             atualizarQuantidade = supabase
               .from("Investimentos")
               .update({
                 quantidade: `${quantidadeAcaoInvestimento + quantidadeAcao}`,
+                valor_aplicado: `${
+                  Number(valorAplicadoInvestimento) + Number(value)
+                }`,
               })
-              .eq("usuario_id", "55021470-36ad-42ea-835b-fefaef8f21d5");
+              .eq("simbolo", `${nomeAcao}`);
           } else {
             atualizarQuantidade = supabase.from("Investimentos").insert([
               {

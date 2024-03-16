@@ -136,13 +136,16 @@ export default function Vender() {
             .eq("simbolo", `${nomeAcao}`)
             .eq("usuario_id", "55021470-36ad-42ea-835b-fefaef8f21d5");
         } else {
-          atualizarInvestimento = supabase.from("Investimentos").update({
-            quantidade: `${quantidadeAcaoUsuario - quantidadeAcao}`,
-            valorAplicado: `${(
-              (quantidadeAcaoUsuario - quantidadeAcao) *
-              custoMedio
-            ).toFixed(2)}`,
-          });
+          atualizarInvestimento = supabase
+            .from("Investimentos")
+            .update({
+              quantidade: `${quantidadeAcaoUsuario - quantidadeAcao}`,
+              valor_aplicado: `${(
+                (quantidadeAcaoUsuario - quantidadeAcao) *
+                custoMedio
+              ).toFixed(2)}`,
+            })
+            .eq("simbolo", `${nomeAcao}`);
         }
 
         const [

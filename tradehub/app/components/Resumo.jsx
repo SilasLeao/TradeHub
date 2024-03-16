@@ -102,7 +102,9 @@ export default function Resumo() {
   } else {
     conta = sessionStorage.getItem("emailUsuario");
   }
-  let saldo = `R$ ${usuarioData[0].saldo}`;
+  let saldo = usuarioData[0].saldo;
+  saldo = saldo.toFixed(2);
+  saldo = `R$ ${saldo}`;
   let valorAplicado = rendimentoData.valorAplicado;
   let valorAplicadoFormatted = `R$ ${valorAplicado.toFixed(2)}`;
   let rendimentoTotal = rendimentoData.rendimentoTotal;
