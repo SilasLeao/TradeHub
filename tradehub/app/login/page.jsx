@@ -116,7 +116,8 @@ export default function Login() {
             <FontAwesomeIcon
               onClick={() =>
                 signIn("google", {
-                  callbackUrl: "https://trade-hub-iota.vercel.app/mainPage",
+                  callbackUrl:
+                    "https://trade-hub-iota.vercel.app/api/auth/callback/google",
                 })
               }
               className="loginIcon"
