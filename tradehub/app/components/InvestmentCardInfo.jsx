@@ -1,6 +1,6 @@
 "use client";
 
-import { InfoContainerContext } from "../mainPage/page";
+import InfoContainerContext from "../context/InfoContainerContext";
 import "./investmentCardInfo.css";
 import { useContext } from "react";
 

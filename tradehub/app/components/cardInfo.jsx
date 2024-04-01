@@ -1,8 +1,8 @@
 import "./cardInfo.css";
 import LineChart from "./LineChart";
-import { InfoContainerContext } from "../mainPage/page";
+import InfoContainerContext from "../context/InfoContainerContext";
 import { useContext, useState } from "react";
-import { ChartTimelineContext } from "./AcoesMain";
+import ChartTimelineContext from "../context/ChartTimelineContext";
 
 export default function CardInfo() {
   const infoContainerContext = useContext(InfoContainerContext);

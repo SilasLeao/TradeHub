@@ -4,7 +4,7 @@ import TitleCard from "./TitleCard";
 import Destaque from "./Destaque";
 import Noticias from "./Noticias";
 import { useContext } from "react";
-import { InfoContainerContext } from "../mainPage/page";
+import InfoContainerContext from "../context/InfoContainerContext";
 
 export default function InvestmentSideBar() {
   const infoContainerContext = useContext(InfoContainerContext);

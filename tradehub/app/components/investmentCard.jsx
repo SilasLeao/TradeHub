@@ -6,7 +6,7 @@ import {
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect, useContext } from "react";
-import { InfoContainerContext } from "../mainPage/page";
+import InfoContainerContext from "../context/InfoContainerContext";
 
 export default function InvestmentCard({ investimento }) {
   const [rentabilidadeTotal, setRentabilidadeTotal] = useState();

@@ -15,7 +15,7 @@ import {
 import { useSession, signOut } from "next-auth/react";
 
 import { faUser, faCircleQuestion } from "@fortawesome/free-regular-svg-icons";
-import { InfoContainerContext } from "../mainPage/page";
+import InfoContainerContext from "../context/InfoContainerContext";
 
 export default function Navbar() {
   const infoContainerContext = useContext(InfoContainerContext);

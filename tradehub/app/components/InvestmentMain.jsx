@@ -2,7 +2,7 @@
 import "./investmentMainStyles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect, useContext } from "react";
-import { InfoContainerContext } from "../mainPage/page";
+import InfoContainerContext from "../context/InfoContainerContext";
 import {
   faCaretDown,
   faMagnifyingGlass,

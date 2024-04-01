@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
-import { InfoContainerContext } from "../mainPage/page";
+import InfoContainerContext from "../context/InfoContainerContext";
 export default function WatchlistInfo() {
   const infoContainerContext = useContext(InfoContainerContext);
   function handleExit() {

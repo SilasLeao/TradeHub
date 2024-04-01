@@ -10,7 +10,7 @@ import { faStar as faEmptyStar } from "@fortawesome/free-regular-svg-icons";
 import classNames from "classnames";
 import { createClient } from "@supabase/supabase-js";
 import CardInfo from "./cardInfo";
-import { InfoContainerContext } from "../mainPage/page";
+import InfoContainerContext from "../context/InfoContainerContext";
 import { icon } from "@fortawesome/fontawesome-svg-core";
 export default function AcaoCard({ acao }) {
   const [watchlist, setWatchlist] = useState([]);

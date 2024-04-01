@@ -9,7 +9,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { useEffect, useContext, useState } from "react";
-import { ChartTimelineContext } from "./AcoesMain";
+import ChartTimelineContext from "../context/ChartTimelineContext";
 ChartJS.register(
   CategoryScale,
   LinearScale,

@@ -1,5 +1,5 @@
 import "./vender.css";
-import { InfoContainerContext } from "../mainPage/page";
+import InfoContainerContext from "../context/InfoContainerContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { createClient } from "@supabase/supabase-js";
 import { useState, useContext, useEffect } from "react";

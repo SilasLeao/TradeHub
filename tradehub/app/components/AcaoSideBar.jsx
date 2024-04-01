@@ -4,7 +4,7 @@ import TitleCard from "./TitleCard";
 import Resumo from "./Resumo";
 import Noticias from "./Noticias";
 import { useContext } from "react";
-import { InfoContainerContext } from "../mainPage/page";
+import InfoContainerContext from "../context/InfoContainerContext";
 
 export default function AcaoSideBar() {
   const infoContainerContext = useContext(InfoContainerContext);

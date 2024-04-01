@@ -1,6 +1,6 @@
 import "./historyInfo.css";
 import { useContext, useEffect, useState } from "react";
-import { InfoContainerContext } from "../mainPage/page";
+import InfoContainerContext from "../context/InfoContainerContext";
 import { createClient } from "@supabase/supabase-js";
 
 export default function HistoryInfo() {

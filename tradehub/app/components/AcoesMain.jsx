@@ -9,12 +9,11 @@ import {
   faMagnifyingGlass,
   faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
-import { InfoContainerContext } from "../mainPage/page";
+import InfoContainerContext from "../context/InfoContainerContext";
 import CardInfo from "./cardInfo";
 import AcaoDestaqueCard from "./AcaoDestaqueCard";
 import Comprar from "./Comprar";
-
-export const ChartTimelineContext = createContext();
+import ChartTimelineContext from "../context/ChartTimelineContext";
 
 export default function AcoesMain() {
   const [codigoAcao, setCodigoAcao] = useState("");
