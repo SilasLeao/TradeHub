@@ -116,7 +116,7 @@ export default function Login() {
             <FontAwesomeIcon
               onClick={() =>
                 signIn("google", {
-                  callbackUrl: "http://localhost:3000/mainPage",
+                  callbackUrl: "/mainPage",
                 })
               }
               className="loginIcon"
