@@ -43,6 +43,7 @@ A web application that simulates an investment plataform 🚀
 - All application data is kept in a Supabase database, aiming to keep the application functional and dynamic so that the data interacts with each other through calculations, editing, removal and insertion.
 
 ## 💻How to Run It?
+- [trade-hub-iota.vercel.app](https://trade-hub-iota.vercel.app)
 
 ```bash
 # Clone this repo
