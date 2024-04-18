@@ -1,11 +1,7 @@
 "use client";
 import "./destaque.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFilter,
-  faArrowDown,
-  faArrowUp,
-} from "@fortawesome/free-solid-svg-icons";
+import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import DestaqueComponentInfo from "./DestaqueComponentInfo";
 

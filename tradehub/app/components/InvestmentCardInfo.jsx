@@ -9,7 +9,7 @@ export default function InvestmentCardInfo() {
 
   let codigoAcao = sessionStorage.getItem("codigoAcaoPesquisada");
   let nomeAcao = sessionStorage.getItem("nomeAcaoPesquisada");
-  let marketCap = sessionStorage.getItem("marketCap");
+  let marketCap = "Não Informado.";
   let valorAplicado = sessionStorage.getItem("valorAplicado");
   let quantidade = sessionStorage.getItem("quantidade");
   let valorAcao = sessionStorage.getItem("valorAcao");
@@ -26,10 +26,6 @@ export default function InvestmentCardInfo() {
     infoContainerContext.toggleInfoContainerStatus("");
   }
 
-  let marketCapFormatted = parseFloat(marketCap)
-    .toFixed(2)
-    .replace(".", ",")
-    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   let valorAplicadoFormatted = parseFloat(valorAplicado)
     .toFixed(2)
     .replace(".", ",")
@@ -62,7 +58,7 @@ export default function InvestmentCardInfo() {
         <hr id="investmentFirstInfoHr" />
         <div className="investmentInfoMarketCap">
           <p>Capitalização de Mercado</p>
-          <p>R$ {marketCapFormatted}</p>
+          <p>{marketCap}</p>
         </div>
         <hr id="investmentSecondInfoHr" />
         <div className="investmentInfo">

@@ -1,10 +1,6 @@
 import "./investmentCard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faInfo,
-  faInfoCircle,
-  faStar,
-} from "@fortawesome/free-solid-svg-icons";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect, useContext } from "react";
 import InfoContainerContext from "../context/InfoContainerContext";
 

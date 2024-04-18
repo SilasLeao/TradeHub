@@ -1,7 +1,7 @@
 "use client";
 
 import "./acoesMain.css";
-import { useContext, createContext } from "react";
+import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AcaoCard from "./AcaoCard";
@@ -28,13 +28,11 @@ export default function AcoesMain() {
         `https://brapi.dev/api/quote/${codigoAcao}?token=8QE9zJXLMnT7w6wppfyXEs`
       );
       const resultado = await resposta.json();
-      if (resultado.results[0].marketCap) {
+      if (resultado.results[0].longName) {
         setAcaoCards((prevCards) => [
           ...prevCards,
           {
-            marketCap: resultado.results[0].marketCap
-              .toString()
-              .replace(/\B(?=(\d{3})+(?!\d))/g, "."),
+            marketCap: "Não informado.",
             symbol: resultado.results[0].symbol,
             fullName: resultado.results[0].longName,
             regularMarketPrice: resultado.results[0].regularMarketPrice,
@@ -55,6 +53,7 @@ export default function AcoesMain() {
           },
         ]);
       }
+      console.log(resultado);
     } catch (error) {
       console.error("Erro ao buscar dados:", error);
     }

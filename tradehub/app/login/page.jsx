@@ -3,16 +3,11 @@ import { useRouter } from "next/navigation";
 import "./loginStyles.css";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faGoogle,
-  faLinkedinIn,
-  faSquareFacebook,
-} from "@fortawesome/free-brands-svg-icons";
-import { useSession, signIn } from "next-auth/react";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { signIn } from "next-auth/react";
 
 export default function Login() {
   const router = useRouter();
-  const { data: session } = useSession();
 
   const [usuario, setUsuario] = useState({
     nome: "",
